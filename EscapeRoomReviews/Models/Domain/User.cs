@@ -1,5 +1,8 @@
 namespace EscapeRoomReviews.Models.Domain;
 
+/// <summary>
+/// Represents an application user who can write room reviews.
+/// </summary>
 public class User
 {
     public int Id { get; set; }
@@ -9,5 +12,6 @@ public class User
     public int TotalRoomsPlayed { get; set; }
     public UserRole Role { get; set; }
 
+    // Reviews created by this user.
     public List<Review> Reviews { get; set; } = new();
 }

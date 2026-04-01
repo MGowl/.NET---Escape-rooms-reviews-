@@ -1,5 +1,8 @@
 namespace EscapeRoomReviews.Models.Domain;
 
+/// <summary>
+/// Represents a user review and rating for a specific escape room.
+/// </summary>
 public class Review
 {
     public int Id { get; set; }
@@ -9,9 +12,11 @@ public class Review
     public bool IsVerified { get; set; }
     public int PlayersCount { get; set; }
 
+    // FK + navigation to the reviewed room.
     public int EscapeRoomId { get; set; }
     public EscapeRoom EscapeRoom { get; set; } = null!;
 
+    // FK + navigation to the author of the review.
     public int UserId { get; set; }
     public User User { get; set; } = null!;
 }

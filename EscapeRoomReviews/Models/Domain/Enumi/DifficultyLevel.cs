@@ -1,5 +1,8 @@
 namespace EscapeRoomReviews.Models.Domain;
 
+/// <summary>
+/// Defines supported escape room difficulty tiers.
+/// </summary>
 public enum DifficultyLevel
 {
     Easy = 1,

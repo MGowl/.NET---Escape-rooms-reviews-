@@ -114,6 +114,7 @@ var escapeRooms = new List<EscapeRoom>
     }
 };
 
+// Povezuje sve obostrane relacije kako bi model bio konzistentan u memoriji.
 foreach (var room in escapeRooms)
 {
     room.Location.EscapeRooms.Add(room);
@@ -139,6 +140,7 @@ foreach (var room in escapeRooms)
 var trazeniGrad = "Zagreb";
 var trazenaSobaId = 1;
 
+//LINQ upiti nad in-memory kolekcijom escapeRooms za demonstraciju osnovnih funkcionalnosti aplikacije.
 // 1) Top 5 najbolje ocijenjenih soba (samo verificirane recenzije)
 var top5NajboljeOcijenjenih = escapeRooms
     .Select(room => new
@@ -177,6 +179,7 @@ var prosjecnaOcjenaSobe = escapeRooms
     .Select(review => (double?)review.Rating)
     .Average() ?? 0.0;
 
+// Kreira i konfigurira web aplikaciju.
 var app = builder.Build();
 
 app.Logger.LogInformation("Ucitan primjer podataka: {RoomCount} escape room objekta.", escapeRooms.Count);
@@ -200,10 +203,12 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+// Trenutno bez autentikacije, ali middleware ostaje spreman za role/policy pravila.
 app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
+// Pokrece aplikaciju i pocinje slusati HTTP zahtjeve.
 app.Run();
