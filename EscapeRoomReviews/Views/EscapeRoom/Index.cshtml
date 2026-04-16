@@ -1,0 +1,51 @@
+@model List<EscapeRoomReviews.ViewModels.EscapeRoomIndexViewModel>
+
+@{
+    ViewData["Title"] = "Escape Rooms";
+}
+
+<div class="container mt-4">
+    <h2 class="mb-4 text-primary">Explore Escape Rooms</h2>
+
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+        @foreach (var room in Model)
+        {
+            <div class="col">
+                <div class="card h-100 shadow-sm border-0">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <h5 class="card-title text-success mb-0">@room.Name</h5>
+                            <span class="badge bg-secondary">@room.Difficulty</span>
+                        </div>
+                        
+                        <h6 class="card-subtitle mb-3 text-muted">by @room.CompanyName</h6>
+                        
+                        <p class="card-text mb-1">
+                            <i class="bi bi-geo-alt-fill text-muted"></i> <strong>Location:</strong> @room.City
+                        </p>
+                        <p class="card-text mb-1">
+                            <i class="bi bi-tag-fill text-muted"></i> <strong>Price:</strong> @room.Price.ToString("C")
+                        </p>
+                        
+                        <div class="mb-3 mt-2">
+                            <strong>Themes:</strong>
+                            @foreach (var theme in room.Themes)
+                            {
+                                <span class="badge bg-info text-dark me-1">@theme</span>
+                            }
+                        </div>
+                    </div>
+                    <div class="card-footer bg-white border-top-0 d-flex justify-content-between align-items-center">
+                        <div>
+                            <span class="text-warning fw-bold">
+                                ★ @room.AverageRating.ToString("0.0")
+                            </span>
+                            <small class="text-muted">(@room.ReviewCount reviews)</small>
+                        </div>
+                        <a href="#" class="btn btn-outline-success btn-sm">View Details</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
