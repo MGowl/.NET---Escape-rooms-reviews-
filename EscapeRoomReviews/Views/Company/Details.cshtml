@@ -13,28 +13,28 @@
     <!-- Header Section -->
     <div class="d-flex justify-content-between align-items-center mb-4 pb-3 border-bottom">
         <div>
-            <h1 class="display-5 mb-2" style="color: #004F32; font-weight: 700;">@Model.Name</h1>
+            <h1 class="display-5 mb-2 text-primary-custom">@Model.Name</h1>
             @if (!string.IsNullOrEmpty(Model.Website))
             {
-                <a href="@Model.Website" class="text-decoration-none fw-medium" target="_blank" rel="noopener noreferrer" style="color: #AD56C4;">
+                <a href="@Model.Website" class="link-accent fw-medium" target="_blank" rel="noopener noreferrer">
                     <i class="bi bi-box-arrow-up-right me-1"></i> @Model.Website
                 </a>
             }
         </div>
         <div>
-            <a asp-action="Index" class="btn btn-outline-secondary px-4 py-2 rounded-pill fw-medium">
+            <a asp-action="Index" class="btn btn-outline-primary px-4 py-2 rounded-pill fw-medium">
                 <i class="bi bi-arrow-left me-1"></i> Back
             </a>
         </div>
     </div>
 
     <!-- Escape Rooms Section -->
-    <h3 class="mb-4 fw-bold" style="color: #004F32;">Escape Rooms by @Model.Name</h3>
+    <h3 class="mb-4 fw-bold text-primary-custom">Escape Rooms by @Model.Name</h3>
 
     @if (Model.EscapeRooms == null || !Model.EscapeRooms.Any())
     {
-        <div class="p-5 text-center rounded-4 shadow-sm" style="background-color: #F4F4F4; border-top: 5px solid #FF8DA1;">
-            <h4 class="fw-bold mb-3" style="color: #004F32;">No Rooms Found</h4>
+        <div class="p-5 text-center rounded-4 shadow-sm" style="background-color: var(--color-bg-page); border-top: 5px solid var(--color-accent-pink);">
+            <h4 class="fw-bold mb-3 text-primary-custom">No Rooms Found</h4>
             <p class="text-muted mb-0 fs-5">This company hasn't added any escape rooms to their profile yet.</p>
         </div>
     }
@@ -44,21 +44,21 @@
             @foreach (var room in Model.EscapeRooms)
             {
                 <div class="col">
-                    <div class="card h-100 border-0 shadow-sm rounded-4" style="background-color: #F4F4F4;">
+                    <div class="card shadow-sm border-0 h-100 rounded-4 bg-white">
                         <div class="card-body p-4 d-flex flex-column">
                             <div class="d-flex justify-content-between align-items-start mb-3">
-                                <h4 class="card-title mb-0 fw-bold" style="color: #004F32;">@room.Name</h4>
-                                <span class="badge rounded-pill px-3 py-2 fw-medium" style="background-color: #FF8DA1; color: #fff;">
+                                <h4 class="card-title mb-0 fw-bold text-primary-custom">@room.Name</h4>
+                                <span class="badge rounded-pill px-3 py-2 fw-medium bg-primary">
                                     @room.Difficulty
                                 </span>
                             </div>
                             
                             <p class="card-text text-muted mb-3 d-flex align-items-center">
-                                <i class="bi bi-geo-alt-fill me-2" style="color: #AD56C4;"></i> 
+                                <i class="bi bi-geo-alt-fill me-2 text-primary-custom"></i> 
                                 @(room.Location?.City ?? "Unknown City")
                             </p>
 
-                            <div class="mb-4 border-start border-3 ps-3 py-1" style="border-color: #FFC2BA !important;">
+                            <div class="mb-4 border-start border-3 ps-3 py-1" style="border-color: var(--color-accent-peach) !important;">
                                 @{
                                     var hasReviews = room.Reviews != null && room.Reviews.Any();
                                     if (hasReviews)
@@ -79,11 +79,11 @@
                             </div>
                             
                             <div class="mt-auto pt-3 border-top d-flex justify-content-between align-items-center">
-                                <div class="fw-bold fs-4" style="color: #004F32;">
+                                <div class="fw-bold fs-4 text-primary-custom">
                                     $@room.Price.ToString("0.00")
                                 </div>
                                 <a asp-controller="EscapeRoom" asp-action="Details" asp-route-id="@room.Id" 
-                                   class="btn rounded-pill px-4 fw-bold shadow-sm" style="background-color: #004F32; color: #fff;">
+                                   class="btn btn-primary rounded-pill px-4 fw-bold shadow-sm">
                                     View Details
                                 </a>
                             </div>
@@ -94,6 +94,8 @@
         </div>
     }
 </div>
+
+
 
 
 

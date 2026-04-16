@@ -8,68 +8,16 @@
     ViewData["BreadcrumbParentController"] = "Theme";
 }
 
-<style>
-    .theme-details-container {
-        background-color: #F4F4F4;
-        padding: 2rem;
-        border-radius: 12px;
-    }
-    .price-text-green {
-        color: #004F32 !important;
-    }
-    .badge-difficulty {
-        background-color: #FF8DA1;
-        color: #fff;
-        font-weight: 600;
-        padding: 0.4em 0.8em;
-    }
-    .room-card {
-        background-color: #fff;
-        border: none;
-        border-radius: 12px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
-        text-decoration: none;
-        color: inherit;
-        display: block;
-        overflow: hidden;
-    }
-    .room-card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-        background-color: #FFC2BA;
-    }
-    .room-card:hover .text-muted {
-        color: #333 !important; 
-    }
-    .rating-star {
-        color: #004F32;
-        margin-right: 4px;
-    }
-    .room-meta {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 1rem;
-        margin-top: 0.5rem;
-    }
-    .room-meta-item {
-        display: flex;
-        align-items: center;
-        gap: 0.25rem;
-        font-size: 0.9rem;
-    }
-</style>
-
-<div class="container mt-4 mb-5 theme-details-container">
+<div class="container mt-4 mb-5 detail-container">
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h1 class="price-text-green fw-bold mb-0">
+        <h1 class="text-primary-custom fw-bold mb-0">
             @if (!string.IsNullOrEmpty(Model.IconUrl))
             {
                 <i class="@Model.IconUrl me-2"></i>
             }
             @Model.Name Mode
         </h1>
-        <a asp-action="Index" class="btn btn-outline-secondary" style="border-color: #004F32; color: #004F32;">
+        <a asp-action="Index" class="btn btn-outline-primary">
             <i class="bi bi-arrow-left"></i> Back to Themes
         </a>
     </div>
@@ -83,22 +31,22 @@
                 var avgRating = reviewCount > 0 ? Math.Round(room.Reviews!.Average(r => r.Rating), 1) : 0;
 
                 <div class="col-md-6 col-lg-4">
-                    <a asp-controller="EscapeRoom" asp-action="Details" asp-route-id="@room.Id" class="room-card h-100 p-3">
+                    <a asp-controller="EscapeRoom" asp-action="Details" asp-route-id="@room.Id" class="card shadow-sm border-0 h-100 room-card p-3 text-decoration-none text-body">
                         <div class="d-flex justify-content-between align-items-start mb-2">
-                            <h4 class="price-text-green fw-bold mb-0 text-truncate" title="@room.Name">@room.Name</h4>
-                            <span class="badge badge-difficulty rounded-pill ms-2">@room.Difficulty</span>
+                            <h4 class="text-primary-custom fw-bold mb-0 text-truncate" title="@room.Name">@room.Name</h4>
+                            <span class="badge bg-primary rounded-pill ms-2">@room.Difficulty</span>
                         </div>
                         
-                        <div class="room-meta text-muted mb-3">
+                        <div class="d-flex flex-wrap gap-3 text-muted mb-3">
                             @if (room.Location != null)
                             {
-                                <div class="room-meta-item">
+                                <div class="d-flex align-items-center gap-1">
                                     <i class="bi bi-geo-alt"></i> @room.Location.City
                                 </div>
                             }
                             @if (room.Company != null)
                             {
-                                <div class="room-meta-item">
+                                <div class="d-flex align-items-center gap-1">
                                     <i class="bi bi-building"></i> @room.Company.Name
                                 </div>
                             }
@@ -106,10 +54,10 @@
 
                         <div class="d-flex justify-content-between align-items-end mt-auto">
                             <div>
-                                <strong class="fs-5 text-dark">$@room.Price.ToString("0.00")</strong>
+                                <strong class="fs-5 text-primary-custom">$@room.Price.ToString("0.00")</strong>
                             </div>
                             <div class="d-flex align-items-center">
-                                <i class="bi bi-star-fill rating-star"></i>
+                                <i class="bi bi-star-fill me-1" style="color: var(--color-accent-pink);"></i>
                                 <span class="fw-bold fs-5">@(avgRating > 0 ? avgRating.ToString("0.0") : "N/A")</span>
                                 <span class="text-muted ms-1 text-nowrap">(@reviewCount)</span>
                             </div>
@@ -120,19 +68,21 @@
         }
         else
         {
-            <div class="col-12 py-5 text-center escape-card shadow-sm">
+            <div class="col-12 py-5 text-center card shadow-sm border-0">
                 <div class="mb-3">
                     <i class="bi bi-search text-muted" style="font-size: 3rem;"></i>
                 </div>
-                <h3 class="price-text-green">No mysteries here yet!</h3>
+                <h3 class="text-primary-custom">No mysteries here yet!</h3>
                 <p class="text-muted fs-5">There are currently no escape rooms listed under the <strong>@Model.Name</strong> theme.</p>
-                <a asp-controller="Theme" asp-action="Index" class="btn text-white mt-3" style="background-color: #004F32;">
+                <a asp-controller="Theme" asp-action="Index" class="btn btn-primary mt-3">
                     Explore Other Themes
                 </a>
             </div>
         }
     </div>
 </div>
+
+
 
 
 

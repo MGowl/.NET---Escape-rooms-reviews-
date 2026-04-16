@@ -22,21 +22,21 @@
     var temaStats = Model.SelectMany(m => m.Themes).GroupBy(t => t).Select(g => new { Name = g.Key, Count = g.Count() });
 }
 
-<div class="row mb-5">
+<div class="row mb-5 mt-4">
     <div class="col-12">
-        <div class="hero-section p-4 p-md-5 d-flex flex-column flex-md-row justify-content-between align-items-md-center shadow-sm">
+        <div class="hero-section p-4 p-md-5 d-flex flex-column flex-md-row justify-content-between align-items-md-center shadow-lg" style="background-color: var(--primary-deep-green); color: white; border-radius: 16px; border: none;">
             <div class="mb-4 mb-md-0">
-                <h1 class="hero-title fw-bold mb-2">Pronađi svoju sljedeću avanturu</h1>
-                <p class="text-muted mb-0 fs-5">Pregledaj, usporedi i odaberi escape room koji<br />odgovara tvojoj ekipi.</p>
+                <h1 class="hero-title fw-bold mb-3" style="color: white; font-size: 2.75rem; letter-spacing: -0.02em;">Pronađi svoju sljedeću avanturu</h1>
+                <p class="mb-0 fs-5" style="color: rgba(255,255,255,0.85); font-weight: 400;">Pregledaj, usporedi i odaberi escape room koji<br />odgovara tvojoj ekipi.</p>
             </div>
-            <div class="d-flex text-center gap-4 gap-md-5">
-                <div class="stat-box p-3">
-                    <h2 class="stat-number fw-bold mb-0">@sobeCount</h2>
-                    <small class="text-muted fw-semibold">Sobe</small>
+            <div class="d-flex text-center gap-3 gap-md-4">
+                <div class="stat-box p-4" style="background-color: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 12px; min-width: 130px; backdrop-filter: blur(10px);">
+                    <h2 class="stat-number fw-bold mb-1" style="color: white; font-size: 2.5rem;">@sobeCount</h2>
+                    <small class="fw-medium text-uppercase" style="color: rgba(255,255,255,0.9); font-size: 0.85rem; letter-spacing: 1px;">Sobe</small>
                 </div>
-                <div class="stat-box p-3">
-                    <h2 class="stat-number fw-bold mb-0">@gradoviCount</h2>
-                    <small class="text-muted fw-semibold">Gradovi</small>
+                <div class="stat-box p-4" style="background-color: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 12px; min-width: 130px; backdrop-filter: blur(10px);">
+                    <h2 class="stat-number fw-bold mb-1" style="color: white; font-size: 2.5rem;">@gradoviCount</h2>
+                    <small class="fw-medium text-uppercase" style="color: rgba(255,255,255,0.9); font-size: 0.85rem; letter-spacing: 1px;">Gradovi</small>
                 </div>
             </div>
         </div>
@@ -101,9 +101,9 @@
                     }
                 </div>
 
-                <div class="d-flex gap-2">
-                    <button type="submit" class="btn btn-sm btn-dark">Primijeni</button>
-                    <a asp-action="Index" class="btn btn-sm btn-outline-secondary">Reset</a>
+                <div class="d-flex flex-column gap-2 mt-4">
+                    <button type="submit" class="btn text-white w-100 fw-bold" style="background-color: var(--primary-deep-green); border-radius: 8px; padding: 0.6rem;">Primijeni</button>
+                    <a asp-action="Index" class="btn btn-outline-secondary w-100 fw-bold" style="border-radius: 8px; padding: 0.6rem;">Poništi filtar</a>
                 </div>
             </form>
         </div>
@@ -159,7 +159,7 @@
             {
                 <div class="col">
                     <a asp-action="Details" asp-route-id="@room.Id" style="text-decoration:none; color:inherit;">
-                        <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden room-card">
+                        <div class="card shadow-sm border-0 h-100 shadow-sm border-0 rounded-4 overflow-hidden room-card">
                             <div class="card-img-top bg-light d-flex justify-content-center align-items-center" style="height: 160px; font-size: 3rem; background: linear-gradient(135deg, #fdfdfd 0%, #f0f0f0 100%); border-bottom: 1px solid #eee;">
                                 @if (room.Themes.Contains("Sci-Fi")) { <span>🚀</span> }
                                 else if (room.Themes.Contains("Horror")) { <span>🏚️</span> }
@@ -171,25 +171,25 @@
                                 <div class="mb-3 d-flex flex-wrap gap-2">
                                     @{
                                         var diffBg = room.Difficulty switch {
-                                            "Easy" => "#eef9ed",
-                                            "Medium" => "#faeed7",
-                                            "Hard" => "#fceced",
-                                            "Expert" => "#f5ecfa",
+                                            "Easy" => "var(--color-accent-peach)",
+                                            "Medium" => "var(--color-bg-light-cyan)",
+                                            "Hard" => "var(--color-accent-pink)",
+                                            "Expert" => "var(--color-accent-purple)",
                                             _ => "#f1f3f5"
                                         };
                                         var diffText = room.Difficulty switch {
-                                            "Easy" => "#155e34",
-                                            "Medium" => "#603b12",
-                                            "Hard" => "#a6292a",
-                                            "Expert" => "#5c3194",
+                                            "Easy" => "var(--primary-deep-green)",
+                                            "Medium" => "var(--primary-deep-green)",
+                                            "Hard" => "white",
+                                            "Expert" => "white",
                                             _ => "#495057"
                                         };
                                     }
-                                    <span class="badge rounded-pill border-0 px-3 py-2" style="background-color: @diffBg; color: @diffText !important; font-size: 0.85rem;">@room.Difficulty</span>
-                                    <span class="badge rounded-pill border-0 px-3 py-2" style="background-color: #e7f5f0; color: #144e43 !important; font-size: 0.85rem;">@room.City</span>
+                                    <span class="badge rounded-pill border-0 px-3 py-2 fw-semibold" style="background-color: @diffBg; color: @diffText !important; font-size: 0.8rem; letter-spacing: 0.5px;">@room.Difficulty</span>
+                                    <span class="badge rounded-pill border-0 px-3 py-2 fw-semibold" style="background-color: var(--color-bg-page); color: var(--primary-deep-green) !important; font-size: 0.8rem; letter-spacing: 0.5px;">@room.City</span>
                                     @foreach (var theme in room.Themes.Take(2))
                                     {
-                                        <span class="badge rounded-pill border-0 px-3 py-2" style="background-color: #f1eefb; color: #29255a !important; font-size: 0.85rem;">@theme</span>
+                                        <span class="badge rounded-pill border-0 px-3 py-2 fw-semibold" style="background-color: rgba(8,80,65,0.08); color: var(--primary-deep-green) !important; font-size: 0.8rem; letter-spacing: 0.5px;">@theme</span>
                                     }
                                 </div>
                                 
@@ -220,6 +220,8 @@
         </div>
     </div>
 </div>
+
+
 
 
 

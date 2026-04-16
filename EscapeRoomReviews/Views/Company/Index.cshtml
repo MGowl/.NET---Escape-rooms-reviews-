@@ -5,7 +5,7 @@
 }
 
 <div class="mb-4">
-    <h1 class="display-5 fw-bold" style="color: var(--color-primary);">Tvrtke za escape room</h1>
+    <h1 class="display-5 fw-bold text-primary-custom">Tvrtke za escape room</h1>
     <p class="lead text-muted">Pregled svih tvrtki koje nude escape room iskustva.</p>
 </div>
 
@@ -14,19 +14,19 @@
     {
         <div class="col">
             <a asp-action="Details" asp-route-id="@company.Id" style="text-decoration:none; color:inherit;">
-                <div class="card h-100 shadow-sm border-0" style="background-color: var(--color-bg-soft); transition: transform 0.2s;">
+                <div class="card shadow-sm border-0 h-100 bg-white">
                     <div class="card-body">
-                        <h5 class="card-title fw-bold" style="color: var(--color-primary);">@company.Name</h5>
+                        <h5 class="card-title fw-bold text-primary-custom">@company.Name</h5>
                         
                         <div class="mb-3 mt-3">
-                            <span class="badge rounded-pill" style="background-color: var(--color-accent-cyan); color: #093b3f;">
+                            <span class="badge rounded-pill bg-info">
                                 @(company.RoomCount) sobe
                             </span>
                         </div>
 
                         @if (!string.IsNullOrEmpty(company.Website))
                         {
-                            <span class="btn btn-sm text-white mt-auto" style="background-color: var(--color-primary);">Posjeti web &rarr;</span>
+                            <span class="btn btn-primary btn-sm mt-auto">Posjeti web &rarr;</span>
                         }
                     </div>
                 </div>
@@ -39,6 +39,8 @@
 {
     <div class="alert alert-info">Trenutno nema dostupnih tvrtki.</div>
 }
+
+
 
 
 

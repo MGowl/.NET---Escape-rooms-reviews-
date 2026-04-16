@@ -7,105 +7,107 @@
     ViewData["BreadcrumbParentController"] = "EscapeRoom";
 }
 
-<div class="container mt-4" style="background-color: #F4F4F4; padding: 2rem; border-radius: 8px;">
+<div class="container mt-4 mb-5 p-4 p-md-5" style="background-color: var(--color-bg-page); border-radius: 16px;">
     <!-- 1. Header -->
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <h1 style="color: #004F32; font-weight: bold; margin: 0;">@Model.Name</h1>
-        <a asp-action="Index" class="btn" style="background-color: #004F32; color: white;">Back to List</a>
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-5 gap-3">
+        <h1 class="fw-bold mb-0" style="color: var(--primary-deep-green); font-size: 2.5rem; letter-spacing: -0.02em;">@Model.Name</h1>
+        <a asp-action="Index" class="btn fw-bold px-4 py-2" style="background-color: var(--primary-deep-green); color: white; border-radius: 8px;">← Natrag na popis</a>
     </div>
 
     <!-- 2. Info Row -->
-    <div class="card mb-4 border-0 shadow-sm">
-        <div class="card-body d-flex flex-wrap gap-4 align-items-center">
-            <span class="badge" style="background-color: #FF8DA1; color: #004F32; font-size: 1rem; padding: 0.5em 0.75em;">
+    <div class="card shadow-sm border-0 mb-5 border-0 shadow-sm" style="border-radius: 12px; overflow: hidden;">
+        <div class="card-body p-4 d-flex flex-wrap gap-4 align-items-center bg-white">
+            <span class="badge fw-bold" style="background-color: var(--color-accent-pink); color: white; font-size: 0.95rem; padding: 0.6em 1em; letter-spacing: 0.5px; border-radius: 6px;">
                 @Model.Difficulty
             </span>
-            <span style="font-weight: 500; color: #333;">
-                📍 @Model.Location?.City
+            <span class="fw-semibold" style="color: var(--primary-deep-green); font-size: 1.05rem;">
+                <i class="me-1">📍</i> @Model.Location?.City
             </span>
-            <span style="font-weight: 500; color: #333;">
-                👥 Max Players: @Model.MaxPlayers
+            <span class="fw-semibold" style="color: var(--primary-deep-green); font-size: 1.05rem;">
+                <i class="me-1">👥</i> Max igrača: @Model.MaxPlayers
             </span>
-            <span style="font-weight: 500; color: #333;">
-                💵 @Model.Price
+            <span class="fw-semibold" style="color: var(--primary-deep-green); font-size: 1.05rem;">
+                <i class="me-1">💵</i> @Model.Price €
             </span>
-            <span style="font-weight: 500;">
-                🏢 
-                <a href="@Model.Company?.Website" target="_blank" style="color: #004F32; text-decoration: none; border-bottom: 1px solid #004F32;">
+            <span class="fw-semibold" style="font-size: 1.05rem;">
+                <i class="me-1">🏢</i>
+                <a href="@Model.Company?.Website" target="_blank" class="text-decoration-none" style="color: var(--primary-deep-green); border-bottom: 2px solid var(--color-accent-peach); transition: border-color 0.2s;">
                     @Model.Company?.Name
                 </a>
             </span>
         </div>
     </div>
 
-    <!-- 3. Description -->
-    <div class="mb-4">
-        <h3 style="color: #004F32; font-weight: 600;">About this Room</h3>
-        <p style="color: #555; line-height: 1.6;">@Model.Description</p>
-    </div>
-
-    <!-- 4. Themes -->
-    <div class="mb-5">
-        <h4 style="color: #004F32; font-weight: 600; margin-bottom: 1rem;">Themes</h4>
-        <div class="d-flex flex-wrap gap-2">
-            @if (Model.Themes != null && Model.Themes.Any())
-            {
-                foreach (var theme in Model.Themes)
-                {
-                    <span class="badge rounded-pill" style="background-color: #FFC2BA; color: #004F32; font-size: 0.9rem; padding: 0.5em 1em;">
-                        @theme.Name
-                    </span>
-                }
-            }
-            else
-            {
-                <span class="text-muted">No themes specified for this room.</span>
-            }
+    <!-- 3. Description & Themes -->
+    <div class="row mb-5">
+        <div class="col-lg-8 mb-4 mb-lg-0">
+            <h3 class="fw-bold mb-4 text-primary-custom">O sobi</h3>
+            <p class="fs-5" style="color: #4a4a4a; line-height: 1.7;">@Model.Description</p>
+        </div>
+        <div class="col-lg-4">
+            <div class="p-4 bg-white shadow-sm" style="border-radius: 12px;">
+                <h4 class="fw-bold mb-3 text-primary-custom">Teme</h4>
+                <div class="d-flex flex-wrap gap-2">
+                    @if (Model.Themes != null && Model.Themes.Any())
+                    {
+                        foreach (var theme in Model.Themes)
+                        {
+                            <span class="badge" style="background-color: var(--color-accent-peach); color: var(--primary-deep-green); font-size: 0.9rem; padding: 0.6em 1.2em; border-radius: 6px; font-weight: 600;">
+                                @theme.Name
+                            </span>
+                        }
+                    }
+                    else
+                    {
+                        <span class="text-muted">Nema definiranih tema.</span>
+                    }
+                </div>
+            </div>
         </div>
     </div>
 
     <!-- 5. Reviews Section -->
-    <div class="mb-4">
-        <h3 style="color: #004F32; font-weight: 600; border-bottom: 2px solid #FF8DA1; padding-bottom: 0.5rem; display: inline-block;" class="mb-4">
-            Reviews (@(Model.Reviews?.Count ?? 0))
+    <div class="mb-5">
+        <h3 class="fw-bold mb-4" style="color: var(--primary-deep-green); border-bottom: 3px solid var(--color-accent-pink); padding-bottom: 0.5rem; display: inline-block;">
+            Recenzije (@(Model.Reviews?.Count ?? 0))
         </h3>
         
         @if (Model.Reviews != null && Model.Reviews.Any())
         {
-            <div class="row row-cols-1 g-3">
+            <div class="row row-cols-1 g-4">
                 @foreach (var review in Model.Reviews)
                 {
                     <div class="col">
-                        <div class="card border-0 shadow-sm h-100">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between align-items-center mb-2">
+                        <div class="card shadow-sm border-0 border-0 shadow-sm h-100" style="border-radius: 12px; transition: transform 0.2s;">
+                            <div class="card-body p-4 bg-white" style="border-radius: 12px;">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
                                     <div class="d-flex align-items-center gap-2">
-                                        <strong style="color: #004F32; font-size: 1.1rem;">@review.User?.Username</strong>
+                                        <strong style="color: var(--primary-deep-green); font-size: 1.15rem; letter-spacing: 0.5px;">@review.User?.Username</strong>
                                         @if (review.IsVerified)
                                         {
-                                            <span class="badge" style="background-color: #FF9CE9; color: #004F32; font-size: 0.75rem;">
-                                                ✓ Verified
+                                            <span class="badge fw-bold" style="background-color: var(--color-accent-rose); color: var(--primary-deep-green); font-size: 0.75rem; letter-spacing: 0.5px; padding: 0.4em 0.8em; border-radius: 4px;">
+                                                ✓ Verificirano
                                             </span>
                                         }
                                     </div>
-                                    <div class="text-muted small">
+                                    <div class="text-secondary small fw-medium">
                                         @review.CreatedAt.ToString("MMM dd, yyyy")
                                     </div>
                                 </div>
-                                <div class="mb-2" style="font-size: 1.1rem;">
+                                <div class="mb-3" style="font-size: 1.25rem;">
                                     @for (int i = 1; i <= 5; i++)
                                     {
                                         if (i <= review.Rating)
                                         {
-                                            <span style="color: #004F32;">★</span>
+                                            <span style="color: var(--color-accent-pink);">★</span>
                                         }
                                         else
                                         {
-                                            <span style="color: #ccc;">☆</span>
+                                            <span style="color: #e4e5e9;">★</span>
                                         }
                                     }
                                 </div>
-                                <p class="card-text mb-0" style="color: #555;">@review.Comment</p>
+                                <p class="mb-0 fs-6" style="color: #4a4a4a; line-height: 1.6;">@review.Comment</p>
                             </div>
                         </div>
                     </div>
@@ -114,12 +116,14 @@
         }
         else
         {
-            <div class="alert" style="background-color: white; border-left: 4px solid #004F32; color: #555; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-                There are no reviews yet for this escape room. Be the first to share your experience!
+            <div class="alert shadow-sm" style="background-color: white; border-radius: 12px; border: none; border-left: 5px solid var(--color-accent-pink); color: #4a4a4a; padding: 1.5rem;">
+                Trenutno nema recenzija za ovu sobu. Budi prvi!
             </div>
         }
     </div>
 </div>
+
+
 
 
 
