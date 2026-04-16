@@ -31,5 +31,12 @@ namespace EscapeRoomReviews.Controllers
 
             return View(reviews);
         }
+
+        public IActionResult Details(int id)
+        {
+            var review = _repo.GetAllReviews().FirstOrDefault(r => r.Id == id);
+            if (review == null) return NotFound();
+            return View(review);
+        }
     }
 }

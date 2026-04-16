@@ -1,0 +1,113 @@
+@model EscapeRoomReviews.Models.Domain.User
+
+@{
+    ViewData["Title"] = "Detalji korisnika";
+    ViewData["BreadcrumbTitle"] = Model.Username;
+    ViewData["BreadcrumbParent"] = "Korisnici";
+    ViewData["BreadcrumbParentAction"] = "Index";
+    ViewData["BreadcrumbParentController"] = "User";
+}
+
+<div class="user-details-wrapper" style="background-color: #F4F4F4; padding: 2rem; border-radius: 8px;">
+    <!-- 1. Zaglavlje -->
+    <div class="d-flex justify-content-between align-items-center mb-4 pb-2" style="border-bottom: 2px solid #E0E0E0;">
+        <h1 style="color: #004F32; margin: 0; display: flex; align-items: center; gap: 1rem;">
+            @Model.Username
+            <span class="badge" style="background-color: #FF8DA1; color: white; font-size: 0.4em; font-weight: normal; vertical-align: middle;">
+                @Model.Role.ToString()
+            </span>
+        </h1>
+        <a asp-action="Index" class="btn" style="background-color: #004F32; color: white; padding: 0.5rem 1.2rem; border-radius: 6px; text-decoration: none;">
+            &larr; Natrag na korisnike
+        </a>
+    </div>
+
+    <!-- 2. Informacije -->
+    <div class="card mb-5 shadow-sm" style="border: none; border-radius: 8px;">
+        <div class="card-body row text-center py-4">
+            <div class="col-md-4 mb-3 mb-md-0">
+                <h6 class="text-uppercase text-muted mb-1" style="font-size: 0.85rem; letter-spacing: 0.5px;">Email</h6>
+                <div style="font-size: 1.1rem; color: #333;">@Model.Email</div>
+            </div>
+            <div class="col-md-4 mb-3 mb-md-0" style="border-left: 1px solid #eee; border-right: 1px solid #eee;">
+                <h6 class="text-uppercase text-muted mb-1" style="font-size: 0.85rem; letter-spacing: 0.5px;">Registriran od</h6>
+                <div style="font-size: 1.1rem; color: #333;">@Model.RegisteredAt.ToString("dd.MM.yyyy.")</div>
+            </div>
+            <div class="col-md-4">
+                <h6 class="text-uppercase text-muted mb-1" style="font-size: 0.85rem; letter-spacing: 0.5px;">Ukupno odigranih soba</h6>
+                <div style="font-size: 1.1rem; font-weight: bold; color: #004F32;">@Model.TotalRoomsPlayed</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. Recenzije ovog korisnika -->
+    <div class="user-reviews-section">
+        <h3 class="mb-4" style="color: #004F32;">
+            Recenzije <span class="badge rounded-pill" style="background-color: #FFC2BA; color: #004F32; font-size: 0.6em; vertical-align: middle;">@(Model.Reviews?.Count ?? 0)</span>
+        </h3>
+
+        @if (Model.Reviews != null && Model.Reviews.Any())
+        {
+            <div class="row row-cols-1 row-cols-md-2 g-4">
+                @foreach (var review in Model.Reviews)
+                {
+                    <div class="col">
+                        <div class="card h-100 shadow-sm" style="border: none; border-left: 4px solid #004F32; border-radius: 6px;">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <h5 class="card-title fw-bold mb-0">
+                                        <a asp-controller="EscapeRoom" asp-action="Details" asp-route-id="@review.EscapeRoom.Id" style="color: #004F32; text-decoration: none;">
+                                            @review.EscapeRoom.Name
+                                        </a>
+                                    </h5>
+                                    @if (review.IsVerified)
+                                    {
+                                        <span class="badge rounded-pill" style="background-color: #AD56C4; color: white;" title="Verified">
+                                            &#10003; Verified
+                                        </span>
+                                    }
+                                </div>
+                                
+                                <div class="rating mb-3" style="font-size: 1.1rem; color: #004F32;">
+                                    @for (int i = 1; i <= 5; i++)
+                                    {
+                                        if (i <= review.Rating)
+                                        {
+                                            <span>&#9733;</span> <!-- Puna zvijezda -->
+                                        }
+                                        else
+                                        {
+                                            <span style="color: #ccc;">&#9734;</span> <!-- Prazna zvijezda -->
+                                        }
+                                    }
+                                    <span class="ms-1 text-muted" style="font-size: 0.9rem;">(@review.Rating/5)</span>
+                                </div>
+                                
+                                <p class="card-text" style="color: #555; font-style: italic;">
+                                    "@review.Comment"
+                                </p>
+                            </div>
+                            <div class="card-footer bg-white border-0 pt-0 pb-3 text-muted" style="font-size: 0.85rem;">
+                                Recenzirano @review.CreatedAt.ToString("dd.MM.yyyy.")
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <div class="alert" style="background-color: #FFC2BA; color: #004F32; border: none; border-radius: 8px; padding: 1.5rem;">
+                <div class="d-flex align-items-center gap-2">
+                    <span style="font-size: 1.5rem;">🎒</span>
+                    <strong>Jos nema recenzija!</strong> Ovaj korisnik jos nije recenzirao nijednu escape room.
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+
+
+

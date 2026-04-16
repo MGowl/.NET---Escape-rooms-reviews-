@@ -27,5 +27,12 @@ namespace EscapeRoomReviews.Controllers
 
             return View(themes);
         }
+
+        public IActionResult Details(int id)
+        {
+            var theme = _repo.GetAllThemes().FirstOrDefault(t => t.Id == id);
+            if (theme == null) return NotFound();
+            return View(theme);
+        }
     }
 }

@@ -8,19 +8,27 @@ a.navbar-brand {
 }
 
 a {
-  color: #0077cc;
+  color: #069494;
+  text-decoration: none;
+}
+a:hover {
+  color: #FF69B4;
 }
 
 .btn-primary {
   color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+  background-color: #069494;
+  border-color: #069494;
+}
+.btn-primary:hover {
+  background-color: #FF69B4;
+  border-color: #FF69B4;
 }
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
   color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+  background-color: #069494;
+  border-color: #069494;
 }
 
 .border-top {

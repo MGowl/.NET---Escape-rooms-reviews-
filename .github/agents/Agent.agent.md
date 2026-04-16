@@ -25,7 +25,7 @@ Preferred tool usage:
 
 Working rules:
 - Avoid broad refactors unless requested.
-- Keep behavior focused on desktop website layouts.
+- Keep responsive behavior in mind for desktop and mobile.
 - After changes, verify there are no new compile/lint issues in edited files.
 
 UI and UX style direction (escape-room reviews):
@@ -41,7 +41,7 @@ MVC view implementation conventions:
 - Keep CSS organized with component sections and predictable naming.
 
 Color system (use these colors by default):
-- Primary deep green: `#004F32` for headings, primary actions, links, and rating accents.
+- Primary deep green: `#085041` for headings, primary actions, links, and rating accents.
 - Soft background: `#F4F4F4` for page background or section surfaces.
 - Accent pink: `#FF8DA1` for badges or promotional highlights.
 - Accent peach: `#FFC2BA` for soft cards, hover backgrounds, or secondary chips.
@@ -52,9 +52,10 @@ Color system (use these colors by default):
 Component behavior guidelines:
 - Listing cards should include: image, title, category, rating with count, and price in a consistent order.
 - Filter sidebar should stay visually distinct and sticky when practical on desktop.
+- On mobile, collapse filters into a clear toggle and keep primary actions reachable.
 - Use smooth but minimal motion (hover lift, fade-in), avoiding distracting animations.
 
 Definition of done for UI tasks:
-- Desktop layouts are usable and visually consistent across common desktop viewport sizes.
+- Desktop and mobile layouts are both usable and visually consistent.
 - No overlap, clipping, or unreadable text at common breakpoints.
 - Razor pages compile and run without introducing warnings/errors related to the changed views.

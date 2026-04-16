@@ -30,5 +30,12 @@ namespace EscapeRoomReviews.Controllers
 
             return View(users);
         }
+
+        public IActionResult Details(int id)
+        {
+            var user = _repo.GetAllUsers().FirstOrDefault(u => u.Id == id);
+            if (user == null) return NotFound();
+            return View(user);
+        }
     }
 }

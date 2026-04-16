@@ -28,5 +28,12 @@ namespace EscapeRoomReviews.Controllers
 
             return View(companies);
         }
+
+        public IActionResult Details(int id)
+        {
+            var company = _repo.GetAllCompanies().FirstOrDefault(c => c.Id == id);
+            if (company == null) return NotFound();
+            return View(company);
+        }
     }
 }

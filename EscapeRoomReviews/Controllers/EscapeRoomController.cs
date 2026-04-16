@@ -14,9 +14,36 @@ namespace EscapeRoomReviews.Controllers
             _repo = repo;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string[]? city, string[]? difficulty, string[]? theme, string? sort)
         {
-            var rooms = _repo.GetAllRooms()
+            var roomQuery = _repo.GetAllRooms().AsEnumerable();
+
+            if (city != null && city.Length > 0)
+            {
+                roomQuery = roomQuery.Where(room => city.Contains(room.Location.City));
+            }
+
+            if (difficulty != null && difficulty.Length > 0)
+            {
+                roomQuery = roomQuery.Where(room => difficulty.Contains(room.Difficulty.ToString()));
+            }
+
+            if (theme != null && theme.Length > 0)
+            {
+                roomQuery = roomQuery.Where(room => room.Themes.Any(t => theme.Contains(t.Name)));
+            }
+
+            var sortKey = string.IsNullOrWhiteSpace(sort) ? "rating" : sort;
+            roomQuery = sortKey switch
+            {
+                "price-asc" => roomQuery.OrderBy(room => room.Price),
+                "price-desc" => roomQuery.OrderByDescending(room => room.Price),
+                _ => roomQuery.OrderByDescending(room => room.Reviews.Count == 0
+                    ? 0.0
+                    : room.Reviews.Average(review => review.Rating))
+            };
+
+            var rooms = roomQuery
                 .Select(room => new EscapeRoomIndexViewModel
                 {
                     Id = room.Id,
@@ -33,7 +60,19 @@ namespace EscapeRoomReviews.Controllers
                 })
                 .ToList();
 
+            ViewData["SelectedCities"] = city?.ToList() ?? new List<string>();
+            ViewData["SelectedDifficulties"] = difficulty?.ToList() ?? new List<string>();
+            ViewData["SelectedThemes"] = theme?.ToList() ?? new List<string>();
+            ViewData["SelectedSort"] = sortKey;
+
             return View(rooms);
+        }
+
+        public IActionResult Details(int id)
+        {
+            var room = _repo.GetRoomById(id);
+            if (room == null) return NotFound();
+            return View(room);
         }
     }
 }

@@ -2,6 +2,18 @@ html {
   font-size: 14px;
 }
 
+/* Color System - EscapeRoomReviews */
+:root {
+  --color-primary: #069494;
+  --color-accent-pink: #FF69B4;
+  --color-bg-light-cyan: #00F0FF22;
+  --color-border-cyan: #00F0FF;
+  --color-bg-page: #f9f9f9;
+  --color-bg-card-footer: #fafafa;
+  --color-border-light: #e0e0e0;
+  --color-divider: #f0f0f0;
+}
+
 @media (min-width: 768px) {
   html {
     font-size: 16px;
@@ -9,7 +21,7 @@ html {
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem var(--color-primary);
 }
 
 html {
@@ -19,4 +31,121 @@ html {
 
 body {
   margin-bottom: 60px;
+  background-color: var(--color-bg-page);
+  color: #2b2b2b;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+/* Navbar */
+.custom-navbar {
+  background-color: var(--color-primary);
+  border-bottom: 1px solid var(--color-primary);
+}
+.custom-navbar .navbar-brand,
+.custom-navbar .nav-link {
+  color: #FFFFFF !important;
+}
+.custom-navbar .nav-link:hover {
+  color: #FFFFFF !important;
+}
+.custom-navbar .nav-link.active,
+.custom-navbar .nav-link:active {
+  border-bottom: none;
+}
+.custom-navbar .navbar-toggler-icon {
+  filter: invert(1);
+}
+
+/* Hero Section */
+.hero-section {
+  background-color: var(--color-bg-light-cyan);
+  border: 0.5px solid var(--color-border-cyan);
+  border-radius: 12px;
+}
+.hero-section .hero-title {
+  color: var(--color-primary);
+}
+
+/* Stat Boxes */
+.stat-box {
+  background-color: #FFFFFF;
+  border: 1px solid var(--color-border-cyan);
+  border-radius: 8px;
+}
+.stat-box .stat-number {
+  color: var(--color-primary);
+}
+
+/* Cards */
+.escape-card {
+  background-color: #FFFFFF;
+  border: 0.5px solid var(--color-border-light);
+  border-radius: 12px;
+  transition: border-color 0.2s ease-in-out;
+}
+.escape-card:hover {
+  border-color: var(--color-primary);
+}
+.escape-card-footer {
+  background-color: var(--color-bg-card-footer);
+  border-top: 1px solid var(--color-divider);
+  border-bottom-left-radius: 11px;
+  border-bottom-right-radius: 11px;
+}
+.price-text {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+/* Stars */
+.star-rating i {
+  color: var(--color-accent-pink);
+}
+
+/* Badges */
+.badge-difficulty-medium {
+  background-color: var(--color-bg-light-cyan);
+  color: #047a7a;
+}
+.badge-difficulty-hard {
+  background-color: #FF69B422;
+  color: #c0306e;
+}
+.badge-difficulty-expert {
+  background-color: #FF69B433;
+  color: #8b1a47;
+}
+
+.badge-city, .company-icon-bg {
+  background-color: #06949415;
+  color: var(--color-primary);
+}
+
+.company-icon-bg svg,
+.company-icon-bg i {
+  stroke: var(--color-primary);
+  fill: none;
+}
+
+.badge-room-count, .badge-verified {
+  background-color: var(--color-bg-light-cyan);
+  color: #047a7a;
+}
+
+/* Buttons */
+.btn-outline-primary-custom {
+  border: 0.5px solid var(--color-primary);
+  color: var(--color-primary);
+  background-color: transparent;
+  border-radius: 6px;
+  transition: background-color 0.2s ease-in-out;
+}
+.btn-outline-primary-custom:hover {
+  background-color: #06949415;
+  color: var(--color-primary);
 }

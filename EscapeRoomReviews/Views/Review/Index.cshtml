@@ -1,0 +1,66 @@
+@model List<EscapeRoomReviews.ViewModels.ReviewIndexViewModel>
+
+@{
+    ViewData["Title"] = "Recenzije";
+}
+
+<div class="row mb-5">
+    <div class="col-12">
+        <div class="hero-stats bg-white rounded-4 p-4 p-md-5 d-flex flex-column flex-md-row justify-content-between align-items-md-center shadow-sm" style="border-top: 4px solid var(--color-primary);">
+            <div class="mb-4 mb-md-0">
+                <h1 class="fw-bold mb-2" style="color: var(--color-primary);">Recenzije</h1>
+                <p class="text-muted mb-0 fs-5">Što drugi kažu o sobama.</p>
+            </div>
+            <div class="d-flex text-center gap-4 gap-md-5">
+                <div>
+                    <h2 class="fw-bold mb-0" style="color: var(--color-primary);">@Model.Count</h2>
+                    <small class="text-muted fw-semibold">Ukupno recenzija</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    @foreach (var review in Model)
+    {
+        <div class="col-md-6 mb-4">
+            <a asp-action="Details" asp-route-id="@review.Id" style="text-decoration:none; color:inherit;">
+                <div class="card h-100 border-0 shadow-sm rounded-4 position-relative room-card overflow-hidden">
+                    <div class="card-body p-4 d-flex flex-column">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h5 class="fw-bold mb-0" style="color: var(--color-primary);">@review.RoomName</h5>
+                            <div class="d-flex align-items-center">
+                                <span class="fw-bold text-dark fs-5 me-1">@review.Rating</span>
+                                <span class="star-rating fs-5">&#9733;</span>
+                            </div>
+                        </div>
+                        
+                        <p class="fst-italic text-secondary mb-4 flex-grow-1" style="font-size: 0.95rem;">"@review.Comment"</p>
+                        
+                        <div class="d-flex justify-content-between align-items-end mt-auto pt-3 border-top">
+                            <div class="d-flex align-items-center gap-2">
+                                <i class="bi bi-person-circle fs-4 text-muted"></i>
+                                <div>
+                                    <h6 class="mb-0 fw-bold">@review.Username</h6>
+                                    <small class="text-muted">@review.CreatedAt.ToString("dd.MM.yyyy.")</small>
+                                </div>
+                            </div>
+                            
+                            @if (review.IsVerified)
+                            {
+                                <span class="badge rounded-pill fw-semibold bg-success bg-opacity-10 badge-difficulty-medium align-self-end px-3 py-2 border border-success border-opacity-25">
+                                    <i class="bi bi-patch-check-fill me-1"></i> Verificiran
+                                </span>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    }
+</div>
+
+
+
+

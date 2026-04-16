@@ -79,7 +79,7 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=EscapeRoom}/{action=Index}/{id?}");
 
 // Pokrece aplikaciju i pocinje slusati HTTP zahtjeve.
 app.Run();

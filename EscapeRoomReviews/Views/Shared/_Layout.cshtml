@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -10,20 +10,32 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">EscapeRoomReviews</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm custom-navbar box-shadow mb-4">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="EscapeRoom" asp-action="Index">ESCAPE ROOMS REVIEWS</a>
+                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link fw-semibold active" asp-area="" asp-controller="EscapeRoom" asp-action="Index">Sve sobe</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link fw-semibold" asp-area="" asp-controller="Company" asp-action="Index">Tvrtke</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link fw-semibold" asp-area="" asp-controller="Location" asp-action="Index">Lokacije</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link fw-semibold" asp-area="" asp-controller="Theme" asp-action="Index">Teme</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link fw-semibold" asp-area="" asp-controller="Review" asp-action="Index">Recenzije</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link fw-semibold" asp-area="" asp-controller="User" asp-action="Index">Korisnici</a>
                         </li>
                     </ul>
                 </div>
@@ -31,6 +43,29 @@
         </nav>
     </header>
     <div class="container">
+        @{
+            var breadcrumbTitle = ViewData["BreadcrumbTitle"] as string;
+            var breadcrumbParent = ViewData["BreadcrumbParent"] as string;
+            var breadcrumbParentAction = ViewData["BreadcrumbParentAction"] as string;
+            var breadcrumbParentController = ViewData["BreadcrumbParentController"] as string;
+        }
+        @if (!string.IsNullOrWhiteSpace(breadcrumbTitle))
+        {
+            <nav aria-label="breadcrumb" class="mb-4">
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item">
+                        <a asp-controller="EscapeRoom" asp-action="Index">Pocetna</a>
+                    </li>
+                    @if (!string.IsNullOrWhiteSpace(breadcrumbParent) && !string.IsNullOrWhiteSpace(breadcrumbParentAction) && !string.IsNullOrWhiteSpace(breadcrumbParentController))
+                    {
+                        <li class="breadcrumb-item">
+                            <a href="@Url.Action(breadcrumbParentAction, breadcrumbParentController)">@breadcrumbParent</a>
+                        </li>
+                    }
+                    <li class="breadcrumb-item active" aria-current="page">@breadcrumbTitle</li>
+                </ol>
+            </nav>
+        }
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
@@ -38,7 +73,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2026 - EscapeRoomReviews - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2026 - EscapeRoomReviews
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
@@ -47,3 +82,8 @@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
+
+
+
+
+
