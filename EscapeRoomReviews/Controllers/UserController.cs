@@ -7,9 +7,9 @@ namespace EscapeRoomReviews.Controllers
 {
     public class UserController : Controller
     {
-        private readonly MockRepository _repo;
+        private readonly EfRepository _repo;
 
-        public UserController(MockRepository repo)
+        public UserController(EfRepository repo)
         {
             _repo = repo;
         }
@@ -31,6 +31,7 @@ namespace EscapeRoomReviews.Controllers
             return View(users);
         }
 
+        [Route("korisnik/{id}")]
         public IActionResult Details(int id)
         {
             var user = _repo.GetAllUsers().FirstOrDefault(u => u.Id == id);

@@ -7,9 +7,9 @@ namespace EscapeRoomReviews.Controllers
 {
     public class CompanyController : Controller
     {
-        private readonly MockRepository _repo;
+        private readonly EfRepository _repo;
 
-        public CompanyController(MockRepository repo)
+        public CompanyController(EfRepository repo)
         {
             _repo = repo;
         }
@@ -29,6 +29,7 @@ namespace EscapeRoomReviews.Controllers
             return View(companies);
         }
 
+        [Route("tvrtka/{id}")]
         public IActionResult Details(int id)
         {
             var company = _repo.GetAllCompanies().FirstOrDefault(c => c.Id == id);

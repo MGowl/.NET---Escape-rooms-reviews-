@@ -7,9 +7,9 @@ namespace EscapeRoomReviews.Controllers
 {
     public class LocationController : Controller
     {
-        private readonly MockRepository _repo;
+        private readonly EfRepository _repo;
 
-        public LocationController(MockRepository repo)
+        public LocationController(EfRepository repo)
         {
             _repo = repo;
         }
@@ -30,6 +30,7 @@ namespace EscapeRoomReviews.Controllers
             return View(locations);
         }
 
+        [Route("lokacija/{id}")]
         public IActionResult Details(int id)
         {
             var location = _repo.GetAllLocations().FirstOrDefault(l => l.Id == id);

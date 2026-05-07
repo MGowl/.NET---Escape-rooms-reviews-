@@ -7,9 +7,9 @@ namespace EscapeRoomReviews.Controllers
 {
     public class EscapeRoomController : Controller
     {
-        private readonly MockRepository _repo;
+        private readonly EfRepository _repo;
 
-        public EscapeRoomController(MockRepository repo)
+        public EscapeRoomController(EfRepository repo)
         {
             _repo = repo;
         }
@@ -68,6 +68,7 @@ namespace EscapeRoomReviews.Controllers
             return View(rooms);
         }
 
+        [Route("soba/{id}")]
         public IActionResult Details(int id)
         {
             var room = _repo.GetRoomById(id);

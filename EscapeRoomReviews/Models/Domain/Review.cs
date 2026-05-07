@@ -1,22 +1,32 @@
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace EscapeRoomReviews.Models.Domain;
 
-/// <summary>
-/// Represents a user review and rating for a specific escape room.
-/// </summary>
+[Table("Reviews")]
 public class Review
 {
+    [Key]
     public int Id { get; set; }
+
+    [Range(1,5)]
     public int Rating { get; set; }
+
     public string Comment { get; set; } = string.Empty;
+
     public DateTime CreatedAt { get; set; }
+
     public bool IsVerified { get; set; }
+
     public int PlayersCount { get; set; }
 
     // FK + navigation to the reviewed room.
+    [ForeignKey(nameof(EscapeRoom))]
     public int EscapeRoomId { get; set; }
-    public EscapeRoom EscapeRoom { get; set; } = null!;
+    public virtual EscapeRoom EscapeRoom { get; set; } = null!;
 
     // FK + navigation to the author of the review.
+    [ForeignKey(nameof(User))]
     public int UserId { get; set; }
-    public User User { get; set; } = null!;
+    public virtual User User { get; set; } = null!;
 }

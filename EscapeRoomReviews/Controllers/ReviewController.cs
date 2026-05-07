@@ -7,9 +7,9 @@ namespace EscapeRoomReviews.Controllers
 {
     public class ReviewController : Controller
     {
-        private readonly MockRepository _repo;
+        private readonly EfRepository _repo;
 
-        public ReviewController(MockRepository repo)
+        public ReviewController(EfRepository repo)
         {
             _repo = repo;
         }
@@ -32,6 +32,7 @@ namespace EscapeRoomReviews.Controllers
             return View(reviews);
         }
 
+        [Route("recenzija/{id}")]
         public IActionResult Details(int id)
         {
             var review = _repo.GetAllReviews().FirstOrDefault(r => r.Id == id);

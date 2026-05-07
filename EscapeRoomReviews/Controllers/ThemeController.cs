@@ -7,9 +7,9 @@ namespace EscapeRoomReviews.Controllers
 {
     public class ThemeController : Controller
     {
-        private readonly MockRepository _repo;
+        private readonly EfRepository _repo;
 
-        public ThemeController(MockRepository repo)
+        public ThemeController(EfRepository repo)
         {
             _repo = repo;
         }
@@ -28,6 +28,7 @@ namespace EscapeRoomReviews.Controllers
             return View(themes);
         }
 
+        [Route("teme/{id}")]
         public IActionResult Details(int id)
         {
             var theme = _repo.GetAllThemes().FirstOrDefault(t => t.Id == id);
