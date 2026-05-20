@@ -24,6 +24,8 @@ public class EscapeRoom
 
     public DateTime CreatedAt { get; set; }
 
+    public DateTime? DeletedAt { get; set; }
+
     // FK + navigation to the physical location where the room is hosted.
     [ForeignKey(nameof(Location))]
     public int LocationId { get; set; }

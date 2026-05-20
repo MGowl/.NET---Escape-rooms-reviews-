@@ -150,7 +150,10 @@ namespace EscapeRoomReviews.Repositories
         
         public EscapeRoom? GetRoomById(int id) => _escapeRooms.FirstOrDefault(r => r.Id == id);
         
-        public List<Review> GetAllReviews() => _escapeRooms.SelectMany(r => r.Reviews).ToList();
+        public List<Review> GetAllReviews() => _escapeRooms
+            .SelectMany(r => r.Reviews)
+            .Where(review => review.DeletedAt == null)
+            .ToList();
         
         public List<User> GetAllUsers() => _users;
         

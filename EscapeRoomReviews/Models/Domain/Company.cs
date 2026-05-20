@@ -16,6 +16,8 @@ public class Company
     [MaxLength(500)]
     public string Website { get; set; } = string.Empty;
 
+    public DateTime? DeletedAt { get; set; }
+
     // Navigation collection for all rooms owned by this company.
     public virtual ICollection<EscapeRoom> EscapeRooms { get; set; } = new List<EscapeRoom>();
 }

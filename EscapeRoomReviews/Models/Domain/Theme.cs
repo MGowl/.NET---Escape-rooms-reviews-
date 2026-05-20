@@ -16,6 +16,8 @@ public class Theme
     [MaxLength(1000)]
     public string IconUrl { get; set; } = string.Empty;
 
+    public DateTime? DeletedAt { get; set; }
+
     // Rooms that use this theme.
     public virtual ICollection<EscapeRoom> EscapeRooms { get; set; } = new List<EscapeRoom>();
 }

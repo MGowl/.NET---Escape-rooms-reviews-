@@ -24,6 +24,8 @@ public class Location
 
     public double Longitude { get; set; }
 
+    public DateTime? DeletedAt { get; set; }
+
     // Rooms available at this location.
     public virtual ICollection<EscapeRoom> EscapeRooms { get; set; } = new List<EscapeRoom>();
 }
