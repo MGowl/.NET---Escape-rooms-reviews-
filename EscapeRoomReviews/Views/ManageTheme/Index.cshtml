@@ -1,0 +1,52 @@
+@model List<EscapeRoomReviews.Models.Domain.Theme>
+
+@{
+    ViewData["Title"] = "Teme";
+}
+
+<div class="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center mb-4">
+    <div>
+        <h1 class="display-6 fw-bold text-primary-custom mb-1">Teme</h1>
+        <p class="text-muted mb-0">Administracija tema.</p>
+    </div>
+    <a asp-action="Create" class="btn btn-primary fw-semibold mt-3 mt-sm-0">
+        + Nova tema
+    </a>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-striped align-middle">
+        <thead class="table-light">
+            <tr>
+                <th>Id</th>
+                <th>Naziv</th>
+                <th>Icon</th>
+                <th>Sobe</th>
+                <th class="text-end">Akcije</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var theme in Model)
+            {
+                <tr>
+                    <td>@theme.Id</td>
+                    <td>@theme.Name</td>
+                    <td>@theme.IconUrl</td>
+                    <td>@theme.EscapeRooms.Count</td>
+                    <td class="text-end">
+                        <a asp-action="Edit" asp-route-id="@theme.Id" class="btn btn-sm btn-outline-primary me-2">Edit</a>
+                        <form asp-action="Delete" method="post" class="d-inline">
+                            <input type="hidden" name="id" value="@theme.Id" />
+                            <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info">Trenutno nema dostupnih tema.</div>
+}

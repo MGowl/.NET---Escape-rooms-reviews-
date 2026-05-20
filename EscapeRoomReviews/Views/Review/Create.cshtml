@@ -1,0 +1,43 @@
+@model EscapeRoomReviews.Models.Forms.ReviewCreateModel
+
+@{
+    ViewData["Title"] = "Nova recenzija";
+    var escapeRooms = ViewData["EscapeRooms"] as IEnumerable<SelectListItem>
+        ?? System.Linq.Enumerable.Empty<SelectListItem>();
+}
+
+<div class="mb-4">
+    <h1 class="display-6 fw-bold text-primary-custom">Nova recenzija</h1>
+    <p class="text-muted">Unesite podatke za novu recenziju.</p>
+</div>
+
+<form asp-action="Create" method="post" class="card shadow-sm border-0 p-4">
+    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+    <div class="mb-3">
+        <label asp-for="Rating" class="form-label">Ocjena (1-5)</label>
+        <input asp-for="Rating" class="form-control" type="number" min="1" max="5" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Comment" class="form-label">Komentar</label>
+        <textarea asp-for="Comment" class="form-control" rows="4"></textarea>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="PlayersCount" class="form-label">Broj igraca</label>
+        <input asp-for="PlayersCount" class="form-control" type="number" min="1" />
+    </div>
+
+    <div class="mb-4">
+        <label asp-for="EscapeRoomId" class="form-label">Escape Room</label>
+        <select asp-for="EscapeRoomId" class="form-select" asp-items="@(escapeRooms)">
+            <option value="">-- odaberi sobu --</option>
+        </select>
+    </div>
+
+    <div class="d-flex gap-2">
+        <button type="submit" class="btn btn-primary fw-semibold">Spremi</button>
+        <a asp-action="Index" class="btn btn-outline-secondary">Odustani</a>
+    </div>
+</form>

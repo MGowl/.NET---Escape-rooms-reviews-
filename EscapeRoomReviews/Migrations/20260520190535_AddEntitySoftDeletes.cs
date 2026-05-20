@@ -1,0 +1,59 @@
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
+
+#nullable disable
+
+namespace EscapeRoomReviews.Migrations
+{
+    /// <inheritdoc />
+    public partial class AddEntitySoftDeletes : Migration
+    {
+        /// <inheritdoc />
+        protected override void Up(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.AddColumn<DateTime>(
+                name: "DeletedAt",
+                table: "Users",
+                type: "datetime(6)",
+                nullable: true);
+
+            migrationBuilder.AddColumn<DateTime>(
+                name: "DeletedAt",
+                table: "Themes",
+                type: "datetime(6)",
+                nullable: true);
+
+            migrationBuilder.AddColumn<DateTime>(
+                name: "DeletedAt",
+                table: "Locations",
+                type: "datetime(6)",
+                nullable: true);
+
+            migrationBuilder.AddColumn<DateTime>(
+                name: "DeletedAt",
+                table: "Companies",
+                type: "datetime(6)",
+                nullable: true);
+        }
+
+        /// <inheritdoc />
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DropColumn(
+                name: "DeletedAt",
+                table: "Users");
+
+            migrationBuilder.DropColumn(
+                name: "DeletedAt",
+                table: "Themes");
+
+            migrationBuilder.DropColumn(
+                name: "DeletedAt",
+                table: "Locations");
+
+            migrationBuilder.DropColumn(
+                name: "DeletedAt",
+                table: "Companies");
+        }
+    }
+}

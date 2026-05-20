@@ -1,0 +1,52 @@
+@model List<EscapeRoomReviews.Models.Domain.Company>
+
+@{
+    ViewData["Title"] = "Tvrtke";
+}
+
+<div class="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center mb-4">
+    <div>
+        <h1 class="display-6 fw-bold text-primary-custom mb-1">Tvrtke</h1>
+        <p class="text-muted mb-0">Administracija tvrtki.</p>
+    </div>
+    <a asp-action="Create" class="btn btn-primary fw-semibold mt-3 mt-sm-0">
+        + Nova tvrtka
+    </a>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-striped align-middle">
+        <thead class="table-light">
+            <tr>
+                <th>Id</th>
+                <th>Naziv</th>
+                <th>Web</th>
+                <th>Sobe</th>
+                <th class="text-end">Akcije</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var company in Model)
+            {
+                <tr>
+                    <td>@company.Id</td>
+                    <td>@company.Name</td>
+                    <td>@company.Website</td>
+                    <td>@company.EscapeRooms.Count</td>
+                    <td class="text-end">
+                        <a asp-action="Edit" asp-route-id="@company.Id" class="btn btn-sm btn-outline-primary me-2">Edit</a>
+                        <form asp-action="Delete" method="post" class="d-inline">
+                            <input type="hidden" name="id" value="@company.Id" />
+                            <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info">Trenutno nema dostupnih tvrtki.</div>
+}
