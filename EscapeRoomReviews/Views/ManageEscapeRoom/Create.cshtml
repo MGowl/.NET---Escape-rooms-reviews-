@@ -3,9 +3,9 @@
 
 @{
     ViewData["Title"] = "Nova soba";
-    var locations = ViewData["Locations"] as IEnumerable<SelectListItem>
-        ?? System.Linq.Enumerable.Empty<SelectListItem>();
-    var companies = ViewData["Companies"] as IEnumerable<SelectListItem>
+    var locationName = ViewData["LocationName"] as string ?? string.Empty;
+    var companyName = ViewData["CompanyName"] as string ?? string.Empty;
+    var themes = ViewData["Themes"] as IEnumerable<SelectListItem>
         ?? System.Linq.Enumerable.Empty<SelectListItem>();
 }
 
@@ -42,18 +42,40 @@
         <input asp-for="Price" class="form-control" type="number" step="0.01" min="0" />
     </div>
 
-    <div class="mb-3">
-        <label asp-for="LocationId" class="form-label">Lokacija</label>
-        <select asp-for="LocationId" class="form-select" asp-items="@(locations)">
-            <option value="">-- odaberi lokaciju --</option>
-        </select>
-    </div>
+    @await Html.PartialAsync("_Autocomplete", new AutocompleteViewModel
+    {
+        FieldName = nameof(Model.LocationId),
+        SelectedId = Model.LocationId,
+        SelectedName = locationName,
+        SearchUrl = Url.Action("SearchLocations", "ManageEscapeRoom") ?? string.Empty,
+        Label = "Lokacija",
+        Placeholder = "Pretrazi lokaciju...",
+        ContainerClass = "mb-3 ajax-autocomplete"
+    })
+
+    @await Html.PartialAsync("_Autocomplete", new AutocompleteViewModel
+    {
+        FieldName = nameof(Model.CompanyId),
+        SelectedId = Model.CompanyId,
+        SelectedName = companyName,
+        SearchUrl = Url.Action("SearchCompanies", "ManageEscapeRoom") ?? string.Empty,
+        Label = "Tvrtka",
+        Placeholder = "Pretrazi tvrtku...",
+        ContainerClass = "mb-4 ajax-autocomplete"
+    })
 
     <div class="mb-4">
-        <label asp-for="CompanyId" class="form-label">Tvrtka</label>
-        <select asp-for="CompanyId" class="form-select" asp-items="@(companies)">
-            <option value="">-- odaberi tvrtku --</option>
-        </select>
+        <label asp-for="ThemeIds" class="form-label">Teme</label>
+        <div class="d-flex flex-wrap gap-3">
+            @foreach (var theme in themes)
+            {
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="ThemeIds" value="@theme.Value" id="theme-@theme.Value" />
+                    <label class="form-check-label" for="theme-@theme.Value">@theme.Text</label>
+                </div>
+            }
+        </div>
+        <div class="form-text">Mozes odabrati vise tema klikom na pojedinu temu.</div>
     </div>
 
     <div class="d-flex gap-2">

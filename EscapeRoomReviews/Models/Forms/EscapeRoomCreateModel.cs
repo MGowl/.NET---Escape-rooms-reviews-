@@ -11,4 +11,5 @@ public class EscapeRoomCreateModel
     public decimal Price { get; set; }
     public int LocationId { get; set; }
     public int CompanyId { get; set; }
+    public List<int> ThemeIds { get; set; } = new();
 }

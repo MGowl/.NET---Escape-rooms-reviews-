@@ -2,8 +2,7 @@
 
 @{
     ViewData["Title"] = "Uredi recenziju";
-    var escapeRooms = ViewData["EscapeRooms"] as IEnumerable<SelectListItem>
-        ?? System.Linq.Enumerable.Empty<SelectListItem>();
+    var escapeRoomName = ViewData["EscapeRoomName"] as string ?? string.Empty;
 }
 
 <div class="mb-4">
@@ -30,12 +29,16 @@
         <input asp-for="PlayersCount" class="form-control" type="number" min="1" />
     </div>
 
-    <div class="mb-4">
-        <label asp-for="EscapeRoomId" class="form-label">Escape Room</label>
-        <select asp-for="EscapeRoomId" class="form-select" asp-items="@(escapeRooms)">
-            <option value="">-- odaberi sobu --</option>
-        </select>
-    </div>
+    @await Html.PartialAsync("_Autocomplete", new AutocompleteViewModel
+    {
+        FieldName = nameof(Model.EscapeRoomId),
+        SelectedId = Model.EscapeRoomId,
+        SelectedName = escapeRoomName,
+        SearchUrl = Url.Action("SearchEscapeRooms", "Review") ?? string.Empty,
+        Label = "Escape Room",
+        Placeholder = "Pretrazi sobu...",
+        ContainerClass = "mb-4 ajax-autocomplete"
+    })
 
     <div class="form-check mb-4">
         <input asp-for="IsVerified" class="form-check-input" type="checkbox" />

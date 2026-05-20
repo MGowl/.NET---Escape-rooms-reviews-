@@ -238,6 +238,50 @@ h1, h2, h3, h4, h5, h6 {
     color: white;
 }
 
+/* Escape room autocomplete */
+.escape-room-autocomplete,
+.ajax-autocomplete {
+  position: relative;
+}
+
+.escape-room-autocomplete .autocomplete-list,
+.ajax-autocomplete .autocomplete-list {
+  position: absolute;
+  z-index: 1050;
+  width: 100%;
+  max-height: 240px;
+  overflow-y: auto;
+  background-color: #ffffff;
+  border: 1px solid var(--color-border-light);
+  border-radius: 0.5rem;
+  display: none;
+}
+
+.escape-room-autocomplete .autocomplete-list.show,
+.ajax-autocomplete .autocomplete-list.show {
+  display: block;
+}
+
+.escape-room-autocomplete .autocomplete-list .list-group-item.active,
+.ajax-autocomplete .autocomplete-list .list-group-item.active {
+  background-color: var(--color-accent-teal);
+  border-color: var(--color-accent-teal);
+  color: var(--color-primary);
+}
+
+.escape-room-autocomplete .autocomplete-feedback,
+.ajax-autocomplete .autocomplete-feedback {
+  display: none;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.9rem;
+  color: #6c757d;
+}
+
+.escape-room-autocomplete .autocomplete-feedback.show,
+.ajax-autocomplete .autocomplete-feedback.show {
+  display: block;
+}
+
 /* Badges */
 .badge {
     border-radius: 6px;

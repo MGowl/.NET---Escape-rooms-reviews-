@@ -1,0 +1,27 @@
+@model EscapeRoomReviews.ViewModels.AutocompleteViewModel
+
+@{
+    var fieldId = $"{Model.FieldName}-search";
+    var listId = $"{Model.FieldName}-list";
+}
+
+<div class="@Model.ContainerClass" data-ajax-autocomplete data-autocomplete-url="@Model.SearchUrl">
+    <label for="@fieldId" class="form-label">@Model.Label</label>
+    <input type="text"
+           id="@fieldId"
+           class="form-control"
+           placeholder="@Model.Placeholder"
+           autocomplete="off"
+           role="combobox"
+           aria-autocomplete="list"
+           aria-expanded="false"
+           aria-controls="@listId"
+           data-role="autocomplete-input"
+           value="@Model.SelectedName" />
+    <input type="hidden" name="@Model.FieldName" id="@Model.FieldName" data-role="autocomplete-hidden" value="@Model.SelectedId" />
+    <div class="autocomplete-list list-group" data-role="autocomplete-list" role="listbox" id="@listId"></div>
+    <div class="autocomplete-feedback" data-role="autocomplete-loading">@Model.LoadingText</div>
+    <div class="autocomplete-feedback" data-role="autocomplete-empty">@Model.EmptyText</div>
+    <div class="form-text">@Model.HelperText</div>
+    <span class="text-danger field-validation-valid" data-valmsg-for="@Model.FieldName" data-valmsg-replace="true"></span>
+</div>

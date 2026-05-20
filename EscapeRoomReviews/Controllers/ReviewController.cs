@@ -19,6 +19,17 @@ namespace EscapeRoomReviews.Controllers
             _context = context;
         }
 
+        private string? GetEscapeRoomName(int? id)
+        {
+            if (!id.HasValue || id.Value == 0) return null;
+
+            return _context.EscapeRooms
+                .AsNoTracking()
+                .Where(room => room.DeletedAt == null && room.Id == id.Value)
+                .Select(room => room.Name)
+                .FirstOrDefault();
+        }
+
         private void LoadEscapeRoomOptions(int? selectedId = null)
         {
             var rooms = _context.EscapeRooms
@@ -56,7 +67,6 @@ namespace EscapeRoomReviews.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            LoadEscapeRoomOptions();
             return View(new ReviewCreateModel());
         }
 
@@ -64,9 +74,14 @@ namespace EscapeRoomReviews.Controllers
         [ActionName("Create")]
         public IActionResult CreatePost(ReviewCreateModel model)
         {
+            if (model.EscapeRoomId == 0)
+            {
+                ModelState.AddModelError(nameof(model.EscapeRoomId), "Odaberite escape room.");
+            }
+
             if (!ModelState.IsValid)
             {
-                LoadEscapeRoomOptions(model.EscapeRoomId);
+                ViewData["EscapeRoomName"] = GetEscapeRoomName(model.EscapeRoomId);
                 return View(model);
             }
 
@@ -78,7 +93,7 @@ namespace EscapeRoomReviews.Controllers
             if (userId == 0)
             {
                 ModelState.AddModelError(string.Empty, "No users available to assign the review.");
-                LoadEscapeRoomOptions(model.EscapeRoomId);
+                ViewData["EscapeRoomName"] = GetEscapeRoomName(model.EscapeRoomId);
                 return View(model);
             }
 
@@ -118,7 +133,7 @@ namespace EscapeRoomReviews.Controllers
                 EscapeRoomId = review.EscapeRoomId,
                 IsVerified = review.IsVerified
             };
-            LoadEscapeRoomOptions(model.EscapeRoomId);
+            ViewData["EscapeRoomName"] = GetEscapeRoomName(model.EscapeRoomId);
             return View(model);
         }
 
@@ -128,7 +143,7 @@ namespace EscapeRoomReviews.Controllers
         {
             if (!ModelState.IsValid)
             {
-                LoadEscapeRoomOptions(model.EscapeRoomId);
+                ViewData["EscapeRoomName"] = GetEscapeRoomName(model.EscapeRoomId);
                 return View(model);
             }
 
@@ -168,6 +183,26 @@ namespace EscapeRoomReviews.Controllers
             _context.SaveChanges();
 
             return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public IActionResult SearchEscapeRooms(string term)
+        {
+            var query = term?.Trim();
+            if (string.IsNullOrWhiteSpace(query) || query.Length < 2)
+            {
+                return Json(Array.Empty<object>());
+            }
+
+            var results = _context.EscapeRooms
+                .AsNoTracking()
+                .Where(room => room.DeletedAt == null && EF.Functions.Like(room.Name, $"%{query}%"))
+                .OrderBy(room => room.Name)
+                .Select(room => new { id = room.Id, name = room.Name })
+                .Take(10)
+                .ToList();
+
+            return Json(results);
         }
     }
 }
