@@ -16,16 +16,19 @@
     <div class="mb-3">
         <label asp-for="Rating" class="form-label">Ocjena (1-5)</label>
         <input asp-for="Rating" class="form-control" type="number" min="1" max="5" />
+        <span asp-validation-for="Rating" class="text-danger small"></span>
     </div>
 
     <div class="mb-3">
         <label asp-for="Comment" class="form-label">Komentar</label>
         <textarea asp-for="Comment" class="form-control" rows="4"></textarea>
+        <span asp-validation-for="Comment" class="text-danger small"></span>
     </div>
 
     <div class="mb-3">
         <label asp-for="PlayersCount" class="form-label">Broj igraca</label>
         <input asp-for="PlayersCount" class="form-control" type="number" min="1" />
+        <span asp-validation-for="PlayersCount" class="text-danger small"></span>
     </div>
 
     @await Html.PartialAsync("_Autocomplete", new AutocompleteViewModel
@@ -33,10 +36,12 @@
         FieldName = nameof(Model.EscapeRoomId),
         SelectedId = Model.EscapeRoomId,
         SelectedName = escapeRoomName,
-        SearchUrl = Url.Action("SearchEscapeRooms", "Review") ?? string.Empty,
+        SearchUrl = Url.Action("SearchEscapeRooms", "ManageReview") ?? string.Empty,
         Label = "Escape Room",
         Placeholder = "Pretrazi sobu...",
-        ContainerClass = "mb-4 ajax-autocomplete"
+        ContainerClass = "mb-4 ajax-autocomplete",
+        IsRequired = true,
+        RequiredMessage = "Odaberite escape room."
     })
 
     <div class="d-flex gap-2">

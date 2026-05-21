@@ -21,26 +21,31 @@
     <div class="mb-3">
         <label asp-for="Name" class="form-label">Naziv</label>
         <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger small"></span>
     </div>
 
     <div class="mb-3">
         <label asp-for="Description" class="form-label">Opis</label>
         <textarea asp-for="Description" class="form-control" rows="4"></textarea>
+        <span asp-validation-for="Description" class="text-danger small"></span>
     </div>
 
     <div class="mb-3">
         <label asp-for="Difficulty" class="form-label">Tezina</label>
         <select asp-for="Difficulty" class="form-select" asp-items="Html.GetEnumSelectList<DifficultyLevel>()"></select>
+        <span asp-validation-for="Difficulty" class="text-danger small"></span>
     </div>
 
     <div class="mb-3">
         <label asp-for="MaxPlayers" class="form-label">Max igraca</label>
         <input asp-for="MaxPlayers" class="form-control" type="number" min="1" />
+        <span asp-validation-for="MaxPlayers" class="text-danger small"></span>
     </div>
 
     <div class="mb-3">
         <label asp-for="Price" class="form-label">Cijena</label>
         <input asp-for="Price" class="form-control" type="number" step="0.01" min="0" />
+        <span asp-validation-for="Price" class="text-danger small"></span>
     </div>
 
     @await Html.PartialAsync("_Autocomplete", new AutocompleteViewModel
@@ -51,7 +56,9 @@
         SearchUrl = Url.Action("SearchLocations", "ManageEscapeRoom") ?? string.Empty,
         Label = "Lokacija",
         Placeholder = "Pretrazi lokaciju...",
-        ContainerClass = "mb-3 ajax-autocomplete"
+        ContainerClass = "mb-3 ajax-autocomplete",
+        IsRequired = true,
+        RequiredMessage = "Odaberite lokaciju."
     })
 
     @await Html.PartialAsync("_Autocomplete", new AutocompleteViewModel
@@ -62,7 +69,9 @@
         SearchUrl = Url.Action("SearchCompanies", "ManageEscapeRoom") ?? string.Empty,
         Label = "Tvrtka",
         Placeholder = "Pretrazi tvrtku...",
-        ContainerClass = "mb-4 ajax-autocomplete"
+        ContainerClass = "mb-4 ajax-autocomplete",
+        IsRequired = true,
+        RequiredMessage = "Odaberite tvrtku."
     })
 
     <div class="mb-4">
@@ -71,11 +80,20 @@
             @foreach (var theme in themes)
             {
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="ThemeIds" value="@theme.Value" id="theme-@theme.Value" @(theme.Selected ? "checked" : null) />
+                    <input class="form-check-input"
+                           type="checkbox"
+                           name="ThemeIds"
+                           value="@theme.Value"
+                           id="theme-@theme.Value"
+                           data-val="true"
+                           data-val-minlength="Odaberite barem jednu temu."
+                           data-val-minlength-min="1"
+                           @(theme.Selected ? "checked" : null) />
                     <label class="form-check-label" for="theme-@theme.Value">@theme.Text</label>
                 </div>
             }
         </div>
+        <span asp-validation-for="ThemeIds" class="text-danger small"></span>
         <div class="form-text">Mozes odabrati vise tema klikom na pojedinu temu.</div>
     </div>
 

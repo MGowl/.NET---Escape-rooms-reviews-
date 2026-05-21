@@ -12,4 +12,9 @@ public class AutocompleteViewModel
     public string EmptyText { get; set; } = "Nema rezultata.";
     public string LoadingText { get; set; } = "Ucitavanje...";
     public string ContainerClass { get; set; } = "mb-3 ajax-autocomplete";
+    public bool IsRequired { get; set; }
+    public string RequiredMessage { get; set; } = "Ovo polje je obavezno.";
+    public int? MinValue { get; set; }
+    public int? MaxValue { get; set; }
+    public string RangeMessage { get; set; } = string.Empty;
 }

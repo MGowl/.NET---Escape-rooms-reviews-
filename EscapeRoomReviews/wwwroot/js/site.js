@@ -143,6 +143,12 @@
 			}
 		});
 
+		input.addEventListener("blur", () => {
+			if (window.jQuery && jQuery.validator && hidden) {
+				jQuery(hidden).valid();
+			}
+		});
+
 		document.addEventListener("click", (event) => {
 			if (!wrapper.contains(event.target)) {
 				clearList();
@@ -150,7 +156,19 @@
 		});
 	};
 
+	const initValidationOnBlur = () => {
+		if (window.jQuery && jQuery.validator) {
+			jQuery.validator.setDefaults({
+				ignore: ":hidden:not([data-role='autocomplete-hidden'])",
+				onfocusout: function (element) {
+					this.element(element);
+				}
+			});
+		}
+	};
+
 	document.addEventListener("DOMContentLoaded", () => {
+		initValidationOnBlur();
 		document.querySelectorAll("[data-ajax-autocomplete]")
 			.forEach(initEscapeRoomAutocomplete);
 	});

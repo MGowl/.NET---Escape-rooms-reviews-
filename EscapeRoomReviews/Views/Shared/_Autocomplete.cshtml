@@ -3,6 +3,13 @@
 @{
     var fieldId = $"{Model.FieldName}-search";
     var listId = $"{Model.FieldName}-list";
+    var requiredAttribute = Model.IsRequired ? "true" : null;
+    var requiredMessage = Model.IsRequired ? Model.RequiredMessage : null;
+    var minValue = Model.MinValue ?? (Model.IsRequired ? 1 : (int?)null);
+    var maxValue = Model.MaxValue ?? (minValue.HasValue ? int.MaxValue : (int?)null);
+    var rangeMessage = !string.IsNullOrWhiteSpace(Model.RangeMessage)
+        ? Model.RangeMessage
+        : requiredMessage;
 }
 
 <div class="@Model.ContainerClass" data-ajax-autocomplete data-autocomplete-url="@Model.SearchUrl">
@@ -18,7 +25,16 @@
            aria-controls="@listId"
            data-role="autocomplete-input"
            value="@Model.SelectedName" />
-    <input type="hidden" name="@Model.FieldName" id="@Model.FieldName" data-role="autocomplete-hidden" value="@Model.SelectedId" />
+            <input type="hidden"
+                name="@Model.FieldName"
+                id="@Model.FieldName"
+                data-role="autocomplete-hidden"
+                value="@Model.SelectedId"
+                data-val="@requiredAttribute"
+                data-val-required="@requiredMessage"
+                data-val-range="@rangeMessage"
+                data-val-range-min="@minValue"
+                data-val-range-max="@maxValue" />
     <div class="autocomplete-list list-group" data-role="autocomplete-list" role="listbox" id="@listId"></div>
     <div class="autocomplete-feedback" data-role="autocomplete-loading">@Model.LoadingText</div>
     <div class="autocomplete-feedback" data-role="autocomplete-empty">@Model.EmptyText</div>

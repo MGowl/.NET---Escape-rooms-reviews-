@@ -103,6 +103,11 @@ namespace EscapeRoomReviews.Controllers
                 ModelState.AddModelError(nameof(model.LocationId), "Odaberite lokaciju.");
             }
 
+            if (model.CompanyId == 0)
+            {
+                ModelState.AddModelError(nameof(model.CompanyId), "Odaberite tvrtku.");
+            }
+
             if (!ModelState.IsValid)
             {
                 ViewData["LocationName"] = GetLocationName(model.LocationId);
@@ -170,6 +175,11 @@ namespace EscapeRoomReviews.Controllers
             if (model.LocationId == 0)
             {
                 ModelState.AddModelError(nameof(model.LocationId), "Odaberite lokaciju.");
+            }
+
+            if (model.CompanyId == 0)
+            {
+                ModelState.AddModelError(nameof(model.CompanyId), "Odaberite tvrtku.");
             }
 
             if (!ModelState.IsValid)

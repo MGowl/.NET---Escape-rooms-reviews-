@@ -9,7 +9,7 @@
         <h1 class="display-6 fw-bold text-primary-custom mb-1">Recenzije</h1>
         <p class="text-muted mb-0">Popis svih aktivnih recenzija.</p>
     </div>
-    <a asp-controller="Review" asp-action="Create" class="btn btn-primary fw-semibold mt-3 mt-sm-0">
+    <a asp-controller="ManageReview" asp-action="Create" class="btn btn-primary fw-semibold mt-3 mt-sm-0">
         + Nova recenzija
     </a>
 </div>
@@ -49,8 +49,8 @@
                         }
                     </td>
                     <td class="text-end">
-                        <a asp-controller="Review" asp-action="Edit" asp-route-id="@review.Id" class="btn btn-sm btn-outline-primary me-2">Edit</a>
-                        <form asp-controller="Review" asp-action="Delete" method="post" class="d-inline">
+                        <a asp-controller="ManageReview" asp-action="Edit" asp-route-id="@review.Id" class="btn btn-sm btn-outline-primary me-2">Edit</a>
+                        <form asp-controller="ManageReview" asp-action="Delete" method="post" class="d-inline">
                             <input type="hidden" name="id" value="@review.Id" />
                             <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
                         </form>

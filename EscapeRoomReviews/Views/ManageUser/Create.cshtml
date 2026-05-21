@@ -16,21 +16,25 @@
     <div class="mb-3">
         <label asp-for="Username" class="form-label">Korisnicko ime</label>
         <input asp-for="Username" class="form-control" />
+        <span asp-validation-for="Username" class="text-danger small"></span>
     </div>
 
     <div class="mb-3">
         <label asp-for="Email" class="form-label">Email</label>
         <input asp-for="Email" class="form-control" type="email" />
+        <span asp-validation-for="Email" class="text-danger small"></span>
     </div>
 
     <div class="mb-3">
         <label asp-for="Role" class="form-label">Uloga</label>
         <select asp-for="Role" class="form-select" asp-items="@(ViewData["Roles"] as IEnumerable<SelectListItem>)"></select>
+        <span asp-validation-for="Role" class="text-danger small"></span>
     </div>
 
     <div class="mb-4">
         <label asp-for="TotalRoomsPlayed" class="form-label">Odigrane sobe</label>
         <input asp-for="TotalRoomsPlayed" class="form-control" type="number" min="0" />
+        <span asp-validation-for="TotalRoomsPlayed" class="text-danger small"></span>
     </div>
 
     <div class="d-flex gap-2">
