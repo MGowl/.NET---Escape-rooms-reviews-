@@ -223,6 +223,18 @@
     </div>
 </div>
 
+<div id="lock-overlay">
+    <div id="lock-icon">
+        <svg viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg" width="80" height="80">
+            <rect id="lock-body" x="10" y="50" width="80" height="60" rx="8" fill="#FFD700"/>
+            <path id="lock-shackle" d="M30 50 V30 Q50 5 70 30 V50" fill="none" stroke="#FFD700" stroke-width="10" stroke-linecap="round"/>
+            <circle cx="50" cy="80" r="8" fill="#085041"/>
+            <rect x="46" y="80" width="8" height="12" rx="2" fill="#085041"/>
+        </svg>
+        <p id="lock-text">Dobrodošli</p>
+    </div>
+</div>
+
 @section Scripts {
     <script>
         document.addEventListener("DOMContentLoaded", function () {
@@ -235,6 +247,15 @@
                 card.classList.add("card-enter");
             });
         });
+
+        (function () {
+    var overlay = document.getElementById("lock-overlay");
+    if (!overlay) return;
+
+    setTimeout(function () {
+        overlay.classList.add("hidden");
+    }, 1200);
+})();
     </script>
 }
 
