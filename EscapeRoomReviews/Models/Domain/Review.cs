@@ -16,6 +16,8 @@ public class Review
 
     public DateTime CreatedAt { get; set; }
 
+    public DateTime? VisitedAt { get; set; }
+
     public DateTime? DeletedAt { get; set; }
 
     public bool IsVerified { get; set; }

@@ -1,0 +1,79 @@
+@model EscapeRoomReviews.ViewModels.DateTimePickerViewModel
+@using System.Globalization
+
+@{
+    var fieldName = Model.FieldName ?? string.Empty;
+    var fieldId = fieldName.Replace(".", "_");
+    var hiddenValue = Model.Value?.ToString("yyyy-MM-ddTHH:mm", CultureInfo.InvariantCulture) ?? string.Empty;
+}
+
+<div class="mb-3">
+    <label for="@fieldId-display" class="form-label">Datum posjeta</label>
+    <div class="input-group">
+        <input id="@fieldId-display"
+               type="text"
+               class="form-control js-flatpickr"
+               autocomplete="off"
+             placeholder="dd.MM.yyyy HH:mm"
+               data-hidden-input="@fieldId" />
+        <button type="button" class="btn btn-outline-secondary" id="@fieldId-button" aria-label="Odaberi datum">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
+                <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h.5A1.5 1.5 0 0 1 15 2.5v11A1.5 1.5 0 0 1 13.5 15h-11A1.5 1.5 0 0 1 1 13.5v-11A1.5 1.5 0 0 1 2.5 1H3V.5a.5.5 0 0 1 .5-.5zM2 5v8.5a.5.5 0 0 0 .5.5h11a.5.5 0 0 0 .5-.5V5H2z"/>
+            </svg>
+        </button>
+    </div>
+    <input type="hidden" id="@fieldId" name="@fieldName" value="@hiddenValue" />
+    <span asp-validation-for="@fieldName" class="text-danger small"></span>
+</div>
+
+<script>
+    (function () {
+        var init = function () {
+            var input = document.getElementById("@fieldId-display");
+            var hidden = document.getElementById("@fieldId");
+            var button = document.getElementById("@fieldId-button");
+            if (!input || !hidden || !button || !window.flatpickr) {
+                return;
+            }
+
+            var browserLang = (navigator.language || "en").toLowerCase();
+            var isCroatian = browserLang.startsWith("hr");
+            var displayFormat = isCroatian ? "d.m.Y H:i" : "m/d/Y H:i";
+            var placeholder = isCroatian ? "dd.MM.yyyy HH:mm" : "MM/dd/yyyy HH:mm";
+            input.placeholder = placeholder;
+
+            var picker = flatpickr(input, {
+                dateFormat: displayFormat,
+                allowInput: true,
+                clickOpens: true,
+                disableMobile: true,
+                enableTime: true,
+                time_24hr: true,
+                maxDate: "today",
+                locale: isCroatian ? "hr" : "en",
+                defaultDate: hidden.value || null,
+                onValueUpdate: function (selectedDates, dateStr, instance) {
+                    if (selectedDates.length) {
+                        hidden.value = instance.formatDate(selectedDates[0], "Y-m-d\\TH:i");
+                    } else {
+                        hidden.value = "";
+                    }
+                }
+            });
+
+            button.addEventListener("click", function () {
+                picker.open();
+            });
+
+            if (!hidden.value) {
+                picker.clear();
+            }
+        };
+
+        if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", init);
+        } else {
+            init();
+        }
+    })();
+</script>

@@ -89,6 +89,7 @@ namespace EscapeRoomReviews.Controllers
                 Rating = model.Rating,
                 Comment = model.Comment,
                 PlayersCount = model.PlayersCount,
+                VisitedAt = model.VisitedAt,
                 EscapeRoomId = model.EscapeRoomId,
                 UserId = userId,
                 CreatedAt = DateTime.UtcNow,
@@ -117,6 +118,7 @@ namespace EscapeRoomReviews.Controllers
                 Rating = review.Rating,
                 Comment = review.Comment,
                 PlayersCount = review.PlayersCount,
+                VisitedAt = review.VisitedAt,
                 EscapeRoomId = review.EscapeRoomId,
                 IsVerified = review.IsVerified
             };
@@ -145,6 +147,7 @@ namespace EscapeRoomReviews.Controllers
             review.Rating = model.Rating;
             review.Comment = model.Comment;
             review.PlayersCount = model.PlayersCount;
+            review.VisitedAt = model.VisitedAt;
             review.EscapeRoomId = model.EscapeRoomId;
             review.IsVerified = model.IsVerified;
 

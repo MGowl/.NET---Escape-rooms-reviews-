@@ -154,6 +154,7 @@
             })();
         </script>
 
+
         <div class="row row-cols-1 row-cols-md-2 g-4">
             @foreach (var room in Model)
             {
@@ -218,8 +219,24 @@
                 </div>
             }
         </div>
+
     </div>
 </div>
+
+@section Scripts {
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var cardsRow = document.querySelector(".row.row-cols-1");
+            if (!cardsRow) return;
+
+            var cards = cardsRow.querySelectorAll(".col");
+            cards.forEach(function (card, index) {
+                card.style.animationDelay = (index * 80) + "ms";
+                card.classList.add("card-enter");
+            });
+        });
+    </script>
+}
 
 
 

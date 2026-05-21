@@ -32,6 +32,12 @@
         <span asp-validation-for="PlayersCount" class="text-danger small"></span>
     </div>
 
+    @await Html.PartialAsync("_DateTimePicker", new DateTimePickerViewModel
+    {
+        FieldName = nameof(Model.VisitedAt),
+        Value = Model.VisitedAt
+    })
+
     @await Html.PartialAsync("_Autocomplete", new AutocompleteViewModel
     {
         FieldName = nameof(Model.EscapeRoomId),
