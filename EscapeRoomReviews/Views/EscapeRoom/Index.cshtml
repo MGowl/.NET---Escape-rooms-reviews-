@@ -223,6 +223,30 @@
     </div>
 </div>
 
+<script>
+    (function () {
+        var introKey = "escape-room-index-lock-intro-seen";
+        var shouldShowIntro = true;
+
+        try {
+            shouldShowIntro = sessionStorage.getItem(introKey) !== "1";
+            if (shouldShowIntro) {
+                sessionStorage.setItem(introKey, "1");
+                document.documentElement.classList.add("lock-intro-active");
+            }
+        } catch (error) {
+            document.documentElement.classList.add("lock-intro-active");
+        }
+
+        if (!shouldShowIntro) {
+            var overlay = document.getElementById("lock-overlay");
+            if (overlay) {
+                overlay.classList.add("hidden");
+            }
+        }
+    })();
+</script>
+
 <div id="lock-overlay">
     <div id="lock-icon">
         <svg viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg" width="80" height="80">
@@ -249,13 +273,14 @@
         });
 
         (function () {
-    var overlay = document.getElementById("lock-overlay");
-    if (!overlay) return;
+            var overlay = document.getElementById("lock-overlay");
+            if (!overlay || !document.documentElement.classList.contains("lock-intro-active")) return;
 
-    setTimeout(function () {
-        overlay.classList.add("hidden");
-    }, 1200);
-})();
+            setTimeout(function () {
+                overlay.classList.add("hidden");
+                document.documentElement.classList.remove("lock-intro-active");
+            }, 1200);
+        })();
     </script>
 }
 
