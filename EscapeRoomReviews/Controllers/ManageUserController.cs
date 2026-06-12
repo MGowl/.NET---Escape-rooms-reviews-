@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -9,6 +10,7 @@ using EscapeRoomReviews.Models.Forms;
 
 namespace EscapeRoomReviews.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class ManageUserController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -25,7 +27,7 @@ namespace EscapeRoomReviews.Controllers
 
         public IActionResult Index()
         {
-            var users = _context.Users
+            var users = _context.AppUsers
                 .AsNoTracking()
                 .Where(user => user.DeletedAt == null)
                 .ToList();
@@ -59,7 +61,7 @@ namespace EscapeRoomReviews.Controllers
                 RegisteredAt = DateTime.UtcNow
             };
 
-            _context.Users.Add(user);
+            _context.AppUsers.Add(user);
             _context.SaveChanges();
 
             return RedirectToAction("Index");
@@ -69,7 +71,7 @@ namespace EscapeRoomReviews.Controllers
         [ActionName("Edit")]
         public IActionResult EditGet(int id)
         {
-            var user = _context.Users
+            var user = _context.AppUsers
                 .AsNoTracking()
                 .FirstOrDefault(u => u.Id == id && u.DeletedAt == null);
 
@@ -98,7 +100,7 @@ namespace EscapeRoomReviews.Controllers
                 return View(model);
             }
 
-            var user = _context.Users.FirstOrDefault(u => u.Id == model.Id && u.DeletedAt == null);
+            var user = _context.AppUsers.FirstOrDefault(u => u.Id == model.Id && u.DeletedAt == null);
             if (user == null) return NotFound();
 
             user.Username = model.Username;
@@ -114,7 +116,7 @@ namespace EscapeRoomReviews.Controllers
         [HttpPost]
         public IActionResult Delete(int id)
         {
-            var user = _context.Users.FirstOrDefault(u => u.Id == id && u.DeletedAt == null);
+            var user = _context.AppUsers.FirstOrDefault(u => u.Id == id && u.DeletedAt == null);
             if (user == null) return NotFound();
 
             user.DeletedAt = DateTime.UtcNow;

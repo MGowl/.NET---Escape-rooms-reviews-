@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using EscapeRoomReviews.Data;
@@ -9,6 +10,7 @@ using EscapeRoomReviews.ViewModels;
 
 namespace EscapeRoomReviews.Controllers
 {
+    [Authorize]
     public class ManageReviewController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -72,7 +74,7 @@ namespace EscapeRoomReviews.Controllers
                 return View(model);
             }
 
-            var userId = _context.Users
+            var userId = _context.AppUsers
                 .AsNoTracking()
                 .Select(user => user.Id)
                 .FirstOrDefault();

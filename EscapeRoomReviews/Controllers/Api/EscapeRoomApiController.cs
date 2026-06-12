@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using EscapeRoomReviews.Data;
@@ -112,6 +113,7 @@ public class EscapeRoomApiController : ControllerBase
     /// <summary>
     /// POST /api/escaperoom - Kreira novi escape room
     /// </summary>
+    [Authorize(Roles = "Admin,Editor")]
     [HttpPost]
     public async Task<ActionResult<EscapeRoomDTO>> Create([FromBody] EscapeRoomUpsertDTO dto)
     {
@@ -164,6 +166,7 @@ public class EscapeRoomApiController : ControllerBase
     /// <summary>
     /// PUT /api/escaperoom/{id} - Ažurira escape room
     /// </summary>
+    [Authorize(Roles = "Admin,Editor")]
     [HttpPut("{id}")]
     public async Task<ActionResult<EscapeRoomDTO>> Update(int id, [FromBody] EscapeRoomUpsertDTO dto)
     {
@@ -224,6 +227,7 @@ public class EscapeRoomApiController : ControllerBase
     /// <summary>
     /// DELETE /api/escaperoom/{id} - Soft delete escape rooma
     /// </summary>
+    [Authorize(Roles = "Admin,Editor")]
     [HttpDelete("{id}")]
     public async Task<IActionResult> Delete(int id)
     {

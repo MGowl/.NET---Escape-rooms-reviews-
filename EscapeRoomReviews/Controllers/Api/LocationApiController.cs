@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using EscapeRoomReviews.Data;
@@ -86,6 +87,7 @@ public class LocationApiController : ControllerBase
     /// <summary>
     /// POST /api/location - Kreira novu lokaciju.
     /// </summary>
+    [Authorize(Roles = "Admin,Editor")]
     [HttpPost]
     public async Task<ActionResult<LocationDTO>> Create([FromBody] LocationUpsertDTO dto)
     {
@@ -113,6 +115,7 @@ public class LocationApiController : ControllerBase
     /// <summary>
     /// PUT /api/location/{id} - Ažurira lokaciju po ID-u.
     /// </summary>
+    [Authorize(Roles = "Admin,Editor")]
     [HttpPut("{id}")]
     public async Task<ActionResult<LocationDTO>> Update(int id, [FromBody] LocationUpsertDTO dto)
     {
@@ -145,6 +148,7 @@ public class LocationApiController : ControllerBase
     /// <summary>
     /// DELETE /api/location/{id} - Soft delete lokacije.
     /// </summary>
+    [Authorize(Roles = "Admin,Editor")]
     [HttpDelete("{id}")]
     public async Task<IActionResult> Delete(int id)
     {

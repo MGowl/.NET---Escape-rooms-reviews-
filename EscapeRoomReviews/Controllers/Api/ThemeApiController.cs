@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using EscapeRoomReviews.Data;
@@ -82,6 +83,7 @@ public class ThemeApiController : ControllerBase
     /// <summary>
     /// POST /api/theme - Kreira novu temu.
     /// </summary>
+    [Authorize(Roles = "Admin,Editor")]
     [HttpPost]
     public async Task<ActionResult<ThemeDTO>> Create([FromBody] ThemeUpsertDTO dto)
     {
@@ -106,6 +108,7 @@ public class ThemeApiController : ControllerBase
     /// <summary>
     /// PUT /api/theme/{id} - Ažurira temu po ID-u.
     /// </summary>
+    [Authorize(Roles = "Admin,Editor")]
     [HttpPut("{id}")]
     public async Task<ActionResult<ThemeDTO>> Update(int id, [FromBody] ThemeUpsertDTO dto)
     {
@@ -135,6 +138,7 @@ public class ThemeApiController : ControllerBase
     /// <summary>
     /// DELETE /api/theme/{id} - Soft delete teme.
     /// </summary>
+    [Authorize(Roles = "Admin,Editor")]
     [HttpDelete("{id}")]
     public async Task<IActionResult> Delete(int id)
     {

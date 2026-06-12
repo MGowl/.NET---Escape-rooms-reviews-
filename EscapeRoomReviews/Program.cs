@@ -1,6 +1,7 @@
 using EscapeRoomReviews.Models.Domain;
 using EscapeRoomReviews.Repositories;
 using EscapeRoomReviews.Data;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,6 +16,16 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
         new MySqlServerVersion(new Version(8, 0, 36))
     ));
 
+builder.Services
+    .AddDefaultIdentity<AppUser>(options =>
+    {
+        options.SignIn.RequireConfirmedAccount = false;
+    })
+    .AddRoles<IdentityRole>()
+    .AddEntityFrameworkStores<ApplicationDbContext>();
+
+builder.Services.AddRazorPages();
+
 builder.Services.AddScoped<EfRepository>();
 
 var app = builder.Build();
@@ -24,6 +35,7 @@ using (var scope = app.Services.CreateScope())
     var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
     await context.Database.MigrateAsync();
     await DbSeeder.SeedAsync(context);
+    await RoleSeeder.SeedAsync(scope.ServiceProvider);
 
     var repo = scope.ServiceProvider.GetRequiredService<EfRepository>();
     var escapeRooms = repo.GetAllRooms();
@@ -92,11 +104,14 @@ app.UseStaticFiles();
 app.UseRouting();
 
 // Trenutno bez autentikacije, ali middleware ostaje spreman za role/policy pravila.
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=EscapeRoom}/{action=Index}/{id?}");
+
+app.MapRazorPages();
 
 // Pokrece aplikaciju i pocinje slusati HTTP zahtjeve.
 app.Run();

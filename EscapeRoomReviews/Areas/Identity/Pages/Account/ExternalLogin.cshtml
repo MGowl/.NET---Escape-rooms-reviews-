@@ -1,0 +1,26 @@
+@page
+@model EscapeRoomReviews.Areas.Identity.Pages.Account.ExternalLoginModel
+@{
+    ViewData["Title"] = "External login";
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-6">
+            <div class="card shadow-sm">
+                <div class="card-body p-4">
+                    <h1 class="h3 mb-4">External login</h1>
+
+                    @if (!string.IsNullOrWhiteSpace(Model.ErrorMessage))
+                    {
+                        <div class="alert alert-danger" role="alert">@Model.ErrorMessage</div>
+                    }
+                    else
+                    {
+                        <p class="mb-0">Processing external authentication...</p>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

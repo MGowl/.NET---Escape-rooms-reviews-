@@ -7,7 +7,7 @@ public static class DbSeeder
 {
     public static async Task SeedAsync(ApplicationDbContext context)
     {
-        if (await context.Users.AnyAsync())
+        if (await context.AppUsers.AnyAsync())
         {
             return;
         }
@@ -142,7 +142,7 @@ public static class DbSeeder
             }
         }
 
-        context.Users.AddRange(users);
+        context.AppUsers.AddRange(users);
         context.Locations.AddRange(locations);
         context.Companies.AddRange(companies);
         context.Themes.AddRange(themes);

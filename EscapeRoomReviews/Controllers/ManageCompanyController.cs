@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using EscapeRoomReviews.Data;
@@ -8,6 +9,7 @@ using EscapeRoomReviews.Models.Forms;
 
 namespace EscapeRoomReviews.Controllers
 {
+    [Authorize(Roles = "Admin,Editor")]
     public class ManageCompanyController : Controller
     {
         private readonly ApplicationDbContext _context;

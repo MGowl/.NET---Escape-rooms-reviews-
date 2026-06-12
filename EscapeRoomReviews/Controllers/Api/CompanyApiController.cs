@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using EscapeRoomReviews.Data;
@@ -82,6 +83,7 @@ public class CompanyApiController : ControllerBase
     /// <summary>
     /// POST /api/company - Kreira novu kompaniju.
     /// </summary>
+    [Authorize(Roles = "Admin,Editor")]
     [HttpPost]
     public async Task<ActionResult<CompanyDTO>> Create([FromBody] CompanyUpsertDTO dto)
     {
@@ -106,6 +108,7 @@ public class CompanyApiController : ControllerBase
     /// <summary>
     /// PUT /api/company/{id} - Ažurira kompaniju po ID-u.
     /// </summary>
+    [Authorize(Roles = "Admin,Editor")]
     [HttpPut("{id}")]
     public async Task<ActionResult<CompanyDTO>> Update(int id, [FromBody] CompanyUpsertDTO dto)
     {
@@ -135,6 +138,7 @@ public class CompanyApiController : ControllerBase
     /// <summary>
     /// DELETE /api/company/{id} - Soft delete kompanije.
     /// </summary>
+    [Authorize(Roles = "Admin,Editor")]
     [HttpDelete("{id}")]
     public async Task<IActionResult> Delete(int id)
     {

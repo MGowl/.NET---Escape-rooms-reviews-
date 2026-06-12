@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using EscapeRoomReviews.Data;
@@ -39,7 +40,7 @@ public class UserApiController : ControllerBase
     [HttpGet]
     public async Task<ActionResult<IEnumerable<UserDTO>>> GetAll()
     {
-        var users = await _context.Users
+        var users = await _context.AppUsers
             .Where(u => u.DeletedAt == null)
             .ToListAsync();
 
@@ -52,7 +53,7 @@ public class UserApiController : ControllerBase
     [HttpGet("{id}")]
     public async Task<ActionResult<UserDTO>> GetById(int id)
     {
-        var user = await _context.Users
+        var user = await _context.AppUsers
             .Where(u => u.Id == id && u.DeletedAt == null)
             .FirstOrDefaultAsync();
 
@@ -75,7 +76,7 @@ public class UserApiController : ControllerBase
             return BadRequest(new { message = "Pojam za pretragu je obavezan." });
         }
 
-        var users = await _context.Users
+        var users = await _context.AppUsers
             .Where(u => u.DeletedAt == null &&
                         (u.Username.Contains(q) || u.Email.Contains(q)))
             .ToListAsync();
@@ -86,6 +87,7 @@ public class UserApiController : ControllerBase
     /// <summary>
     /// POST /api/user - Kreira novog korisnika.
     /// </summary>
+    [Authorize(Roles = "Admin,Editor")]
     [HttpPost]
     public async Task<ActionResult<UserDTO>> Create([FromBody] UserUpsertDTO dto)
     {
@@ -104,7 +106,7 @@ public class UserApiController : ControllerBase
             DeletedAt = null
         };
 
-        _context.Users.Add(user);
+        _context.AppUsers.Add(user);
         await _context.SaveChangesAsync();
 
         return CreatedAtAction(nameof(GetById), new { id = user.Id }, ToDTO(user));
@@ -113,6 +115,7 @@ public class UserApiController : ControllerBase
     /// <summary>
     /// PUT /api/user/{id} - Ažurira korisnika po ID-u.
     /// </summary>
+    [Authorize(Roles = "Admin,Editor")]
     [HttpPut("{id}")]
     public async Task<ActionResult<UserDTO>> Update(int id, [FromBody] UserUpsertDTO dto)
     {
@@ -121,7 +124,7 @@ public class UserApiController : ControllerBase
             return BadRequest(ModelState);
         }
 
-        var user = await _context.Users
+        var user = await _context.AppUsers
             .Where(u => u.Id == id && u.DeletedAt == null)
             .FirstOrDefaultAsync();
 
@@ -135,7 +138,7 @@ public class UserApiController : ControllerBase
         user.TotalRoomsPlayed = dto.TotalRoomsPlayed;
         user.Role = dto.Role;
 
-        _context.Users.Update(user);
+        _context.AppUsers.Update(user);
         await _context.SaveChangesAsync();
 
         return Ok(ToDTO(user));
@@ -144,10 +147,11 @@ public class UserApiController : ControllerBase
     /// <summary>
     /// DELETE /api/user/{id} - Soft delete korisnika.
     /// </summary>
+    [Authorize(Roles = "Admin,Editor")]
     [HttpDelete("{id}")]
     public async Task<IActionResult> Delete(int id)
     {
-        var user = await _context.Users
+        var user = await _context.AppUsers
             .Where(u => u.Id == id && u.DeletedAt == null)
             .FirstOrDefaultAsync();
 
@@ -157,7 +161,7 @@ public class UserApiController : ControllerBase
         }
 
         user.DeletedAt = DateTime.UtcNow;
-        _context.Users.Update(user);
+        _context.AppUsers.Update(user);
         await _context.SaveChangesAsync();
 
         return NoContent();

@@ -47,7 +47,7 @@ public class EfRepository
         .Include(review => review.User)
         .ToList();
 
-    public List<User> GetAllUsers() => _context.Users
+    public List<User> GetAllUsers() => _context.AppUsers
         .AsNoTracking()
         .Where(user => user.DeletedAt == null)
         .Include(user => user.Reviews.Where(review => review.DeletedAt == null))

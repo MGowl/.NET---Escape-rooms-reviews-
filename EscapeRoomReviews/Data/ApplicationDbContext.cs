@@ -1,15 +1,16 @@
-using Microsoft.EntityFrameworkCore;
 using EscapeRoomReviews.Models.Domain;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 
 namespace EscapeRoomReviews.Data;
 
-public class ApplicationDbContext : DbContext
+public class ApplicationDbContext : IdentityDbContext<AppUser>
 {
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
     {
     }
 
-    public DbSet<User> Users => Set<User>();
+    public DbSet<User> AppUsers => Set<User>();
     public DbSet<Company> Companies => Set<Company>();
     public DbSet<Location> Locations => Set<Location>();
     public DbSet<EscapeRoom> EscapeRooms => Set<EscapeRoom>();

@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using EscapeRoomReviews.Data;
@@ -94,6 +95,7 @@ public class ReviewApiController : ControllerBase
     /// <summary>
     /// POST /api/review - Kreira novu recenziju.
     /// </summary>
+    [Authorize]
     [HttpPost]
     public async Task<ActionResult<ReviewDTO>> Create([FromBody] ReviewUpsertDTO dto)
     {
@@ -114,7 +116,7 @@ public class ReviewApiController : ControllerBase
             return BadRequest(new { message = "Escape room nije pronađen." });
         }
 
-        var userExists = await _context.Users
+        var userExists = await _context.AppUsers
             .AnyAsync(u => u.Id == dto.UserId && u.DeletedAt == null);
         if (!userExists)
         {
@@ -149,6 +151,7 @@ public class ReviewApiController : ControllerBase
     /// <summary>
     /// PUT /api/review/{id} - Ažurira recenziju po ID-u.
     /// </summary>
+    [Authorize]
     [HttpPut("{id}")]
     public async Task<ActionResult<ReviewDTO>> Update(int id, [FromBody] ReviewUpsertDTO dto)
     {
@@ -190,6 +193,7 @@ public class ReviewApiController : ControllerBase
     /// <summary>
     /// DELETE /api/review/{id} - Soft delete recenzije.
     /// </summary>
+    [Authorize]
     [HttpDelete("{id}")]
     public async Task<IActionResult> Delete(int id)
     {
