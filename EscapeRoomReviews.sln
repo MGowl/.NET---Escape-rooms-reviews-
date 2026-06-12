@@ -5,6 +5,8 @@ VisualStudioVersion = 17.14.37111.16 d17.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EscapeRoomReviews", "EscapeRoomReviews\EscapeRoomReviews.csproj", "{718703EE-F254-4C0B-BB05-91362CC3E63C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EscapeRoomReviews.Tests", "EscapeRoomReviews.Tests\EscapeRoomReviews.Tests.csproj", "{4E019708-6099-4E89-A8EF-2D0DD135CA85}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{718703EE-F254-4C0B-BB05-91362CC3E63C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{718703EE-F254-4C0B-BB05-91362CC3E63C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{718703EE-F254-4C0B-BB05-91362CC3E63C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E019708-6099-4E89-A8EF-2D0DD135CA85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E019708-6099-4E89-A8EF-2D0DD135CA85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E019708-6099-4E89-A8EF-2D0DD135CA85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E019708-6099-4E89-A8EF-2D0DD135CA85}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

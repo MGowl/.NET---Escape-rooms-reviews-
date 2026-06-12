@@ -41,7 +41,10 @@ var app = builder.Build();
 using (var scope = app.Services.CreateScope())
 {
     var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-    await context.Database.MigrateAsync();
+    if (context.Database.IsRelational())
+        await context.Database.MigrateAsync();
+    else
+        await context.Database.EnsureCreatedAsync();
     await DbSeeder.SeedAsync(context);
     await RoleSeeder.SeedAsync(scope.ServiceProvider);
 
@@ -123,3 +126,5 @@ app.MapRazorPages();
 
 // Pokrece aplikaciju i pocinje slusati HTTP zahtjeve.
 app.Run();
+
+public partial class Program { }
