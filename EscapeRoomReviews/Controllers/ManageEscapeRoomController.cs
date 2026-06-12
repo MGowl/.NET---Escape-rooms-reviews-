@@ -1,5 +1,8 @@
 using System;
 using System.Linq;
+using System.IO;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -14,10 +17,12 @@ namespace EscapeRoomReviews.Controllers
     public class ManageEscapeRoomController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IWebHostEnvironment _environment;
 
-        public ManageEscapeRoomController(ApplicationDbContext context)
+        public ManageEscapeRoomController(ApplicationDbContext context, IWebHostEnvironment environment)
         {
             _context = context;
+            _environment = environment;
         }
 
         private string? GetLocationName(int? id)
@@ -233,6 +238,84 @@ namespace EscapeRoomReviews.Controllers
             _context.SaveChanges();
 
             return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public IActionResult UploadPhoto(int escapeRoomId, IFormFile file)
+        {
+            var escapeRoom = _context.EscapeRooms
+                .FirstOrDefault(room => room.Id == escapeRoomId && room.DeletedAt == null);
+
+            if (escapeRoom == null)
+            {
+                return NotFound();
+            }
+
+            if (file == null || file.Length == 0)
+            {
+                return BadRequest();
+            }
+
+            var uploadDirectory = Path.Combine(_environment.WebRootPath, "uploads", "escaperooms", escapeRoomId.ToString());
+            Directory.CreateDirectory(uploadDirectory);
+
+            var fileName = $"{Guid.NewGuid()}{Path.GetExtension(file.FileName)}";
+            var physicalPath = Path.Combine(uploadDirectory, fileName);
+
+            using (var stream = new FileStream(physicalPath, FileMode.Create))
+            {
+                file.CopyTo(stream);
+            }
+
+            var photo = new Photo
+            {
+                Url = $"/uploads/escaperooms/{escapeRoomId}/{fileName}",
+                FileName = fileName,
+                ContentType = file.ContentType,
+                FileSize = file.Length,
+                CreatedAt = DateTime.UtcNow,
+                EscapeRoomId = escapeRoomId
+            };
+
+            _context.Photos.Add(photo);
+            _context.SaveChanges();
+
+            return Json(new { success = true });
+        }
+
+        [HttpGet]
+        public IActionResult GetPhotos(int escapeRoomId)
+        {
+            var photos = _context.Photos
+                .AsNoTracking()
+                .Where(photo => photo.EscapeRoomId == escapeRoomId)
+                .OrderByDescending(photo => photo.CreatedAt)
+                .ToList();
+
+            return PartialView("_PhotoList", photos);
+        }
+
+        [HttpPost]
+        public IActionResult DeletePhoto(int id)
+        {
+            var photo = _context.Photos.FirstOrDefault(item => item.Id == id);
+            if (photo == null)
+            {
+                return NotFound();
+            }
+
+            var relativePath = photo.Url.TrimStart('~', '/').Replace('/', Path.DirectorySeparatorChar);
+            var physicalPath = Path.Combine(_environment.WebRootPath, relativePath);
+
+            if (System.IO.File.Exists(physicalPath))
+            {
+                System.IO.File.Delete(physicalPath);
+            }
+
+            _context.Photos.Remove(photo);
+            _context.SaveChanges();
+
+            return Json(new { success = true });
         }
 
         [HttpGet]

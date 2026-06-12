@@ -1,0 +1,41 @@
+@model IEnumerable<EscapeRoomReviews.Models.Domain.Photo>
+
+<table class="table table-hover align-middle">
+    <thead>
+        <tr>
+            <th>Fotografija</th>
+            <th>Naziv filea</th>
+            <th>Veličina</th>
+            <th>Datum uploada</th>
+            <th>Akcija</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var photo in Model)
+            {
+                <tr>
+                    <td>
+                        <img src="@photo.Url"
+                             alt="@photo.FileName"
+                             class="rounded border"
+                             style="width: 80px; height: 80px; object-fit: cover;" />
+                    </td>
+                    <td>@photo.FileName</td>
+                    <td>@(photo.FileSize / 1024) KB</td>
+                    <td>@photo.CreatedAt.ToString("dd.MM.yyyy HH:mm")</td>
+                    <td>
+                        <button type="button" onclick="deletePhoto(@photo.Id)" class="btn btn-danger btn-sm">Obriši</button>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="5" class="text-center text-muted py-4">Nema uploadanih fotografija.</td>
+            </tr>
+        }
+    </tbody>
+</table>

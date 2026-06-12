@@ -102,3 +102,49 @@
         <a asp-action="Index" class="btn btn-outline-secondary">Odustani</a>
     </div>
 </form>
+
+<div class="mt-4">
+    <h5>Fotografije</h5>
+    <form id="photoDz"
+          asp-controller="ManageEscapeRoom"
+          asp-action="UploadPhoto"
+          asp-route-escapeRoomId="@Model.Id"
+          enctype="multipart/form-data"
+          class="dropzone">
+    </form>
+    <div id="photoList" class="mt-3"></div>
+</div>
+
+@section Scripts {
+    <link rel="stylesheet" href="~/lib/dropzone/dropzone.min.css" />
+    <script src="~/lib/dropzone/dropzone.min.js"></script>
+    <script>
+        Dropzone.options.photoDz = {
+            success: function (file, response) {
+                loadPhotos();
+            }
+        };
+
+        $(function () {
+            loadPhotos();
+        });
+
+        function loadPhotos() {
+            $("#photoList").load("@Url.Action("GetPhotos", "ManageEscapeRoom", new { escapeRoomId = Model.Id })");
+        }
+
+        function deletePhoto(id) {
+            $.ajax({
+                url: "@Url.Action("DeletePhoto", "ManageEscapeRoom")",
+                method: "POST",
+                data: { id: id },
+                success: function () {
+                    loadPhotos();
+                },
+                error: function () {
+                    alert("Greška pri brisanju fotografije.");
+                }
+            });
+        }
+    </script>
+}
