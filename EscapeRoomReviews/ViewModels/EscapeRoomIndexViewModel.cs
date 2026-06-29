@@ -13,6 +13,6 @@ namespace EscapeRoomReviews.ViewModels
         public string CompanyName { get; set; } = string.Empty;
         public double AverageRating { get; set; }
         public int ReviewCount { get; set; }
-        public List<string> Themes { get; set; } = new();
+        public List<ThemeSlimViewModel> Themes { get; set; } = new();
     }
 }

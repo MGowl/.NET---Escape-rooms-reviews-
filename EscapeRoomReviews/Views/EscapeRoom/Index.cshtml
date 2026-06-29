@@ -19,7 +19,7 @@
 
     var gradoviStats = Model.GroupBy(m => m.City).Select(g => new { Name = g.Key, Count = g.Count() });
     var tezinaStats = Model.GroupBy(m => m.Difficulty).Select(g => new { Name = g.Key, Count = g.Count() });
-    var temaStats = Model.SelectMany(m => m.Themes).GroupBy(t => t).Select(g => new { Name = g.Key, Count = g.Count() });
+    var temaStats = Model.SelectMany(m => m.Themes).GroupBy(t => t.Name).Select(g => new { Name = g.Key, Count = g.Count() });
 }
 
 <div class="row mb-5 mt-4">
@@ -162,8 +162,8 @@
                     <a asp-action="Details" asp-route-id="@room.Id" style="text-decoration:none; color:inherit;">
                         <div class="card shadow-sm border-0 h-100 shadow-sm border-0 rounded-4 overflow-hidden room-card">
                             <div class="card-img-top bg-light d-flex justify-content-center align-items-center" style="height: 160px; font-size: 3rem; background: linear-gradient(135deg, #fdfdfd 0%, #f0f0f0 100%); border-bottom: 1px solid #eee;">
-                                @if (room.Themes.Contains("Sci-Fi")) { <span>🚀</span> }
-                                else if (room.Themes.Contains("Horror")) { <span>🏚️</span> }
+                                @if (room.Themes.Any(t => t.Name == "Sci-Fi")) { <span>🚀</span> }
+                                else if (room.Themes.Any(t => t.Name == "Horror")) { <span>🏚️</span> }
                                 else { <span>🔬</span> }
                             </div>
                             <div class="card-body p-4">
@@ -190,7 +190,13 @@
                                     <span class="badge rounded-pill border-0 px-3 py-2 fw-semibold" style="background-color: var(--color-bg-page); color: var(--primary-deep-green) !important; font-size: 0.8rem; letter-spacing: 0.5px;">@room.City</span>
                                     @foreach (var theme in room.Themes.Take(2))
                                     {
-                                        <span class="badge rounded-pill border-0 px-3 py-2 fw-semibold" style="background-color: rgba(8,80,65,0.08); color: var(--primary-deep-green) !important; font-size: 0.8rem; letter-spacing: 0.5px;">@theme</span>
+                                        <span class="badge rounded-pill border-0 px-3 py-2 fw-semibold" style="background-color: rgba(8,80,65,0.08); color: var(--primary-deep-green) !important; font-size: 0.8rem; letter-spacing: 0.5px;">
+                                            @if (!string.IsNullOrEmpty(theme.IconUrl))
+                                            {
+                                                <i class="@theme.IconUrl me-1"></i>
+                                            }
+                                            @theme.Name
+                                        </span>
                                     }
                                 </div>
                                 

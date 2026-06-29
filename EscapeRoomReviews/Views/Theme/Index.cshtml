@@ -45,6 +45,10 @@
             <a asp-action="Details" asp-route-id="@theme.Id" style="text-decoration:none; color:inherit;">
                 <div class="card shadow-sm border-0 h-100 rounded-4 text-center room-card bg-white">
                     <div class="card-body p-4 d-flex flex-column justify-content-center">
+                        @if (!string.IsNullOrEmpty(theme.IconUrl))
+                        {
+                            <i class="@theme.IconUrl fs-1 mb-2 text-primary-custom d-block"></i>
+                        }
                         <h4 class="fw-bold mb-3 text-primary-custom">@theme.Name</h4>
                         <span class="badge rounded-pill align-self-center py-2 px-3 fw-semibold shadow-sm mb-3 bg-white text-primary-custom border">
                             @theme.RoomCount soba

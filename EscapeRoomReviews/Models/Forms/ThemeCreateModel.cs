@@ -9,6 +9,6 @@ public class ThemeCreateModel
     public string Name { get; set; } = string.Empty;
 
     [Required(ErrorMessage = "Icon URL je obavezan.")]
-    [Url(ErrorMessage = "Unesite ispravan URL.")]
+    [RegularExpression(@"^bi bi-[a-z0-9\-]+$", ErrorMessage = "Format mora biti 'bi bi-nazivikone', npr. 'bi bi-search'.")]
     public string IconUrl { get; set; } = string.Empty;
 }

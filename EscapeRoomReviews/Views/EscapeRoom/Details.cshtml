@@ -53,6 +53,10 @@
                         foreach (var theme in Model.Themes)
                         {
                             <span class="badge" style="background-color: var(--color-accent-peach); color: var(--primary-deep-green); font-size: 0.9rem; padding: 0.6em 1.2em; border-radius: 6px; font-weight: 600;">
+                                @if (!string.IsNullOrEmpty(theme.IconUrl))
+                                {
+                                    <i class="@theme.IconUrl me-1"></i>
+                                }
                                 @theme.Name
                             </span>
                         }

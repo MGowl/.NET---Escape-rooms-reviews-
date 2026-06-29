@@ -23,7 +23,8 @@ namespace EscapeRoomReviews.Controllers
                 {
                     Id = theme.Id,
                     Name = theme.Name,
-                    RoomCount = theme.EscapeRooms.Count
+                    RoomCount = theme.EscapeRooms.Count,
+                    IconUrl = theme.IconUrl
                 })
                 .ToList();
 
