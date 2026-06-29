@@ -14,5 +14,6 @@ namespace EscapeRoomReviews.ViewModels
         public double AverageRating { get; set; }
         public int ReviewCount { get; set; }
         public List<ThemeSlimViewModel> Themes { get; set; } = new();
+        public string? FirstPhotoUrl { get; set; }
     }
 }

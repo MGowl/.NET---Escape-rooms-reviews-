@@ -58,7 +58,11 @@ namespace EscapeRoomReviews.Controllers
                         ? 0.0
                         : room.Reviews.Average(review => review.Rating),
                     ReviewCount = room.Reviews.Count,
-                    Themes = room.Themes.Select(theme => new EscapeRoomReviews.ViewModels.ThemeSlimViewModel { Name = theme.Name, IconUrl = theme.IconUrl }).ToList()
+                    Themes = room.Themes.Select(theme => new EscapeRoomReviews.ViewModels.ThemeSlimViewModel { Name = theme.Name, IconUrl = theme.IconUrl }).ToList(),
+                    FirstPhotoUrl = room.Photos
+                        .OrderByDescending(p => p.CreatedAt)
+                        .Select(p => p.Url)
+                        .FirstOrDefault()
                 })
                 .ToList();
 
