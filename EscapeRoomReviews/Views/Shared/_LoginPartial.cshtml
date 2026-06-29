@@ -6,12 +6,23 @@
 
 @if (SignInManager.IsSignedIn(User))
 {
+    var currentUser = await UserManager.GetUserAsync(User);
+    var displayName = currentUser?.DisplayName ?? $"{currentUser?.FirstName} {currentUser?.LastName}".Trim();
+    if (string.IsNullOrWhiteSpace(displayName)) displayName = User.Identity?.Name ?? string.Empty;
+
     <ul class="navbar-nav">
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                @User.Identity?.Name
+                @displayName
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                <li>
+                    <a class="dropdown-item" asp-controller="Profile" asp-action="Edit">Moj profil</a>
+                </li>
+                <li>
+                    <a class="dropdown-item" asp-controller="Profile" asp-action="MyReviews">Moje recenzije</a>
+                </li>
+                <li><hr class="dropdown-divider" /></li>
                 <li>
                     <form method="post" asp-area="Identity" asp-page="/Account/Logout">
                         <button type="submit" class="dropdown-item">Logout</button>

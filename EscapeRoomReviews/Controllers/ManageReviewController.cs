@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using EscapeRoomReviews.Data;
@@ -14,11 +15,13 @@ namespace EscapeRoomReviews.Controllers
     public class ManageReviewController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<AppUser> _userManager;
         private readonly ILogger<ManageReviewController> _logger;
 
-        public ManageReviewController(ApplicationDbContext context, ILogger<ManageReviewController> logger)
+        public ManageReviewController(ApplicationDbContext context, UserManager<AppUser> userManager, ILogger<ManageReviewController> logger)
         {
             _context = context;
+            _userManager = userManager;
             _logger = logger;
         }
 
@@ -33,7 +36,9 @@ namespace EscapeRoomReviews.Controllers
                 {
                     Id = review.Id,
                     RoomName = review.EscapeRoom.Name,
-                    Username = review.AppUser != null ? review.AppUser.UserName ?? string.Empty : string.Empty,
+                    DisplayName = review.AppUser != null
+                        ? (review.AppUser.DisplayName ?? (review.AppUser.FirstName + " " + review.AppUser.LastName))
+                        : string.Empty,
                     Rating = review.Rating,
                     Comment = review.Comment,
                     CreatedAt = review.CreatedAt,
@@ -83,7 +88,7 @@ namespace EscapeRoomReviews.Controllers
                 PlayersCount = model.PlayersCount,
                 VisitedAt = model.VisitedAt,
                 EscapeRoomId = model.EscapeRoomId,
-                AppUserId = null,
+                AppUserId = _userManager.GetUserId(User),
                 CreatedAt = DateTime.UtcNow,
                 IsVerified = false
             };

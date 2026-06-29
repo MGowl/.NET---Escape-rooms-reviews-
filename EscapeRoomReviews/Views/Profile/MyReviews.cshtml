@@ -1,0 +1,80 @@
+@model List<EscapeRoomReviews.ViewModels.MyReviewViewModel>
+
+@{
+    ViewData["Title"] = "Moje recenzije";
+}
+
+<div class="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center mb-4">
+    <div>
+        <h1 class="display-6 fw-bold text-primary-custom mb-1">Moje recenzije</h1>
+        <p class="text-muted mb-0">Pregled i upravljanje tvojim recenzijama.</p>
+    </div>
+    <a asp-controller="ManageReview" asp-action="Create" class="btn btn-primary fw-semibold mt-3 mt-sm-0">
+        + Nova recenzija
+    </a>
+</div>
+
+@if (!Model.Any())
+{
+    <div class="alert" style="background-color: var(--color-accent-peach); color: var(--primary-deep-green); border: none; border-radius: 8px; padding: 1.5rem;">
+        <div class="d-flex align-items-center gap-2 mb-3">
+            <i class="bi bi-journal-x" style="font-size: 1.5rem;"></i>
+            <strong>Još nemaš nijednu recenziju!</strong>
+        </div>
+        <a asp-controller="ManageReview" asp-action="Create" class="btn btn-primary fw-semibold">
+            Dodaj prvu recenziju
+        </a>
+    </div>
+}
+else
+{
+    <div class="table-responsive">
+        <table class="table table-striped align-middle">
+            <thead class="table-light">
+                <tr>
+                    <th>Soba</th>
+                    <th>Ocjena</th>
+                    <th>Komentar</th>
+                    <th>Datum</th>
+                    <th class="text-end">Akcije</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var review in Model)
+                {
+                    <tr>
+                        <td>
+                            <a asp-controller="EscapeRoom" asp-action="Details" asp-route-id="@review.EscapeRoomId"
+                               class="fw-semibold text-decoration-none" style="color: var(--primary-deep-green);">
+                                @review.EscapeRoomName
+                            </a>
+                        </td>
+                        <td>
+                            @for (int i = 1; i <= 5; i++)
+                            {
+                                <span style="color: @(i <= review.Rating ? "var(--color-accent-pink)" : "#e4e5e9"); font-size: 1.1rem;">★</span>
+                            }
+                            <span class="text-muted small ms-1">(@review.Rating/5)</span>
+                        </td>
+                        <td style="max-width: 300px;">
+                            <span class="text-truncate d-inline-block" style="max-width: 280px;" title="@review.Comment">
+                                @review.Comment
+                            </span>
+                        </td>
+                        <td class="text-muted small">@review.CreatedAt.ToString("dd.MM.yyyy.")</td>
+                        <td class="text-end">
+                            <a asp-controller="ManageReview" asp-action="Edit" asp-route-id="@review.Id"
+                               class="btn btn-sm btn-outline-primary me-2">Edit</a>
+                            <form asp-action="DeleteMyReview" method="post" class="d-inline">
+                                <input type="hidden" name="id" value="@review.Id" />
+                                <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+
+@await Html.PartialAsync("_DeleteRowAnimation")

@@ -90,8 +90,8 @@
                 <h4 class="text-primary-custom fw-bold border-bottom pb-3 mb-3">Autor</h4>
                 <div class="d-flex flex-column gap-3 fs-6">
                     <div class="d-flex justify-content-between align-items-center">
-                        <strong style="color: #666;">Korisničko ime</strong>
-                        <span style="font-weight: 500;">@(Model.AppUser?.UserName)</span>
+                        <strong style="color: #666;">Autor</strong>
+                        <span style="font-weight: 500;">@(Model.AppUser?.DisplayName ?? (Model.AppUser?.FirstName + " " + Model.AppUser?.LastName))</span>
                     </div>
                     <div class="d-flex justify-content-between align-items-center">
                         <strong style="color: #666;">Email</strong>
