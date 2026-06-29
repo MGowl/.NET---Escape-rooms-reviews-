@@ -1,0 +1,104 @@
+@model EscapeRoomReviews.Models.Forms.ReviewCreateModel
+
+@{
+    ViewData["Title"] = "Nova recenzija";
+    var escapeRoomName = ViewData["EscapeRoomName"] as string ?? string.Empty;
+}
+
+<div class="mb-4">
+    <h1 class="display-6 fw-bold text-primary-custom">Nova recenzija</h1>
+    <p class="text-muted">Unesite podatke za novu recenziju.</p>
+</div>
+
+<form asp-controller="Profile" asp-action="MyNewReview" method="post" class="card shadow-sm border-0 p-4">
+    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+    <div class="mb-3">
+        <label class="form-label d-block">Ocjena</label>
+        <div class="star-rating-pick d-flex gap-1" style="font-size: 2rem; cursor: pointer; user-select: none;">
+            @for (int i = 1; i <= 5; i++)
+            {
+                <i class="bi bi-star star-icon" data-value="@i" role="button" aria-label="@i zvjezdice"></i>
+            }
+        </div>
+        <input asp-for="Rating" type="hidden" />
+        <span asp-validation-for="Rating" class="text-danger small"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Comment" class="form-label">Komentar</label>
+        <textarea asp-for="Comment" class="form-control" rows="4"></textarea>
+        <span asp-validation-for="Comment" class="text-danger small"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="PlayersCount" class="form-label">Broj igrača</label>
+        <input asp-for="PlayersCount" class="form-control" type="number" min="1" />
+        <span asp-validation-for="PlayersCount" class="text-danger small"></span>
+    </div>
+
+    @await Html.PartialAsync("_DateTimePicker", new DateTimePickerViewModel
+    {
+        FieldName = nameof(Model.VisitedAt),
+        Value = Model.VisitedAt
+    })
+
+    @await Html.PartialAsync("_Autocomplete", new AutocompleteViewModel
+    {
+        FieldName = nameof(Model.EscapeRoomId),
+        SelectedId = Model.EscapeRoomId,
+        SelectedName = escapeRoomName,
+        SearchUrl = Url.Action("SearchEscapeRooms", "Profile") ?? string.Empty,
+        Label = "Escape Room",
+        Placeholder = "Pretraži sobu...",
+        ContainerClass = "mb-4 ajax-autocomplete",
+        IsRequired = true,
+        RequiredMessage = "Odaberite escape room."
+    })
+
+    <div class="d-flex gap-2">
+        <button type="submit" class="btn btn-primary fw-semibold">Spremi</button>
+        <a asp-action="MyReviews" class="btn btn-outline-secondary">Odustani</a>
+    </div>
+</form>
+
+@section Scripts {
+<script>
+(function () {
+    var ACCENT = '#FF8DA1';
+    var EMPTY  = '#dee2e6';
+    var container = document.querySelector('.star-rating-pick');
+    var stars     = Array.from(container.querySelectorAll('.star-icon'));
+    var input     = document.getElementById('Rating');
+
+    function paint(upTo) {
+        stars.forEach(function (s, i) {
+            s.classList.remove('bi-star', 'bi-star-fill');
+            if (i < upTo) {
+                s.classList.add('bi-star-fill');
+                s.style.color = ACCENT;
+            } else {
+                s.classList.add('bi-star');
+                s.style.color = EMPTY;
+            }
+        });
+    }
+
+    function restore() { paint(parseInt(input.value) || 0); }
+
+    stars.forEach(function (star) {
+        star.addEventListener('mouseenter', function () {
+            paint(parseInt(star.dataset.value));
+        });
+        star.addEventListener('click', function () {
+            input.value = star.dataset.value;
+            restore();
+        });
+    });
+
+    container.addEventListener('mouseleave', restore);
+
+    restore();
+}());
+</script>
+}

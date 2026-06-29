@@ -39,6 +39,8 @@
                         <li class="nav-item">
                             <a class="nav-link fw-semibold" asp-area="" asp-controller="User" asp-action="Index">Korisnici</a>
                         </li>
+                        @if (User.IsInRole("Admin") || User.IsInRole("Editor"))
+                        {
                         <li class="nav-item dropdown">
                             <a class="nav-link fw-semibold dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Upravljanje
@@ -52,6 +54,7 @@
                                 <li><a class="dropdown-item" asp-area="" asp-controller="ManageReview" asp-action="Index">Recenzije</a></li>
                             </ul>
                         </li>
+                        }
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>

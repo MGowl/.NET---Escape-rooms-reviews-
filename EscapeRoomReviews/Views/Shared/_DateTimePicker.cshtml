@@ -51,7 +51,7 @@
                 time_24hr: true,
                 maxDate: "today",
                 locale: isCroatian ? "hr" : "en",
-                defaultDate: hidden.value || null,
+                defaultDate: hidden.value ? new Date(hidden.value) : null,
                 onValueUpdate: function (selectedDates, dateStr, instance) {
                     if (selectedDates.length) {
                         hidden.value = instance.formatDate(selectedDates[0], "Y-m-d\\TH:i");

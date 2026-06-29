@@ -11,7 +11,7 @@ using EscapeRoomReviews.ViewModels;
 
 namespace EscapeRoomReviews.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Admin,Editor")]
     public class ManageReviewController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -181,6 +181,7 @@ namespace EscapeRoomReviews.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public IActionResult SearchEscapeRooms(string term)
         {
             var query = term?.Trim();
