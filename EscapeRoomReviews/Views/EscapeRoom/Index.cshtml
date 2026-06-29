@@ -172,19 +172,13 @@
                                 <div class="mb-3 d-flex flex-wrap gap-2">
                                     @{
                                         var diffBg = room.Difficulty switch {
-                                            "Easy" => "var(--color-accent-peach)",
-                                            "Medium" => "var(--color-bg-light-cyan)",
-                                            "Hard" => "var(--color-accent-pink)",
+                                            "Easy" => "#5aaa55",
+                                            "Medium" => "#c9a83c",
+                                            "Hard" => "#d45c5c",
                                             "Expert" => "var(--color-accent-purple)",
                                             _ => "#f1f3f5"
                                         };
-                                        var diffText = room.Difficulty switch {
-                                            "Easy" => "var(--primary-deep-green)",
-                                            "Medium" => "var(--primary-deep-green)",
-                                            "Hard" => "white",
-                                            "Expert" => "white",
-                                            _ => "#495057"
-                                        };
+                                        var diffText = "white";
                                     }
                                     <span class="badge rounded-pill border-0 px-3 py-2 fw-semibold" style="background-color: @diffBg; color: @diffText !important; font-size: 0.8rem; letter-spacing: 0.5px;">@room.Difficulty</span>
                                     <span class="badge rounded-pill border-0 px-3 py-2 fw-semibold" style="background-color: var(--color-bg-page); color: var(--primary-deep-green) !important; font-size: 0.8rem; letter-spacing: 0.5px;">@room.City</span>

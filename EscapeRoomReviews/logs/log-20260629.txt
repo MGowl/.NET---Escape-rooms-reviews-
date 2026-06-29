@@ -3749,3 +3749,1222 @@ ORDER BY `e`.`Id`, `l`.`Id`, `c`.`Id`, `s`.`EscapeRoomsId`, `s`.`ThemesId`, `s`.
 2026-06-29 07:34:08.245 +02:00 [INF] Executed action EscapeRoomReviews.Controllers.EscapeRoomController.Index (EscapeRoomReviews) in 15.611ms
 2026-06-29 07:34:08.245 +02:00 [INF] Executed endpoint 'EscapeRoomReviews.Controllers.EscapeRoomController.Index (EscapeRoomReviews)'
 2026-06-29 07:34:08.246 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5241/ - 200 null text/html; charset=utf-8 26.6251ms
+2026-06-29 07:39:59.036 +02:00 [INF] Executed DbCommand (20ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT GET_LOCK('__EscapeRoomReviews_EFMigrationsLock', 259200)
+2026-06-29 07:39:59.196 +02:00 [INF] Executed DbCommand (49ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS `__EFMigrationsHistory` (
+    `MigrationId` varchar(150) CHARACTER SET utf8mb4 NOT NULL,
+    `ProductVersion` varchar(32) CHARACTER SET utf8mb4 NOT NULL,
+    CONSTRAINT `PK___EFMigrationsHistory` PRIMARY KEY (`MigrationId`)
+) CHARACTER SET=utf8mb4;
+2026-06-29 07:39:59.309 +02:00 [INF] Executed DbCommand (34ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='EscapeRoomReviews' AND TABLE_NAME='__EFMigrationsHistory';
+2026-06-29 07:39:59.316 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `MigrationId`, `ProductVersion`
+FROM `__EFMigrationsHistory`
+ORDER BY `MigrationId`;
+2026-06-29 07:39:59.333 +02:00 [INF] No migrations were applied. The database is already up to date.
+2026-06-29 07:39:59.341 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT RELEASE_LOCK('__EscapeRoomReviews_EFMigrationsLock')
+2026-06-29 07:39:59.542 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM `Users` AS `u`)
+2026-06-29 07:39:59.563 +02:00 [INF] User profile is available. Using 'C:\Users\majda\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-06-29 07:39:59.683 +02:00 [INF] Executed DbCommand (27ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a`.`Id`, `a`.`ConcurrencyStamp`, `a`.`Name`, `a`.`NormalizedName`
+FROM `AspNetRoles` AS `a`
+WHERE `a`.`NormalizedName` = @__normalizedName_0
+LIMIT 1
+2026-06-29 07:39:59.736 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a`.`Id`, `a`.`ConcurrencyStamp`, `a`.`Name`, `a`.`NormalizedName`
+FROM `AspNetRoles` AS `a`
+WHERE `a`.`NormalizedName` = @__normalizedName_0
+LIMIT 1
+2026-06-29 07:39:59.750 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `a`.`Id`, `a`.`AccessFailedCount`, `a`.`ConcurrencyStamp`, `a`.`Email`, `a`.`EmailConfirmed`, `a`.`FirstName`, `a`.`LastName`, `a`.`LockoutEnabled`, `a`.`LockoutEnd`, `a`.`NormalizedEmail`, `a`.`NormalizedUserName`, `a`.`PasswordHash`, `a`.`PhoneNumber`, `a`.`PhoneNumberConfirmed`, `a`.`SecurityStamp`, `a`.`TwoFactorEnabled`, `a`.`UserName`
+FROM `AspNetUsers` AS `a`
+ORDER BY `a`.`Id`
+LIMIT 1
+2026-06-29 07:39:59.798 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedRoleName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a`.`Id`, `a`.`ConcurrencyStamp`, `a`.`Name`, `a`.`NormalizedName`
+FROM `AspNetRoles` AS `a`
+WHERE `a`.`NormalizedName` = @__normalizedRoleName_0
+LIMIT 2
+2026-06-29 07:39:59.824 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (Size = 255), @__p_1='?' (Size = 255)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a`.`UserId`, `a`.`RoleId`
+FROM `AspNetUserRoles` AS `a`
+WHERE (`a`.`UserId` = @__p_0) AND (`a`.`RoleId` = @__p_1)
+LIMIT 1
+2026-06-29 07:39:59.939 +02:00 [WRN] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+2026-06-29 07:39:59.972 +02:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `e`.`Id`, `e`.`CompanyId`, `e`.`CreatedAt`, `e`.`DeletedAt`, `e`.`Description`, `e`.`Difficulty`, `e`.`LocationId`, `e`.`MaxPlayers`, `e`.`Name`, `e`.`Price`, `l`.`Id`, `l`.`Address`, `l`.`City`, `l`.`DeletedAt`, `l`.`Latitude`, `l`.`Longitude`, `l`.`PostalCode`, `c`.`Id`, `c`.`DeletedAt`, `c`.`Name`, `c`.`Website`, `s`.`Id`, `s`.`DeletedAt`, `s`.`IconUrl`, `s`.`Name`, `s`.`EscapeRoomsId`, `s`.`ThemesId`, `p`.`Id`, `p`.`ContentType`, `p`.`CreatedAt`, `p`.`EscapeRoomId`, `p`.`FileName`, `p`.`FileSize`, `p`.`Url`, `s0`.`Id`, `s0`.`Comment`, `s0`.`CreatedAt`, `s0`.`DeletedAt`, `s0`.`EscapeRoomId`, `s0`.`IsVerified`, `s0`.`PlayersCount`, `s0`.`Rating`, `s0`.`UserId`, `s0`.`VisitedAt`, `s0`.`Id0`, `s0`.`DeletedAt0`, `s0`.`Email`, `s0`.`RegisteredAt`, `s0`.`Role`, `s0`.`TotalRoomsPlayed`, `s0`.`Username`
+FROM `EscapeRooms` AS `e`
+INNER JOIN `Locations` AS `l` ON `e`.`LocationId` = `l`.`Id`
+INNER JOIN `Companies` AS `c` ON `e`.`CompanyId` = `c`.`Id`
+LEFT JOIN (
+    SELECT `t`.`Id`, `t`.`DeletedAt`, `t`.`IconUrl`, `t`.`Name`, `e0`.`EscapeRoomsId`, `e0`.`ThemesId`
+    FROM `EscapeRoomTheme` AS `e0`
+    INNER JOIN `Themes` AS `t` ON `e0`.`ThemesId` = `t`.`Id`
+) AS `s` ON `e`.`Id` = `s`.`EscapeRoomsId`
+LEFT JOIN `Photos` AS `p` ON `e`.`Id` = `p`.`EscapeRoomId`
+LEFT JOIN (
+    SELECT `r`.`Id`, `r`.`Comment`, `r`.`CreatedAt`, `r`.`DeletedAt`, `r`.`EscapeRoomId`, `r`.`IsVerified`, `r`.`PlayersCount`, `r`.`Rating`, `r`.`UserId`, `r`.`VisitedAt`, `u`.`Id` AS `Id0`, `u`.`DeletedAt` AS `DeletedAt0`, `u`.`Email`, `u`.`RegisteredAt`, `u`.`Role`, `u`.`TotalRoomsPlayed`, `u`.`Username`
+    FROM `Reviews` AS `r`
+    INNER JOIN `Users` AS `u` ON `r`.`UserId` = `u`.`Id`
+    WHERE `r`.`DeletedAt` IS NULL
+) AS `s0` ON `e`.`Id` = `s0`.`EscapeRoomId`
+WHERE `e`.`DeletedAt` IS NULL
+ORDER BY `e`.`Id`, `l`.`Id`, `c`.`Id`, `s`.`EscapeRoomsId`, `s`.`ThemesId`, `s`.`Id`, `p`.`Id`, `s0`.`Id`
+2026-06-29 07:40:00.018 +02:00 [INF] Ucitan primjer podataka: 4 escape room objekta.
+2026-06-29 07:40:00.019 +02:00 [INF] Top 5 verificiranih soba: Misija Mars: Zadnji Signal (5.00), Tajna Teslinog Laboratorija (4.50), Ukleta Vila Raven (3.33), Neka soba (0.00)
+2026-06-29 07:40:00.022 +02:00 [INF] Sobe u gradu Zagreb sortirane po tezini: Tajna Teslinog Laboratorija [Medium]
+2026-06-29 07:40:00.023 +02:00 [INF] Prosjecna verificirana ocjena za sobu ID 1: 4.50
+2026-06-29 07:40:00.304 +02:00 [INF] Now listening on: http://localhost:5241
+2026-06-29 07:40:00.304 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-06-29 07:40:00.304 +02:00 [INF] Hosting environment: Development
+2026-06-29 07:40:00.304 +02:00 [INF] Content root path: c:\Users\majda\OneDrive\Dokumenti\6. semestar\.NET\.NET---Escape-rooms-reviews-\EscapeRoomReviews
+2026-06-29 07:40:08.859 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5241/ - null null
+2026-06-29 07:40:08.863 +02:00 [WRN] Failed to determine the https port for redirect.
+2026-06-29 07:40:08.933 +02:00 [INF] Executing endpoint 'EscapeRoomReviews.Controllers.EscapeRoomController.Index (EscapeRoomReviews)'
+2026-06-29 07:40:08.955 +02:00 [INF] Route matched with {action = "Index", controller = "EscapeRoom", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index(System.String[], System.String[], System.String[], System.String) on controller EscapeRoomReviews.Controllers.EscapeRoomController (EscapeRoomReviews).
+2026-06-29 07:40:08.999 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `e`.`Id`, `e`.`CompanyId`, `e`.`CreatedAt`, `e`.`DeletedAt`, `e`.`Description`, `e`.`Difficulty`, `e`.`LocationId`, `e`.`MaxPlayers`, `e`.`Name`, `e`.`Price`, `l`.`Id`, `l`.`Address`, `l`.`City`, `l`.`DeletedAt`, `l`.`Latitude`, `l`.`Longitude`, `l`.`PostalCode`, `c`.`Id`, `c`.`DeletedAt`, `c`.`Name`, `c`.`Website`, `s`.`Id`, `s`.`DeletedAt`, `s`.`IconUrl`, `s`.`Name`, `s`.`EscapeRoomsId`, `s`.`ThemesId`, `p`.`Id`, `p`.`ContentType`, `p`.`CreatedAt`, `p`.`EscapeRoomId`, `p`.`FileName`, `p`.`FileSize`, `p`.`Url`, `s0`.`Id`, `s0`.`Comment`, `s0`.`CreatedAt`, `s0`.`DeletedAt`, `s0`.`EscapeRoomId`, `s0`.`IsVerified`, `s0`.`PlayersCount`, `s0`.`Rating`, `s0`.`UserId`, `s0`.`VisitedAt`, `s0`.`Id0`, `s0`.`DeletedAt0`, `s0`.`Email`, `s0`.`RegisteredAt`, `s0`.`Role`, `s0`.`TotalRoomsPlayed`, `s0`.`Username`
+FROM `EscapeRooms` AS `e`
+INNER JOIN `Locations` AS `l` ON `e`.`LocationId` = `l`.`Id`
+INNER JOIN `Companies` AS `c` ON `e`.`CompanyId` = `c`.`Id`
+LEFT JOIN (
+    SELECT `t`.`Id`, `t`.`DeletedAt`, `t`.`IconUrl`, `t`.`Name`, `e0`.`EscapeRoomsId`, `e0`.`ThemesId`
+    FROM `EscapeRoomTheme` AS `e0`
+    INNER JOIN `Themes` AS `t` ON `e0`.`ThemesId` = `t`.`Id`
+) AS `s` ON `e`.`Id` = `s`.`EscapeRoomsId`
+LEFT JOIN `Photos` AS `p` ON `e`.`Id` = `p`.`EscapeRoomId`
+LEFT JOIN (
+    SELECT `r`.`Id`, `r`.`Comment`, `r`.`CreatedAt`, `r`.`DeletedAt`, `r`.`EscapeRoomId`, `r`.`IsVerified`, `r`.`PlayersCount`, `r`.`Rating`, `r`.`UserId`, `r`.`VisitedAt`, `u`.`Id` AS `Id0`, `u`.`DeletedAt` AS `DeletedAt0`, `u`.`Email`, `u`.`RegisteredAt`, `u`.`Role`, `u`.`TotalRoomsPlayed`, `u`.`Username`
+    FROM `Reviews` AS `r`
+    INNER JOIN `Users` AS `u` ON `r`.`UserId` = `u`.`Id`
+    WHERE `r`.`DeletedAt` IS NULL
+) AS `s0` ON `e`.`Id` = `s0`.`EscapeRoomId`
+WHERE `e`.`DeletedAt` IS NULL
+ORDER BY `e`.`Id`, `l`.`Id`, `c`.`Id`, `s`.`EscapeRoomsId`, `s`.`ThemesId`, `s`.`Id`, `p`.`Id`, `s0`.`Id`
+2026-06-29 07:40:09.019 +02:00 [INF] Executing ViewResult, running view Index.
+2026-06-29 07:40:09.219 +02:00 [INF] Executed ViewResult - view Index executed in 202.5639ms.
+2026-06-29 07:40:09.220 +02:00 [INF] Executed action EscapeRoomReviews.Controllers.EscapeRoomController.Index (EscapeRoomReviews) in 263.6508ms
+2026-06-29 07:40:09.220 +02:00 [INF] Executed endpoint 'EscapeRoomReviews.Controllers.EscapeRoomController.Index (EscapeRoomReviews)'
+2026-06-29 07:40:09.227 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5241/ - 200 null text/html; charset=utf-8 370.9911ms
+2026-06-29 07:40:14.601 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5241/soba/1 - null null
+2026-06-29 07:40:14.613 +02:00 [INF] Executing endpoint 'EscapeRoomReviews.Controllers.EscapeRoomController.Details (EscapeRoomReviews)'
+2026-06-29 07:40:14.624 +02:00 [INF] Route matched with {action = "Details", controller = "EscapeRoom", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Details(Int32) on controller EscapeRoomReviews.Controllers.EscapeRoomController (EscapeRoomReviews).
+2026-06-29 07:40:14.692 +02:00 [WRN] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+2026-06-29 07:40:14.719 +02:00 [INF] Executed DbCommand (11ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CompanyId`, `s`.`CreatedAt`, `s`.`DeletedAt`, `s`.`Description`, `s`.`Difficulty`, `s`.`LocationId`, `s`.`MaxPlayers`, `s`.`Name`, `s`.`Price`, `s`.`Id0`, `s`.`Address`, `s`.`City`, `s`.`DeletedAt0`, `s`.`Latitude`, `s`.`Longitude`, `s`.`PostalCode`, `s`.`Id1`, `s`.`DeletedAt1`, `s`.`Name0`, `s`.`Website`, `s0`.`Id`, `s0`.`DeletedAt`, `s0`.`IconUrl`, `s0`.`Name`, `s0`.`EscapeRoomsId`, `s0`.`ThemesId`, `p`.`Id`, `p`.`ContentType`, `p`.`CreatedAt`, `p`.`EscapeRoomId`, `p`.`FileName`, `p`.`FileSize`, `p`.`Url`, `s1`.`Id`, `s1`.`Comment`, `s1`.`CreatedAt`, `s1`.`DeletedAt`, `s1`.`EscapeRoomId`, `s1`.`IsVerified`, `s1`.`PlayersCount`, `s1`.`Rating`, `s1`.`UserId`, `s1`.`VisitedAt`, `s1`.`Id0`, `s1`.`DeletedAt0`, `s1`.`Email`, `s1`.`RegisteredAt`, `s1`.`Role`, `s1`.`TotalRoomsPlayed`, `s1`.`Username`
+FROM (
+    SELECT `e`.`Id`, `e`.`CompanyId`, `e`.`CreatedAt`, `e`.`DeletedAt`, `e`.`Description`, `e`.`Difficulty`, `e`.`LocationId`, `e`.`MaxPlayers`, `e`.`Name`, `e`.`Price`, `l`.`Id` AS `Id0`, `l`.`Address`, `l`.`City`, `l`.`DeletedAt` AS `DeletedAt0`, `l`.`Latitude`, `l`.`Longitude`, `l`.`PostalCode`, `c`.`Id` AS `Id1`, `c`.`DeletedAt` AS `DeletedAt1`, `c`.`Name` AS `Name0`, `c`.`Website`
+    FROM `EscapeRooms` AS `e`
+    INNER JOIN `Locations` AS `l` ON `e`.`LocationId` = `l`.`Id`
+    INNER JOIN `Companies` AS `c` ON `e`.`CompanyId` = `c`.`Id`
+    WHERE `e`.`DeletedAt` IS NULL AND (`e`.`Id` = @__id_0)
+    LIMIT 1
+) AS `s`
+LEFT JOIN (
+    SELECT `t`.`Id`, `t`.`DeletedAt`, `t`.`IconUrl`, `t`.`Name`, `e0`.`EscapeRoomsId`, `e0`.`ThemesId`
+    FROM `EscapeRoomTheme` AS `e0`
+    INNER JOIN `Themes` AS `t` ON `e0`.`ThemesId` = `t`.`Id`
+) AS `s0` ON `s`.`Id` = `s0`.`EscapeRoomsId`
+LEFT JOIN `Photos` AS `p` ON `s`.`Id` = `p`.`EscapeRoomId`
+LEFT JOIN (
+    SELECT `r`.`Id`, `r`.`Comment`, `r`.`CreatedAt`, `r`.`DeletedAt`, `r`.`EscapeRoomId`, `r`.`IsVerified`, `r`.`PlayersCount`, `r`.`Rating`, `r`.`UserId`, `r`.`VisitedAt`, `u`.`Id` AS `Id0`, `u`.`DeletedAt` AS `DeletedAt0`, `u`.`Email`, `u`.`RegisteredAt`, `u`.`Role`, `u`.`TotalRoomsPlayed`, `u`.`Username`
+    FROM `Reviews` AS `r`
+    INNER JOIN `Users` AS `u` ON `r`.`UserId` = `u`.`Id`
+    WHERE `r`.`DeletedAt` IS NULL
+) AS `s1` ON `s`.`Id` = `s1`.`EscapeRoomId`
+ORDER BY `s`.`Id`, `s`.`Id0`, `s`.`Id1`, `s0`.`EscapeRoomsId`, `s0`.`ThemesId`, `s0`.`Id`, `p`.`Id`, `s1`.`Id`
+2026-06-29 07:40:14.733 +02:00 [INF] Executing ViewResult, running view Details.
+2026-06-29 07:40:14.757 +02:00 [INF] Executed ViewResult - view Details executed in 23.8559ms.
+2026-06-29 07:40:14.757 +02:00 [INF] Executed action EscapeRoomReviews.Controllers.EscapeRoomController.Details (EscapeRoomReviews) in 132.8788ms
+2026-06-29 07:40:14.757 +02:00 [INF] Executed endpoint 'EscapeRoomReviews.Controllers.EscapeRoomController.Details (EscapeRoomReviews)'
+2026-06-29 07:40:14.757 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5241/soba/1 - 200 null text/html; charset=utf-8 156.6758ms
+2026-06-29 07:40:20.736 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5241/ - null null
+2026-06-29 07:40:20.756 +02:00 [INF] Executing endpoint 'EscapeRoomReviews.Controllers.EscapeRoomController.Index (EscapeRoomReviews)'
+2026-06-29 07:40:20.756 +02:00 [INF] Route matched with {action = "Index", controller = "EscapeRoom", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index(System.String[], System.String[], System.String[], System.String) on controller EscapeRoomReviews.Controllers.EscapeRoomController (EscapeRoomReviews).
+2026-06-29 07:40:20.761 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `e`.`Id`, `e`.`CompanyId`, `e`.`CreatedAt`, `e`.`DeletedAt`, `e`.`Description`, `e`.`Difficulty`, `e`.`LocationId`, `e`.`MaxPlayers`, `e`.`Name`, `e`.`Price`, `l`.`Id`, `l`.`Address`, `l`.`City`, `l`.`DeletedAt`, `l`.`Latitude`, `l`.`Longitude`, `l`.`PostalCode`, `c`.`Id`, `c`.`DeletedAt`, `c`.`Name`, `c`.`Website`, `s`.`Id`, `s`.`DeletedAt`, `s`.`IconUrl`, `s`.`Name`, `s`.`EscapeRoomsId`, `s`.`ThemesId`, `p`.`Id`, `p`.`ContentType`, `p`.`CreatedAt`, `p`.`EscapeRoomId`, `p`.`FileName`, `p`.`FileSize`, `p`.`Url`, `s0`.`Id`, `s0`.`Comment`, `s0`.`CreatedAt`, `s0`.`DeletedAt`, `s0`.`EscapeRoomId`, `s0`.`IsVerified`, `s0`.`PlayersCount`, `s0`.`Rating`, `s0`.`UserId`, `s0`.`VisitedAt`, `s0`.`Id0`, `s0`.`DeletedAt0`, `s0`.`Email`, `s0`.`RegisteredAt`, `s0`.`Role`, `s0`.`TotalRoomsPlayed`, `s0`.`Username`
+FROM `EscapeRooms` AS `e`
+INNER JOIN `Locations` AS `l` ON `e`.`LocationId` = `l`.`Id`
+INNER JOIN `Companies` AS `c` ON `e`.`CompanyId` = `c`.`Id`
+LEFT JOIN (
+    SELECT `t`.`Id`, `t`.`DeletedAt`, `t`.`IconUrl`, `t`.`Name`, `e0`.`EscapeRoomsId`, `e0`.`ThemesId`
+    FROM `EscapeRoomTheme` AS `e0`
+    INNER JOIN `Themes` AS `t` ON `e0`.`ThemesId` = `t`.`Id`
+) AS `s` ON `e`.`Id` = `s`.`EscapeRoomsId`
+LEFT JOIN `Photos` AS `p` ON `e`.`Id` = `p`.`EscapeRoomId`
+LEFT JOIN (
+    SELECT `r`.`Id`, `r`.`Comment`, `r`.`CreatedAt`, `r`.`DeletedAt`, `r`.`EscapeRoomId`, `r`.`IsVerified`, `r`.`PlayersCount`, `r`.`Rating`, `r`.`UserId`, `r`.`VisitedAt`, `u`.`Id` AS `Id0`, `u`.`DeletedAt` AS `DeletedAt0`, `u`.`Email`, `u`.`RegisteredAt`, `u`.`Role`, `u`.`TotalRoomsPlayed`, `u`.`Username`
+    FROM `Reviews` AS `r`
+    INNER JOIN `Users` AS `u` ON `r`.`UserId` = `u`.`Id`
+    WHERE `r`.`DeletedAt` IS NULL
+) AS `s0` ON `e`.`Id` = `s0`.`EscapeRoomId`
+WHERE `e`.`DeletedAt` IS NULL
+ORDER BY `e`.`Id`, `l`.`Id`, `c`.`Id`, `s`.`EscapeRoomsId`, `s`.`ThemesId`, `s`.`Id`, `p`.`Id`, `s0`.`Id`
+2026-06-29 07:40:20.764 +02:00 [INF] Executing ViewResult, running view Index.
+2026-06-29 07:40:20.771 +02:00 [INF] Executed ViewResult - view Index executed in 6.5125ms.
+2026-06-29 07:40:20.771 +02:00 [INF] Executed action EscapeRoomReviews.Controllers.EscapeRoomController.Index (EscapeRoomReviews) in 14.815ms
+2026-06-29 07:40:20.771 +02:00 [INF] Executed endpoint 'EscapeRoomReviews.Controllers.EscapeRoomController.Index (EscapeRoomReviews)'
+2026-06-29 07:40:20.771 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5241/ - 200 null text/html; charset=utf-8 35.1773ms
+2026-06-29 07:40:22.351 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5241/Theme - null null
+2026-06-29 07:40:22.355 +02:00 [INF] Executing endpoint 'EscapeRoomReviews.Controllers.ThemeController.Index (EscapeRoomReviews)'
+2026-06-29 07:40:22.358 +02:00 [INF] Route matched with {action = "Index", controller = "Theme", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller EscapeRoomReviews.Controllers.ThemeController (EscapeRoomReviews).
+2026-06-29 07:40:22.386 +02:00 [WRN] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+2026-06-29 07:40:22.396 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`DeletedAt`, `t`.`IconUrl`, `t`.`Name`, `s`.`Id`, `s`.`CompanyId`, `s`.`CreatedAt`, `s`.`DeletedAt`, `s`.`Description`, `s`.`Difficulty`, `s`.`LocationId`, `s`.`MaxPlayers`, `s`.`Name`, `s`.`Price`, `s`.`Id0`, `s`.`Address`, `s`.`City`, `s`.`DeletedAt0`, `s`.`Latitude`, `s`.`Longitude`, `s`.`PostalCode`, `s`.`Id1`, `s`.`DeletedAt1`, `s`.`Name0`, `s`.`Website`, `s`.`EscapeRoomsId`, `s`.`ThemesId`, `s`.`Id2`, `s`.`Comment`, `s`.`CreatedAt0`, `s`.`DeletedAt2`, `s`.`EscapeRoomId`, `s`.`IsVerified`, `s`.`PlayersCount`, `s`.`Rating`, `s`.`UserId`, `s`.`VisitedAt`
+FROM `Themes` AS `t`
+LEFT JOIN (
+    SELECT `e0`.`Id`, `e0`.`CompanyId`, `e0`.`CreatedAt`, `e0`.`DeletedAt`, `e0`.`Description`, `e0`.`Difficulty`, `e0`.`LocationId`, `e0`.`MaxPlayers`, `e0`.`Name`, `e0`.`Price`, `l`.`Id` AS `Id0`, `l`.`Address`, `l`.`City`, `l`.`DeletedAt` AS `DeletedAt0`, `l`.`Latitude`, `l`.`Longitude`, `l`.`PostalCode`, `c`.`Id` AS `Id1`, `c`.`DeletedAt` AS `DeletedAt1`, `c`.`Name` AS `Name0`, `c`.`Website`, `e`.`EscapeRoomsId`, `e`.`ThemesId`, `r0`.`Id` AS `Id2`, `r0`.`Comment`, `r0`.`CreatedAt` AS `CreatedAt0`, `r0`.`DeletedAt` AS `DeletedAt2`, `r0`.`EscapeRoomId`, `r0`.`IsVerified`, `r0`.`PlayersCount`, `r0`.`Rating`, `r0`.`UserId`, `r0`.`VisitedAt`
+    FROM `EscapeRoomTheme` AS `e`
+    INNER JOIN `EscapeRooms` AS `e0` ON `e`.`EscapeRoomsId` = `e0`.`Id`
+    INNER JOIN `Locations` AS `l` ON `e0`.`LocationId` = `l`.`Id`
+    INNER JOIN `Companies` AS `c` ON `e0`.`CompanyId` = `c`.`Id`
+    LEFT JOIN (
+        SELECT `r`.`Id`, `r`.`Comment`, `r`.`CreatedAt`, `r`.`DeletedAt`, `r`.`EscapeRoomId`, `r`.`IsVerified`, `r`.`PlayersCount`, `r`.`Rating`, `r`.`UserId`, `r`.`VisitedAt`
+        FROM `Reviews` AS `r`
+        WHERE `r`.`DeletedAt` IS NULL
+    ) AS `r0` ON `e0`.`Id` = `r0`.`EscapeRoomId`
+    WHERE `e0`.`DeletedAt` IS NULL
+) AS `s` ON `t`.`Id` = `s`.`ThemesId`
+WHERE `t`.`DeletedAt` IS NULL
+ORDER BY `t`.`Id`, `s`.`EscapeRoomsId`, `s`.`ThemesId`, `s`.`Id`, `s`.`Id0`, `s`.`Id1`
+2026-06-29 07:40:22.412 +02:00 [INF] Executing ViewResult, running view Index.
+2026-06-29 07:40:22.421 +02:00 [INF] Executed ViewResult - view Index executed in 9.8192ms.
+2026-06-29 07:40:22.421 +02:00 [INF] Executed action EscapeRoomReviews.Controllers.ThemeController.Index (EscapeRoomReviews) in 62.87ms
+2026-06-29 07:40:22.421 +02:00 [INF] Executed endpoint 'EscapeRoomReviews.Controllers.ThemeController.Index (EscapeRoomReviews)'
+2026-06-29 07:40:22.422 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5241/Theme - 200 null text/html; charset=utf-8 71.0351ms
+2026-06-29 07:40:23.739 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5241/teme/2 - null null
+2026-06-29 07:40:23.740 +02:00 [INF] Executing endpoint 'EscapeRoomReviews.Controllers.ThemeController.Details (EscapeRoomReviews)'
+2026-06-29 07:40:23.742 +02:00 [INF] Route matched with {action = "Details", controller = "Theme", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Details(Int32) on controller EscapeRoomReviews.Controllers.ThemeController (EscapeRoomReviews).
+2026-06-29 07:40:23.747 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`DeletedAt`, `t`.`IconUrl`, `t`.`Name`, `s`.`Id`, `s`.`CompanyId`, `s`.`CreatedAt`, `s`.`DeletedAt`, `s`.`Description`, `s`.`Difficulty`, `s`.`LocationId`, `s`.`MaxPlayers`, `s`.`Name`, `s`.`Price`, `s`.`Id0`, `s`.`Address`, `s`.`City`, `s`.`DeletedAt0`, `s`.`Latitude`, `s`.`Longitude`, `s`.`PostalCode`, `s`.`Id1`, `s`.`DeletedAt1`, `s`.`Name0`, `s`.`Website`, `s`.`EscapeRoomsId`, `s`.`ThemesId`, `s`.`Id2`, `s`.`Comment`, `s`.`CreatedAt0`, `s`.`DeletedAt2`, `s`.`EscapeRoomId`, `s`.`IsVerified`, `s`.`PlayersCount`, `s`.`Rating`, `s`.`UserId`, `s`.`VisitedAt`
+FROM `Themes` AS `t`
+LEFT JOIN (
+    SELECT `e0`.`Id`, `e0`.`CompanyId`, `e0`.`CreatedAt`, `e0`.`DeletedAt`, `e0`.`Description`, `e0`.`Difficulty`, `e0`.`LocationId`, `e0`.`MaxPlayers`, `e0`.`Name`, `e0`.`Price`, `l`.`Id` AS `Id0`, `l`.`Address`, `l`.`City`, `l`.`DeletedAt` AS `DeletedAt0`, `l`.`Latitude`, `l`.`Longitude`, `l`.`PostalCode`, `c`.`Id` AS `Id1`, `c`.`DeletedAt` AS `DeletedAt1`, `c`.`Name` AS `Name0`, `c`.`Website`, `e`.`EscapeRoomsId`, `e`.`ThemesId`, `r0`.`Id` AS `Id2`, `r0`.`Comment`, `r0`.`CreatedAt` AS `CreatedAt0`, `r0`.`DeletedAt` AS `DeletedAt2`, `r0`.`EscapeRoomId`, `r0`.`IsVerified`, `r0`.`PlayersCount`, `r0`.`Rating`, `r0`.`UserId`, `r0`.`VisitedAt`
+    FROM `EscapeRoomTheme` AS `e`
+    INNER JOIN `EscapeRooms` AS `e0` ON `e`.`EscapeRoomsId` = `e0`.`Id`
+    INNER JOIN `Locations` AS `l` ON `e0`.`LocationId` = `l`.`Id`
+    INNER JOIN `Companies` AS `c` ON `e0`.`CompanyId` = `c`.`Id`
+    LEFT JOIN (
+        SELECT `r`.`Id`, `r`.`Comment`, `r`.`CreatedAt`, `r`.`DeletedAt`, `r`.`EscapeRoomId`, `r`.`IsVerified`, `r`.`PlayersCount`, `r`.`Rating`, `r`.`UserId`, `r`.`VisitedAt`
+        FROM `Reviews` AS `r`
+        WHERE `r`.`DeletedAt` IS NULL
+    ) AS `r0` ON `e0`.`Id` = `r0`.`EscapeRoomId`
+    WHERE `e0`.`DeletedAt` IS NULL
+) AS `s` ON `t`.`Id` = `s`.`ThemesId`
+WHERE `t`.`DeletedAt` IS NULL
+ORDER BY `t`.`Id`, `s`.`EscapeRoomsId`, `s`.`ThemesId`, `s`.`Id`, `s`.`Id0`, `s`.`Id1`
+2026-06-29 07:40:23.752 +02:00 [INF] Executing ViewResult, running view Details.
+2026-06-29 07:40:23.761 +02:00 [INF] Executed ViewResult - view Details executed in 11.6194ms.
+2026-06-29 07:40:23.761 +02:00 [INF] Executed action EscapeRoomReviews.Controllers.ThemeController.Details (EscapeRoomReviews) in 18.8126ms
+2026-06-29 07:40:23.761 +02:00 [INF] Executed endpoint 'EscapeRoomReviews.Controllers.ThemeController.Details (EscapeRoomReviews)'
+2026-06-29 07:40:23.762 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5241/teme/2 - 200 null text/html; charset=utf-8 22.3726ms
+2026-06-29 07:40:26.174 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5241/ - null null
+2026-06-29 07:40:26.175 +02:00 [INF] Executing endpoint 'EscapeRoomReviews.Controllers.EscapeRoomController.Index (EscapeRoomReviews)'
+2026-06-29 07:40:26.175 +02:00 [INF] Route matched with {action = "Index", controller = "EscapeRoom", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index(System.String[], System.String[], System.String[], System.String) on controller EscapeRoomReviews.Controllers.EscapeRoomController (EscapeRoomReviews).
+2026-06-29 07:40:26.184 +02:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `e`.`Id`, `e`.`CompanyId`, `e`.`CreatedAt`, `e`.`DeletedAt`, `e`.`Description`, `e`.`Difficulty`, `e`.`LocationId`, `e`.`MaxPlayers`, `e`.`Name`, `e`.`Price`, `l`.`Id`, `l`.`Address`, `l`.`City`, `l`.`DeletedAt`, `l`.`Latitude`, `l`.`Longitude`, `l`.`PostalCode`, `c`.`Id`, `c`.`DeletedAt`, `c`.`Name`, `c`.`Website`, `s`.`Id`, `s`.`DeletedAt`, `s`.`IconUrl`, `s`.`Name`, `s`.`EscapeRoomsId`, `s`.`ThemesId`, `p`.`Id`, `p`.`ContentType`, `p`.`CreatedAt`, `p`.`EscapeRoomId`, `p`.`FileName`, `p`.`FileSize`, `p`.`Url`, `s0`.`Id`, `s0`.`Comment`, `s0`.`CreatedAt`, `s0`.`DeletedAt`, `s0`.`EscapeRoomId`, `s0`.`IsVerified`, `s0`.`PlayersCount`, `s0`.`Rating`, `s0`.`UserId`, `s0`.`VisitedAt`, `s0`.`Id0`, `s0`.`DeletedAt0`, `s0`.`Email`, `s0`.`RegisteredAt`, `s0`.`Role`, `s0`.`TotalRoomsPlayed`, `s0`.`Username`
+FROM `EscapeRooms` AS `e`
+INNER JOIN `Locations` AS `l` ON `e`.`LocationId` = `l`.`Id`
+INNER JOIN `Companies` AS `c` ON `e`.`CompanyId` = `c`.`Id`
+LEFT JOIN (
+    SELECT `t`.`Id`, `t`.`DeletedAt`, `t`.`IconUrl`, `t`.`Name`, `e0`.`EscapeRoomsId`, `e0`.`ThemesId`
+    FROM `EscapeRoomTheme` AS `e0`
+    INNER JOIN `Themes` AS `t` ON `e0`.`ThemesId` = `t`.`Id`
+) AS `s` ON `e`.`Id` = `s`.`EscapeRoomsId`
+LEFT JOIN `Photos` AS `p` ON `e`.`Id` = `p`.`EscapeRoomId`
+LEFT JOIN (
+    SELECT `r`.`Id`, `r`.`Comment`, `r`.`CreatedAt`, `r`.`DeletedAt`, `r`.`EscapeRoomId`, `r`.`IsVerified`, `r`.`PlayersCount`, `r`.`Rating`, `r`.`UserId`, `r`.`VisitedAt`, `u`.`Id` AS `Id0`, `u`.`DeletedAt` AS `DeletedAt0`, `u`.`Email`, `u`.`RegisteredAt`, `u`.`Role`, `u`.`TotalRoomsPlayed`, `u`.`Username`
+    FROM `Reviews` AS `r`
+    INNER JOIN `Users` AS `u` ON `r`.`UserId` = `u`.`Id`
+    WHERE `r`.`DeletedAt` IS NULL
+) AS `s0` ON `e`.`Id` = `s0`.`EscapeRoomId`
+WHERE `e`.`DeletedAt` IS NULL
+ORDER BY `e`.`Id`, `l`.`Id`, `c`.`Id`, `s`.`EscapeRoomsId`, `s`.`ThemesId`, `s`.`Id`, `p`.`Id`, `s0`.`Id`
+2026-06-29 07:40:26.189 +02:00 [INF] Executing ViewResult, running view Index.
+2026-06-29 07:40:26.192 +02:00 [INF] Executed ViewResult - view Index executed in 2.7418ms.
+2026-06-29 07:40:26.192 +02:00 [INF] Executed action EscapeRoomReviews.Controllers.EscapeRoomController.Index (EscapeRoomReviews) in 16.5763ms
+2026-06-29 07:40:26.192 +02:00 [INF] Executed endpoint 'EscapeRoomReviews.Controllers.EscapeRoomController.Index (EscapeRoomReviews)'
+2026-06-29 07:40:26.192 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5241/ - 200 null text/html; charset=utf-8 18.0616ms
+2026-06-29 07:40:27.073 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5241/soba/1 - null null
+2026-06-29 07:40:27.075 +02:00 [INF] Executing endpoint 'EscapeRoomReviews.Controllers.EscapeRoomController.Details (EscapeRoomReviews)'
+2026-06-29 07:40:27.075 +02:00 [INF] Route matched with {action = "Details", controller = "EscapeRoom", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Details(Int32) on controller EscapeRoomReviews.Controllers.EscapeRoomController (EscapeRoomReviews).
+2026-06-29 07:40:27.085 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CompanyId`, `s`.`CreatedAt`, `s`.`DeletedAt`, `s`.`Description`, `s`.`Difficulty`, `s`.`LocationId`, `s`.`MaxPlayers`, `s`.`Name`, `s`.`Price`, `s`.`Id0`, `s`.`Address`, `s`.`City`, `s`.`DeletedAt0`, `s`.`Latitude`, `s`.`Longitude`, `s`.`PostalCode`, `s`.`Id1`, `s`.`DeletedAt1`, `s`.`Name0`, `s`.`Website`, `s0`.`Id`, `s0`.`DeletedAt`, `s0`.`IconUrl`, `s0`.`Name`, `s0`.`EscapeRoomsId`, `s0`.`ThemesId`, `p`.`Id`, `p`.`ContentType`, `p`.`CreatedAt`, `p`.`EscapeRoomId`, `p`.`FileName`, `p`.`FileSize`, `p`.`Url`, `s1`.`Id`, `s1`.`Comment`, `s1`.`CreatedAt`, `s1`.`DeletedAt`, `s1`.`EscapeRoomId`, `s1`.`IsVerified`, `s1`.`PlayersCount`, `s1`.`Rating`, `s1`.`UserId`, `s1`.`VisitedAt`, `s1`.`Id0`, `s1`.`DeletedAt0`, `s1`.`Email`, `s1`.`RegisteredAt`, `s1`.`Role`, `s1`.`TotalRoomsPlayed`, `s1`.`Username`
+FROM (
+    SELECT `e`.`Id`, `e`.`CompanyId`, `e`.`CreatedAt`, `e`.`DeletedAt`, `e`.`Description`, `e`.`Difficulty`, `e`.`LocationId`, `e`.`MaxPlayers`, `e`.`Name`, `e`.`Price`, `l`.`Id` AS `Id0`, `l`.`Address`, `l`.`City`, `l`.`DeletedAt` AS `DeletedAt0`, `l`.`Latitude`, `l`.`Longitude`, `l`.`PostalCode`, `c`.`Id` AS `Id1`, `c`.`DeletedAt` AS `DeletedAt1`, `c`.`Name` AS `Name0`, `c`.`Website`
+    FROM `EscapeRooms` AS `e`
+    INNER JOIN `Locations` AS `l` ON `e`.`LocationId` = `l`.`Id`
+    INNER JOIN `Companies` AS `c` ON `e`.`CompanyId` = `c`.`Id`
+    WHERE `e`.`DeletedAt` IS NULL AND (`e`.`Id` = @__id_0)
+    LIMIT 1
+) AS `s`
+LEFT JOIN (
+    SELECT `t`.`Id`, `t`.`DeletedAt`, `t`.`IconUrl`, `t`.`Name`, `e0`.`EscapeRoomsId`, `e0`.`ThemesId`
+    FROM `EscapeRoomTheme` AS `e0`
+    INNER JOIN `Themes` AS `t` ON `e0`.`ThemesId` = `t`.`Id`
+) AS `s0` ON `s`.`Id` = `s0`.`EscapeRoomsId`
+LEFT JOIN `Photos` AS `p` ON `s`.`Id` = `p`.`EscapeRoomId`
+LEFT JOIN (
+    SELECT `r`.`Id`, `r`.`Comment`, `r`.`CreatedAt`, `r`.`DeletedAt`, `r`.`EscapeRoomId`, `r`.`IsVerified`, `r`.`PlayersCount`, `r`.`Rating`, `r`.`UserId`, `r`.`VisitedAt`, `u`.`Id` AS `Id0`, `u`.`DeletedAt` AS `DeletedAt0`, `u`.`Email`, `u`.`RegisteredAt`, `u`.`Role`, `u`.`TotalRoomsPlayed`, `u`.`Username`
+    FROM `Reviews` AS `r`
+    INNER JOIN `Users` AS `u` ON `r`.`UserId` = `u`.`Id`
+    WHERE `r`.`DeletedAt` IS NULL
+) AS `s1` ON `s`.`Id` = `s1`.`EscapeRoomId`
+ORDER BY `s`.`Id`, `s`.`Id0`, `s`.`Id1`, `s0`.`EscapeRoomsId`, `s0`.`ThemesId`, `s0`.`Id`, `p`.`Id`, `s1`.`Id`
+2026-06-29 07:40:27.088 +02:00 [INF] Executing ViewResult, running view Details.
+2026-06-29 07:40:27.091 +02:00 [INF] Executed ViewResult - view Details executed in 3.499ms.
+2026-06-29 07:40:27.091 +02:00 [INF] Executed action EscapeRoomReviews.Controllers.EscapeRoomController.Details (EscapeRoomReviews) in 15.8989ms
+2026-06-29 07:40:27.092 +02:00 [INF] Executed endpoint 'EscapeRoomReviews.Controllers.EscapeRoomController.Details (EscapeRoomReviews)'
+2026-06-29 07:40:27.092 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5241/soba/1 - 200 null text/html; charset=utf-8 18.7064ms
+2026-06-29 07:40:30.616 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5241/ - null null
+2026-06-29 07:40:30.617 +02:00 [INF] Executing endpoint 'EscapeRoomReviews.Controllers.EscapeRoomController.Index (EscapeRoomReviews)'
+2026-06-29 07:40:30.617 +02:00 [INF] Route matched with {action = "Index", controller = "EscapeRoom", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index(System.String[], System.String[], System.String[], System.String) on controller EscapeRoomReviews.Controllers.EscapeRoomController (EscapeRoomReviews).
+2026-06-29 07:40:30.624 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `e`.`Id`, `e`.`CompanyId`, `e`.`CreatedAt`, `e`.`DeletedAt`, `e`.`Description`, `e`.`Difficulty`, `e`.`LocationId`, `e`.`MaxPlayers`, `e`.`Name`, `e`.`Price`, `l`.`Id`, `l`.`Address`, `l`.`City`, `l`.`DeletedAt`, `l`.`Latitude`, `l`.`Longitude`, `l`.`PostalCode`, `c`.`Id`, `c`.`DeletedAt`, `c`.`Name`, `c`.`Website`, `s`.`Id`, `s`.`DeletedAt`, `s`.`IconUrl`, `s`.`Name`, `s`.`EscapeRoomsId`, `s`.`ThemesId`, `p`.`Id`, `p`.`ContentType`, `p`.`CreatedAt`, `p`.`EscapeRoomId`, `p`.`FileName`, `p`.`FileSize`, `p`.`Url`, `s0`.`Id`, `s0`.`Comment`, `s0`.`CreatedAt`, `s0`.`DeletedAt`, `s0`.`EscapeRoomId`, `s0`.`IsVerified`, `s0`.`PlayersCount`, `s0`.`Rating`, `s0`.`UserId`, `s0`.`VisitedAt`, `s0`.`Id0`, `s0`.`DeletedAt0`, `s0`.`Email`, `s0`.`RegisteredAt`, `s0`.`Role`, `s0`.`TotalRoomsPlayed`, `s0`.`Username`
+FROM `EscapeRooms` AS `e`
+INNER JOIN `Locations` AS `l` ON `e`.`LocationId` = `l`.`Id`
+INNER JOIN `Companies` AS `c` ON `e`.`CompanyId` = `c`.`Id`
+LEFT JOIN (
+    SELECT `t`.`Id`, `t`.`DeletedAt`, `t`.`IconUrl`, `t`.`Name`, `e0`.`EscapeRoomsId`, `e0`.`ThemesId`
+    FROM `EscapeRoomTheme` AS `e0`
+    INNER JOIN `Themes` AS `t` ON `e0`.`ThemesId` = `t`.`Id`
+) AS `s` ON `e`.`Id` = `s`.`EscapeRoomsId`
+LEFT JOIN `Photos` AS `p` ON `e`.`Id` = `p`.`EscapeRoomId`
+LEFT JOIN (
+    SELECT `r`.`Id`, `r`.`Comment`, `r`.`CreatedAt`, `r`.`DeletedAt`, `r`.`EscapeRoomId`, `r`.`IsVerified`, `r`.`PlayersCount`, `r`.`Rating`, `r`.`UserId`, `r`.`VisitedAt`, `u`.`Id` AS `Id0`, `u`.`DeletedAt` AS `DeletedAt0`, `u`.`Email`, `u`.`RegisteredAt`, `u`.`Role`, `u`.`TotalRoomsPlayed`, `u`.`Username`
+    FROM `Reviews` AS `r`
+    INNER JOIN `Users` AS `u` ON `r`.`UserId` = `u`.`Id`
+    WHERE `r`.`DeletedAt` IS NULL
+) AS `s0` ON `e`.`Id` = `s0`.`EscapeRoomId`
+WHERE `e`.`DeletedAt` IS NULL
+ORDER BY `e`.`Id`, `l`.`Id`, `c`.`Id`, `s`.`EscapeRoomsId`, `s`.`ThemesId`, `s`.`Id`, `p`.`Id`, `s0`.`Id`
+2026-06-29 07:40:30.627 +02:00 [INF] Executing ViewResult, running view Index.
+2026-06-29 07:40:30.632 +02:00 [INF] Executed ViewResult - view Index executed in 5.6291ms.
+2026-06-29 07:40:30.633 +02:00 [INF] Executed action EscapeRoomReviews.Controllers.EscapeRoomController.Index (EscapeRoomReviews) in 15.2907ms
+2026-06-29 07:40:30.633 +02:00 [INF] Executed endpoint 'EscapeRoomReviews.Controllers.EscapeRoomController.Index (EscapeRoomReviews)'
+2026-06-29 07:40:30.633 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5241/ - 200 null text/html; charset=utf-8 16.9662ms
+2026-06-29 07:40:41.446 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5241/ManageEscapeRoom - null null
+2026-06-29 07:40:41.457 +02:00 [INF] Executing endpoint 'EscapeRoomReviews.Controllers.ManageEscapeRoomController.Index (EscapeRoomReviews)'
+2026-06-29 07:40:41.460 +02:00 [INF] Route matched with {action = "Index", controller = "ManageEscapeRoom", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller EscapeRoomReviews.Controllers.ManageEscapeRoomController (EscapeRoomReviews).
+2026-06-29 07:40:41.477 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `e`.`Id`, `e`.`CompanyId`, `e`.`CreatedAt`, `e`.`DeletedAt`, `e`.`Description`, `e`.`Difficulty`, `e`.`LocationId`, `e`.`MaxPlayers`, `e`.`Name`, `e`.`Price`, `l`.`Id`, `l`.`Address`, `l`.`City`, `l`.`DeletedAt`, `l`.`Latitude`, `l`.`Longitude`, `l`.`PostalCode`, `c`.`Id`, `c`.`DeletedAt`, `c`.`Name`, `c`.`Website`
+FROM `EscapeRooms` AS `e`
+INNER JOIN `Locations` AS `l` ON `e`.`LocationId` = `l`.`Id`
+INNER JOIN `Companies` AS `c` ON `e`.`CompanyId` = `c`.`Id`
+WHERE `e`.`DeletedAt` IS NULL
+2026-06-29 07:40:41.482 +02:00 [INF] Executing ViewResult, running view Index.
+2026-06-29 07:40:41.499 +02:00 [INF] Executed ViewResult - view Index executed in 19.3582ms.
+2026-06-29 07:40:41.499 +02:00 [INF] Executed action EscapeRoomReviews.Controllers.ManageEscapeRoomController.Index (EscapeRoomReviews) in 38.7667ms
+2026-06-29 07:40:41.499 +02:00 [INF] Executed endpoint 'EscapeRoomReviews.Controllers.ManageEscapeRoomController.Index (EscapeRoomReviews)'
+2026-06-29 07:40:41.500 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5241/ManageEscapeRoom - 200 null text/html; charset=utf-8 53.2458ms
+2026-06-29 07:40:43.991 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5241/ManageEscapeRoom/Edit/1 - null null
+2026-06-29 07:40:43.995 +02:00 [INF] Executing endpoint 'EscapeRoomReviews.Controllers.ManageEscapeRoomController.EditGet (EscapeRoomReviews)'
+2026-06-29 07:40:43.996 +02:00 [INF] Route matched with {action = "Edit", controller = "ManageEscapeRoom", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult EditGet(Int32) on controller EscapeRoomReviews.Controllers.ManageEscapeRoomController (EscapeRoomReviews).
+2026-06-29 07:40:44.013 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `e1`.`Id`, `e1`.`CompanyId`, `e1`.`CreatedAt`, `e1`.`DeletedAt`, `e1`.`Description`, `e1`.`Difficulty`, `e1`.`LocationId`, `e1`.`MaxPlayers`, `e1`.`Name`, `e1`.`Price`, `s`.`Id`, `s`.`DeletedAt`, `s`.`IconUrl`, `s`.`Name`, `s`.`EscapeRoomsId`, `s`.`ThemesId`
+FROM (
+    SELECT `e`.`Id`, `e`.`CompanyId`, `e`.`CreatedAt`, `e`.`DeletedAt`, `e`.`Description`, `e`.`Difficulty`, `e`.`LocationId`, `e`.`MaxPlayers`, `e`.`Name`, `e`.`Price`
+    FROM `EscapeRooms` AS `e`
+    WHERE (`e`.`Id` = @__id_0) AND `e`.`DeletedAt` IS NULL
+    LIMIT 1
+) AS `e1`
+LEFT JOIN (
+    SELECT `t`.`Id`, `t`.`DeletedAt`, `t`.`IconUrl`, `t`.`Name`, `e0`.`EscapeRoomsId`, `e0`.`ThemesId`
+    FROM `EscapeRoomTheme` AS `e0`
+    INNER JOIN `Themes` AS `t` ON `e0`.`ThemesId` = `t`.`Id`
+) AS `s` ON `e1`.`Id` = `s`.`EscapeRoomsId`
+ORDER BY `e1`.`Id`, `s`.`EscapeRoomsId`, `s`.`ThemesId`
+2026-06-29 07:40:44.032 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_Value_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT CONCAT(CONCAT(`l`.`City`, ' - '), `l`.`Address`)
+FROM `Locations` AS `l`
+WHERE `l`.`Id` = @__id_Value_0
+LIMIT 1
+2026-06-29 07:40:44.039 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_Value_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `c`.`Name`
+FROM `Companies` AS `c`
+WHERE `c`.`Id` = @__id_Value_0
+LIMIT 1
+2026-06-29 07:40:44.087 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CAST(`t`.`Id` AS char) AS `Value`, `t`.`Name` AS `Text`, `t`.`Id` IN (1, 3) AS `Selected`
+FROM `Themes` AS `t`
+WHERE `t`.`DeletedAt` IS NULL
+ORDER BY `t`.`Name`
+2026-06-29 07:40:44.089 +02:00 [INF] Executing ViewResult, running view Edit.
+2026-06-29 07:40:44.154 +02:00 [INF] Executed ViewResult - view Edit executed in 66.409ms.
+2026-06-29 07:40:44.154 +02:00 [INF] Executed action EscapeRoomReviews.Controllers.ManageEscapeRoomController.EditGet (EscapeRoomReviews) in 157.825ms
+2026-06-29 07:40:44.154 +02:00 [INF] Executed endpoint 'EscapeRoomReviews.Controllers.ManageEscapeRoomController.EditGet (EscapeRoomReviews)'
+2026-06-29 07:40:44.155 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5241/ManageEscapeRoom/Edit/1 - 200 null text/html; charset=utf-8 163.4224ms
+2026-06-29 07:40:44.281 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5241/ManageEscapeRoom/GetPhotos?escapeRoomId=1 - null null
+2026-06-29 07:40:44.286 +02:00 [INF] Executing endpoint 'EscapeRoomReviews.Controllers.ManageEscapeRoomController.GetPhotos (EscapeRoomReviews)'
+2026-06-29 07:40:44.288 +02:00 [INF] Route matched with {action = "GetPhotos", controller = "ManageEscapeRoom", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetPhotos(Int32) on controller EscapeRoomReviews.Controllers.ManageEscapeRoomController (EscapeRoomReviews).
+2026-06-29 07:40:44.303 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__escapeRoomId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `p`.`Id`, `p`.`ContentType`, `p`.`CreatedAt`, `p`.`EscapeRoomId`, `p`.`FileName`, `p`.`FileSize`, `p`.`Url`
+FROM `Photos` AS `p`
+WHERE `p`.`EscapeRoomId` = @__escapeRoomId_0
+ORDER BY `p`.`CreatedAt` DESC
+2026-06-29 07:40:44.308 +02:00 [INF] Executing PartialViewResult, running view _PhotoList.
+2026-06-29 07:40:44.324 +02:00 [INF] Executed PartialViewResult - view _PhotoList executed in 18.2331ms.
+2026-06-29 07:40:44.324 +02:00 [INF] Executed action EscapeRoomReviews.Controllers.ManageEscapeRoomController.GetPhotos (EscapeRoomReviews) in 36.2173ms
+2026-06-29 07:40:44.325 +02:00 [INF] Executed endpoint 'EscapeRoomReviews.Controllers.ManageEscapeRoomController.GetPhotos (EscapeRoomReviews)'
+2026-06-29 07:40:44.325 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5241/ManageEscapeRoom/GetPhotos?escapeRoomId=1 - 200 null text/html; charset=utf-8 43.4779ms
+2026-06-29 07:41:03.227 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5241/ - null null
+2026-06-29 07:41:03.229 +02:00 [INF] Executing endpoint 'EscapeRoomReviews.Controllers.EscapeRoomController.Index (EscapeRoomReviews)'
+2026-06-29 07:41:03.229 +02:00 [INF] Route matched with {action = "Index", controller = "EscapeRoom", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index(System.String[], System.String[], System.String[], System.String) on controller EscapeRoomReviews.Controllers.EscapeRoomController (EscapeRoomReviews).
+2026-06-29 07:41:03.236 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `e`.`Id`, `e`.`CompanyId`, `e`.`CreatedAt`, `e`.`DeletedAt`, `e`.`Description`, `e`.`Difficulty`, `e`.`LocationId`, `e`.`MaxPlayers`, `e`.`Name`, `e`.`Price`, `l`.`Id`, `l`.`Address`, `l`.`City`, `l`.`DeletedAt`, `l`.`Latitude`, `l`.`Longitude`, `l`.`PostalCode`, `c`.`Id`, `c`.`DeletedAt`, `c`.`Name`, `c`.`Website`, `s`.`Id`, `s`.`DeletedAt`, `s`.`IconUrl`, `s`.`Name`, `s`.`EscapeRoomsId`, `s`.`ThemesId`, `p`.`Id`, `p`.`ContentType`, `p`.`CreatedAt`, `p`.`EscapeRoomId`, `p`.`FileName`, `p`.`FileSize`, `p`.`Url`, `s0`.`Id`, `s0`.`Comment`, `s0`.`CreatedAt`, `s0`.`DeletedAt`, `s0`.`EscapeRoomId`, `s0`.`IsVerified`, `s0`.`PlayersCount`, `s0`.`Rating`, `s0`.`UserId`, `s0`.`VisitedAt`, `s0`.`Id0`, `s0`.`DeletedAt0`, `s0`.`Email`, `s0`.`RegisteredAt`, `s0`.`Role`, `s0`.`TotalRoomsPlayed`, `s0`.`Username`
+FROM `EscapeRooms` AS `e`
+INNER JOIN `Locations` AS `l` ON `e`.`LocationId` = `l`.`Id`
+INNER JOIN `Companies` AS `c` ON `e`.`CompanyId` = `c`.`Id`
+LEFT JOIN (
+    SELECT `t`.`Id`, `t`.`DeletedAt`, `t`.`IconUrl`, `t`.`Name`, `e0`.`EscapeRoomsId`, `e0`.`ThemesId`
+    FROM `EscapeRoomTheme` AS `e0`
+    INNER JOIN `Themes` AS `t` ON `e0`.`ThemesId` = `t`.`Id`
+) AS `s` ON `e`.`Id` = `s`.`EscapeRoomsId`
+LEFT JOIN `Photos` AS `p` ON `e`.`Id` = `p`.`EscapeRoomId`
+LEFT JOIN (
+    SELECT `r`.`Id`, `r`.`Comment`, `r`.`CreatedAt`, `r`.`DeletedAt`, `r`.`EscapeRoomId`, `r`.`IsVerified`, `r`.`PlayersCount`, `r`.`Rating`, `r`.`UserId`, `r`.`VisitedAt`, `u`.`Id` AS `Id0`, `u`.`DeletedAt` AS `DeletedAt0`, `u`.`Email`, `u`.`RegisteredAt`, `u`.`Role`, `u`.`TotalRoomsPlayed`, `u`.`Username`
+    FROM `Reviews` AS `r`
+    INNER JOIN `Users` AS `u` ON `r`.`UserId` = `u`.`Id`
+    WHERE `r`.`DeletedAt` IS NULL
+) AS `s0` ON `e`.`Id` = `s0`.`EscapeRoomId`
+WHERE `e`.`DeletedAt` IS NULL
+ORDER BY `e`.`Id`, `l`.`Id`, `c`.`Id`, `s`.`EscapeRoomsId`, `s`.`ThemesId`, `s`.`Id`, `p`.`Id`, `s0`.`Id`
+2026-06-29 07:41:03.240 +02:00 [INF] Executing ViewResult, running view Index.
+2026-06-29 07:41:03.242 +02:00 [INF] Executed ViewResult - view Index executed in 2.3481ms.
+2026-06-29 07:41:03.242 +02:00 [INF] Executed action EscapeRoomReviews.Controllers.EscapeRoomController.Index (EscapeRoomReviews) in 12.4657ms
+2026-06-29 07:41:03.242 +02:00 [INF] Executed endpoint 'EscapeRoomReviews.Controllers.EscapeRoomController.Index (EscapeRoomReviews)'
+2026-06-29 07:41:03.242 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5241/ - 200 null text/html; charset=utf-8 14.6709ms
+2026-06-29 07:41:28.820 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5241/soba/1 - null null
+2026-06-29 07:41:28.821 +02:00 [INF] Executing endpoint 'EscapeRoomReviews.Controllers.EscapeRoomController.Details (EscapeRoomReviews)'
+2026-06-29 07:41:28.821 +02:00 [INF] Route matched with {action = "Details", controller = "EscapeRoom", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Details(Int32) on controller EscapeRoomReviews.Controllers.EscapeRoomController (EscapeRoomReviews).
+2026-06-29 07:41:28.828 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CompanyId`, `s`.`CreatedAt`, `s`.`DeletedAt`, `s`.`Description`, `s`.`Difficulty`, `s`.`LocationId`, `s`.`MaxPlayers`, `s`.`Name`, `s`.`Price`, `s`.`Id0`, `s`.`Address`, `s`.`City`, `s`.`DeletedAt0`, `s`.`Latitude`, `s`.`Longitude`, `s`.`PostalCode`, `s`.`Id1`, `s`.`DeletedAt1`, `s`.`Name0`, `s`.`Website`, `s0`.`Id`, `s0`.`DeletedAt`, `s0`.`IconUrl`, `s0`.`Name`, `s0`.`EscapeRoomsId`, `s0`.`ThemesId`, `p`.`Id`, `p`.`ContentType`, `p`.`CreatedAt`, `p`.`EscapeRoomId`, `p`.`FileName`, `p`.`FileSize`, `p`.`Url`, `s1`.`Id`, `s1`.`Comment`, `s1`.`CreatedAt`, `s1`.`DeletedAt`, `s1`.`EscapeRoomId`, `s1`.`IsVerified`, `s1`.`PlayersCount`, `s1`.`Rating`, `s1`.`UserId`, `s1`.`VisitedAt`, `s1`.`Id0`, `s1`.`DeletedAt0`, `s1`.`Email`, `s1`.`RegisteredAt`, `s1`.`Role`, `s1`.`TotalRoomsPlayed`, `s1`.`Username`
+FROM (
+    SELECT `e`.`Id`, `e`.`CompanyId`, `e`.`CreatedAt`, `e`.`DeletedAt`, `e`.`Description`, `e`.`Difficulty`, `e`.`LocationId`, `e`.`MaxPlayers`, `e`.`Name`, `e`.`Price`, `l`.`Id` AS `Id0`, `l`.`Address`, `l`.`City`, `l`.`DeletedAt` AS `DeletedAt0`, `l`.`Latitude`, `l`.`Longitude`, `l`.`PostalCode`, `c`.`Id` AS `Id1`, `c`.`DeletedAt` AS `DeletedAt1`, `c`.`Name` AS `Name0`, `c`.`Website`
+    FROM `EscapeRooms` AS `e`
+    INNER JOIN `Locations` AS `l` ON `e`.`LocationId` = `l`.`Id`
+    INNER JOIN `Companies` AS `c` ON `e`.`CompanyId` = `c`.`Id`
+    WHERE `e`.`DeletedAt` IS NULL AND (`e`.`Id` = @__id_0)
+    LIMIT 1
+) AS `s`
+LEFT JOIN (
+    SELECT `t`.`Id`, `t`.`DeletedAt`, `t`.`IconUrl`, `t`.`Name`, `e0`.`EscapeRoomsId`, `e0`.`ThemesId`
+    FROM `EscapeRoomTheme` AS `e0`
+    INNER JOIN `Themes` AS `t` ON `e0`.`ThemesId` = `t`.`Id`
+) AS `s0` ON `s`.`Id` = `s0`.`EscapeRoomsId`
+LEFT JOIN `Photos` AS `p` ON `s`.`Id` = `p`.`EscapeRoomId`
+LEFT JOIN (
+    SELECT `r`.`Id`, `r`.`Comment`, `r`.`CreatedAt`, `r`.`DeletedAt`, `r`.`EscapeRoomId`, `r`.`IsVerified`, `r`.`PlayersCount`, `r`.`Rating`, `r`.`UserId`, `r`.`VisitedAt`, `u`.`Id` AS `Id0`, `u`.`DeletedAt` AS `DeletedAt0`, `u`.`Email`, `u`.`RegisteredAt`, `u`.`Role`, `u`.`TotalRoomsPlayed`, `u`.`Username`
+    FROM `Reviews` AS `r`
+    INNER JOIN `Users` AS `u` ON `r`.`UserId` = `u`.`Id`
+    WHERE `r`.`DeletedAt` IS NULL
+) AS `s1` ON `s`.`Id` = `s1`.`EscapeRoomId`
+ORDER BY `s`.`Id`, `s`.`Id0`, `s`.`Id1`, `s0`.`EscapeRoomsId`, `s0`.`ThemesId`, `s0`.`Id`, `p`.`Id`, `s1`.`Id`
+2026-06-29 07:41:28.830 +02:00 [INF] Executing ViewResult, running view Details.
+2026-06-29 07:41:28.832 +02:00 [INF] Executed ViewResult - view Details executed in 2.5286ms.
+2026-06-29 07:41:28.832 +02:00 [INF] Executed action EscapeRoomReviews.Controllers.EscapeRoomController.Details (EscapeRoomReviews) in 10.9899ms
+2026-06-29 07:41:28.832 +02:00 [INF] Executed endpoint 'EscapeRoomReviews.Controllers.EscapeRoomController.Details (EscapeRoomReviews)'
+2026-06-29 07:41:28.833 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5241/soba/1 - 200 null text/html; charset=utf-8 13.184ms
+2026-06-29 07:45:13.324 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5241/ - null null
+2026-06-29 07:45:13.354 +02:00 [INF] Executing endpoint 'EscapeRoomReviews.Controllers.EscapeRoomController.Index (EscapeRoomReviews)'
+2026-06-29 07:45:13.360 +02:00 [INF] Route matched with {action = "Index", controller = "EscapeRoom", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index(System.String[], System.String[], System.String[], System.String) on controller EscapeRoomReviews.Controllers.EscapeRoomController (EscapeRoomReviews).
+2026-06-29 07:45:13.595 +02:00 [INF] Executed DbCommand (80ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `e`.`Id`, `e`.`CompanyId`, `e`.`CreatedAt`, `e`.`DeletedAt`, `e`.`Description`, `e`.`Difficulty`, `e`.`LocationId`, `e`.`MaxPlayers`, `e`.`Name`, `e`.`Price`, `l`.`Id`, `l`.`Address`, `l`.`City`, `l`.`DeletedAt`, `l`.`Latitude`, `l`.`Longitude`, `l`.`PostalCode`, `c`.`Id`, `c`.`DeletedAt`, `c`.`Name`, `c`.`Website`, `s`.`Id`, `s`.`DeletedAt`, `s`.`IconUrl`, `s`.`Name`, `s`.`EscapeRoomsId`, `s`.`ThemesId`, `p`.`Id`, `p`.`ContentType`, `p`.`CreatedAt`, `p`.`EscapeRoomId`, `p`.`FileName`, `p`.`FileSize`, `p`.`Url`, `s0`.`Id`, `s0`.`Comment`, `s0`.`CreatedAt`, `s0`.`DeletedAt`, `s0`.`EscapeRoomId`, `s0`.`IsVerified`, `s0`.`PlayersCount`, `s0`.`Rating`, `s0`.`UserId`, `s0`.`VisitedAt`, `s0`.`Id0`, `s0`.`DeletedAt0`, `s0`.`Email`, `s0`.`RegisteredAt`, `s0`.`Role`, `s0`.`TotalRoomsPlayed`, `s0`.`Username`
+FROM `EscapeRooms` AS `e`
+INNER JOIN `Locations` AS `l` ON `e`.`LocationId` = `l`.`Id`
+INNER JOIN `Companies` AS `c` ON `e`.`CompanyId` = `c`.`Id`
+LEFT JOIN (
+    SELECT `t`.`Id`, `t`.`DeletedAt`, `t`.`IconUrl`, `t`.`Name`, `e0`.`EscapeRoomsId`, `e0`.`ThemesId`
+    FROM `EscapeRoomTheme` AS `e0`
+    INNER JOIN `Themes` AS `t` ON `e0`.`ThemesId` = `t`.`Id`
+) AS `s` ON `e`.`Id` = `s`.`EscapeRoomsId`
+LEFT JOIN `Photos` AS `p` ON `e`.`Id` = `p`.`EscapeRoomId`
+LEFT JOIN (
+    SELECT `r`.`Id`, `r`.`Comment`, `r`.`CreatedAt`, `r`.`DeletedAt`, `r`.`EscapeRoomId`, `r`.`IsVerified`, `r`.`PlayersCount`, `r`.`Rating`, `r`.`UserId`, `r`.`VisitedAt`, `u`.`Id` AS `Id0`, `u`.`DeletedAt` AS `DeletedAt0`, `u`.`Email`, `u`.`RegisteredAt`, `u`.`Role`, `u`.`TotalRoomsPlayed`, `u`.`Username`
+    FROM `Reviews` AS `r`
+    INNER JOIN `Users` AS `u` ON `r`.`UserId` = `u`.`Id`
+    WHERE `r`.`DeletedAt` IS NULL
+) AS `s0` ON `e`.`Id` = `s0`.`EscapeRoomId`
+WHERE `e`.`DeletedAt` IS NULL
+ORDER BY `e`.`Id`, `l`.`Id`, `c`.`Id`, `s`.`EscapeRoomsId`, `s`.`ThemesId`, `s`.`Id`, `p`.`Id`, `s0`.`Id`
+2026-06-29 07:45:13.603 +02:00 [INF] Executing ViewResult, running view Index.
+2026-06-29 07:45:13.622 +02:00 [INF] Executed ViewResult - view Index executed in 18.888ms.
+2026-06-29 07:45:13.622 +02:00 [INF] Executed action EscapeRoomReviews.Controllers.EscapeRoomController.Index (EscapeRoomReviews) in 262.0441ms
+2026-06-29 07:45:13.622 +02:00 [INF] Executed endpoint 'EscapeRoomReviews.Controllers.EscapeRoomController.Index (EscapeRoomReviews)'
+2026-06-29 07:45:13.622 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5241/ - 200 null text/html; charset=utf-8 300.0735ms
+2026-06-29 07:45:23.016 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5241/Theme - null null
+2026-06-29 07:45:23.050 +02:00 [INF] Executing endpoint 'EscapeRoomReviews.Controllers.ThemeController.Index (EscapeRoomReviews)'
+2026-06-29 07:45:23.050 +02:00 [INF] Route matched with {action = "Index", controller = "Theme", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller EscapeRoomReviews.Controllers.ThemeController (EscapeRoomReviews).
+2026-06-29 07:45:23.098 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`DeletedAt`, `t`.`IconUrl`, `t`.`Name`, `s`.`Id`, `s`.`CompanyId`, `s`.`CreatedAt`, `s`.`DeletedAt`, `s`.`Description`, `s`.`Difficulty`, `s`.`LocationId`, `s`.`MaxPlayers`, `s`.`Name`, `s`.`Price`, `s`.`Id0`, `s`.`Address`, `s`.`City`, `s`.`DeletedAt0`, `s`.`Latitude`, `s`.`Longitude`, `s`.`PostalCode`, `s`.`Id1`, `s`.`DeletedAt1`, `s`.`Name0`, `s`.`Website`, `s`.`EscapeRoomsId`, `s`.`ThemesId`, `s`.`Id2`, `s`.`Comment`, `s`.`CreatedAt0`, `s`.`DeletedAt2`, `s`.`EscapeRoomId`, `s`.`IsVerified`, `s`.`PlayersCount`, `s`.`Rating`, `s`.`UserId`, `s`.`VisitedAt`
+FROM `Themes` AS `t`
+LEFT JOIN (
+    SELECT `e0`.`Id`, `e0`.`CompanyId`, `e0`.`CreatedAt`, `e0`.`DeletedAt`, `e0`.`Description`, `e0`.`Difficulty`, `e0`.`LocationId`, `e0`.`MaxPlayers`, `e0`.`Name`, `e0`.`Price`, `l`.`Id` AS `Id0`, `l`.`Address`, `l`.`City`, `l`.`DeletedAt` AS `DeletedAt0`, `l`.`Latitude`, `l`.`Longitude`, `l`.`PostalCode`, `c`.`Id` AS `Id1`, `c`.`DeletedAt` AS `DeletedAt1`, `c`.`Name` AS `Name0`, `c`.`Website`, `e`.`EscapeRoomsId`, `e`.`ThemesId`, `r0`.`Id` AS `Id2`, `r0`.`Comment`, `r0`.`CreatedAt` AS `CreatedAt0`, `r0`.`DeletedAt` AS `DeletedAt2`, `r0`.`EscapeRoomId`, `r0`.`IsVerified`, `r0`.`PlayersCount`, `r0`.`Rating`, `r0`.`UserId`, `r0`.`VisitedAt`
+    FROM `EscapeRoomTheme` AS `e`
+    INNER JOIN `EscapeRooms` AS `e0` ON `e`.`EscapeRoomsId` = `e0`.`Id`
+    INNER JOIN `Locations` AS `l` ON `e0`.`LocationId` = `l`.`Id`
+    INNER JOIN `Companies` AS `c` ON `e0`.`CompanyId` = `c`.`Id`
+    LEFT JOIN (
+        SELECT `r`.`Id`, `r`.`Comment`, `r`.`CreatedAt`, `r`.`DeletedAt`, `r`.`EscapeRoomId`, `r`.`IsVerified`, `r`.`PlayersCount`, `r`.`Rating`, `r`.`UserId`, `r`.`VisitedAt`
+        FROM `Reviews` AS `r`
+        WHERE `r`.`DeletedAt` IS NULL
+    ) AS `r0` ON `e0`.`Id` = `r0`.`EscapeRoomId`
+    WHERE `e0`.`DeletedAt` IS NULL
+) AS `s` ON `t`.`Id` = `s`.`ThemesId`
+WHERE `t`.`DeletedAt` IS NULL
+ORDER BY `t`.`Id`, `s`.`EscapeRoomsId`, `s`.`ThemesId`, `s`.`Id`, `s`.`Id0`, `s`.`Id1`
+2026-06-29 07:45:23.099 +02:00 [INF] Executing ViewResult, running view Index.
+2026-06-29 07:45:23.102 +02:00 [INF] Executed ViewResult - view Index executed in 3.0685ms.
+2026-06-29 07:45:23.102 +02:00 [INF] Executed action EscapeRoomReviews.Controllers.ThemeController.Index (EscapeRoomReviews) in 52.5954ms
+2026-06-29 07:45:23.103 +02:00 [INF] Executed endpoint 'EscapeRoomReviews.Controllers.ThemeController.Index (EscapeRoomReviews)'
+2026-06-29 07:45:23.103 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5241/Theme - 200 null text/html; charset=utf-8 86.9184ms
+2026-06-29 07:45:27.643 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5241/ManageEscapeRoom - null null
+2026-06-29 07:45:27.647 +02:00 [INF] Executing endpoint 'EscapeRoomReviews.Controllers.ManageEscapeRoomController.Index (EscapeRoomReviews)'
+2026-06-29 07:45:27.648 +02:00 [INF] Route matched with {action = "Index", controller = "ManageEscapeRoom", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller EscapeRoomReviews.Controllers.ManageEscapeRoomController (EscapeRoomReviews).
+2026-06-29 07:45:27.653 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `e`.`Id`, `e`.`CompanyId`, `e`.`CreatedAt`, `e`.`DeletedAt`, `e`.`Description`, `e`.`Difficulty`, `e`.`LocationId`, `e`.`MaxPlayers`, `e`.`Name`, `e`.`Price`, `l`.`Id`, `l`.`Address`, `l`.`City`, `l`.`DeletedAt`, `l`.`Latitude`, `l`.`Longitude`, `l`.`PostalCode`, `c`.`Id`, `c`.`DeletedAt`, `c`.`Name`, `c`.`Website`
+FROM `EscapeRooms` AS `e`
+INNER JOIN `Locations` AS `l` ON `e`.`LocationId` = `l`.`Id`
+INNER JOIN `Companies` AS `c` ON `e`.`CompanyId` = `c`.`Id`
+WHERE `e`.`DeletedAt` IS NULL
+2026-06-29 07:45:27.654 +02:00 [INF] Executing ViewResult, running view Index.
+2026-06-29 07:45:27.659 +02:00 [INF] Executed ViewResult - view Index executed in 4.775ms.
+2026-06-29 07:45:27.659 +02:00 [INF] Executed action EscapeRoomReviews.Controllers.ManageEscapeRoomController.Index (EscapeRoomReviews) in 10.9722ms
+2026-06-29 07:45:27.659 +02:00 [INF] Executed endpoint 'EscapeRoomReviews.Controllers.ManageEscapeRoomController.Index (EscapeRoomReviews)'
+2026-06-29 07:45:27.659 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5241/ManageEscapeRoom - 200 null text/html; charset=utf-8 15.629ms
+2026-06-29 07:45:30.695 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5241/ManageEscapeRoom/Edit/2 - null null
+2026-06-29 07:45:30.697 +02:00 [INF] Executing endpoint 'EscapeRoomReviews.Controllers.ManageEscapeRoomController.EditGet (EscapeRoomReviews)'
+2026-06-29 07:45:30.697 +02:00 [INF] Route matched with {action = "Edit", controller = "ManageEscapeRoom", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult EditGet(Int32) on controller EscapeRoomReviews.Controllers.ManageEscapeRoomController (EscapeRoomReviews).
+2026-06-29 07:45:30.709 +02:00 [INF] Executed DbCommand (6ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `e1`.`Id`, `e1`.`CompanyId`, `e1`.`CreatedAt`, `e1`.`DeletedAt`, `e1`.`Description`, `e1`.`Difficulty`, `e1`.`LocationId`, `e1`.`MaxPlayers`, `e1`.`Name`, `e1`.`Price`, `s`.`Id`, `s`.`DeletedAt`, `s`.`IconUrl`, `s`.`Name`, `s`.`EscapeRoomsId`, `s`.`ThemesId`
+FROM (
+    SELECT `e`.`Id`, `e`.`CompanyId`, `e`.`CreatedAt`, `e`.`DeletedAt`, `e`.`Description`, `e`.`Difficulty`, `e`.`LocationId`, `e`.`MaxPlayers`, `e`.`Name`, `e`.`Price`
+    FROM `EscapeRooms` AS `e`
+    WHERE (`e`.`Id` = @__id_0) AND `e`.`DeletedAt` IS NULL
+    LIMIT 1
+) AS `e1`
+LEFT JOIN (
+    SELECT `t`.`Id`, `t`.`DeletedAt`, `t`.`IconUrl`, `t`.`Name`, `e0`.`EscapeRoomsId`, `e0`.`ThemesId`
+    FROM `EscapeRoomTheme` AS `e0`
+    INNER JOIN `Themes` AS `t` ON `e0`.`ThemesId` = `t`.`Id`
+) AS `s` ON `e1`.`Id` = `s`.`EscapeRoomsId`
+ORDER BY `e1`.`Id`, `s`.`EscapeRoomsId`, `s`.`ThemesId`
+2026-06-29 07:45:30.716 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[@__id_Value_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT CONCAT(CONCAT(`l`.`City`, ' - '), `l`.`Address`)
+FROM `Locations` AS `l`
+WHERE `l`.`Id` = @__id_Value_0
+LIMIT 1
+2026-06-29 07:45:30.719 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_Value_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `c`.`Name`
+FROM `Companies` AS `c`
+WHERE `c`.`Id` = @__id_Value_0
+LIMIT 1
+2026-06-29 07:45:30.728 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CAST(`t`.`Id` AS char) AS `Value`, `t`.`Name` AS `Text`, `t`.`Id` IN (2, 4) AS `Selected`
+FROM `Themes` AS `t`
+WHERE `t`.`DeletedAt` IS NULL
+ORDER BY `t`.`Name`
+2026-06-29 07:45:30.728 +02:00 [INF] Executing ViewResult, running view Edit.
+2026-06-29 07:45:30.743 +02:00 [INF] Executed ViewResult - view Edit executed in 15.1614ms.
+2026-06-29 07:45:30.743 +02:00 [INF] Executed action EscapeRoomReviews.Controllers.ManageEscapeRoomController.EditGet (EscapeRoomReviews) in 45.6948ms
+2026-06-29 07:45:30.743 +02:00 [INF] Executed endpoint 'EscapeRoomReviews.Controllers.ManageEscapeRoomController.EditGet (EscapeRoomReviews)'
+2026-06-29 07:45:30.743 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5241/ManageEscapeRoom/Edit/2 - 200 null text/html; charset=utf-8 48.951ms
+2026-06-29 07:45:30.830 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5241/ManageEscapeRoom/GetPhotos?escapeRoomId=2 - null null
+2026-06-29 07:45:30.830 +02:00 [INF] Executing endpoint 'EscapeRoomReviews.Controllers.ManageEscapeRoomController.GetPhotos (EscapeRoomReviews)'
+2026-06-29 07:45:30.831 +02:00 [INF] Route matched with {action = "GetPhotos", controller = "ManageEscapeRoom", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetPhotos(Int32) on controller EscapeRoomReviews.Controllers.ManageEscapeRoomController (EscapeRoomReviews).
+2026-06-29 07:45:30.836 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__escapeRoomId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `p`.`Id`, `p`.`ContentType`, `p`.`CreatedAt`, `p`.`EscapeRoomId`, `p`.`FileName`, `p`.`FileSize`, `p`.`Url`
+FROM `Photos` AS `p`
+WHERE `p`.`EscapeRoomId` = @__escapeRoomId_0
+ORDER BY `p`.`CreatedAt` DESC
+2026-06-29 07:45:30.836 +02:00 [INF] Executing PartialViewResult, running view _PhotoList.
+2026-06-29 07:45:30.837 +02:00 [INF] Executed PartialViewResult - view _PhotoList executed in 0.5438ms.
+2026-06-29 07:45:30.837 +02:00 [INF] Executed action EscapeRoomReviews.Controllers.ManageEscapeRoomController.GetPhotos (EscapeRoomReviews) in 6.1258ms
+2026-06-29 07:45:30.837 +02:00 [INF] Executed endpoint 'EscapeRoomReviews.Controllers.ManageEscapeRoomController.GetPhotos (EscapeRoomReviews)'
+2026-06-29 07:45:30.837 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5241/ManageEscapeRoom/GetPhotos?escapeRoomId=2 - 200 null text/html; charset=utf-8 7.0546ms
+2026-06-29 07:45:30.862 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5241/images/raven-1.jpg - null null
+2026-06-29 07:45:30.871 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5241/images/raven-2.jpg - null null
+2026-06-29 07:45:30.878 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5241/images/raven-2.jpg - 404 0 null 7.2034ms
+2026-06-29 07:45:30.878 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5241/images/raven-1.jpg - 404 0 null 16.1926ms
+2026-06-29 07:45:30.883 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5241/images/raven-2.jpg, Response status code: 404
+2026-06-29 07:45:30.883 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5241/images/raven-1.jpg, Response status code: 404
+2026-06-29 07:45:45.479 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5241/ManageEscapeRoom/DeletePhoto - application/x-www-form-urlencoded; charset=UTF-8 4
+2026-06-29 07:45:45.480 +02:00 [INF] Executing endpoint 'EscapeRoomReviews.Controllers.ManageEscapeRoomController.DeletePhoto (EscapeRoomReviews)'
+2026-06-29 07:45:45.491 +02:00 [INF] Route matched with {action = "DeletePhoto", controller = "ManageEscapeRoom", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult DeletePhoto(Int32) on controller EscapeRoomReviews.Controllers.ManageEscapeRoomController (EscapeRoomReviews).
+2026-06-29 07:45:45.527 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `p`.`Id`, `p`.`ContentType`, `p`.`CreatedAt`, `p`.`EscapeRoomId`, `p`.`FileName`, `p`.`FileSize`, `p`.`Url`
+FROM `Photos` AS `p`
+WHERE `p`.`Id` = @__id_0
+LIMIT 1
+2026-06-29 07:45:45.701 +02:00 [INF] Executed DbCommand (41ms) [Parameters=[@p0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+DELETE FROM `Photos`
+WHERE `Id` = @p0;
+SELECT ROW_COUNT();
+2026-06-29 07:45:45.706 +02:00 [INF] Deleted photo 3
+2026-06-29 07:45:45.709 +02:00 [INF] Executing JsonResult, writing value of type '<>f__AnonymousType4`1[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-06-29 07:45:45.778 +02:00 [INF] Executed action EscapeRoomReviews.Controllers.ManageEscapeRoomController.DeletePhoto (EscapeRoomReviews) in 287.1469ms
+2026-06-29 07:45:45.778 +02:00 [INF] Executed endpoint 'EscapeRoomReviews.Controllers.ManageEscapeRoomController.DeletePhoto (EscapeRoomReviews)'
+2026-06-29 07:45:45.778 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5241/ManageEscapeRoom/DeletePhoto - 200 null application/json; charset=utf-8 299.2492ms
+2026-06-29 07:45:45.781 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5241/ManageEscapeRoom/GetPhotos?escapeRoomId=2 - null null
+2026-06-29 07:45:45.781 +02:00 [INF] Executing endpoint 'EscapeRoomReviews.Controllers.ManageEscapeRoomController.GetPhotos (EscapeRoomReviews)'
+2026-06-29 07:45:45.781 +02:00 [INF] Route matched with {action = "GetPhotos", controller = "ManageEscapeRoom", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetPhotos(Int32) on controller EscapeRoomReviews.Controllers.ManageEscapeRoomController (EscapeRoomReviews).
+2026-06-29 07:45:45.783 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__escapeRoomId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `p`.`Id`, `p`.`ContentType`, `p`.`CreatedAt`, `p`.`EscapeRoomId`, `p`.`FileName`, `p`.`FileSize`, `p`.`Url`
+FROM `Photos` AS `p`
+WHERE `p`.`EscapeRoomId` = @__escapeRoomId_0
+ORDER BY `p`.`CreatedAt` DESC
+2026-06-29 07:45:45.783 +02:00 [INF] Executing PartialViewResult, running view _PhotoList.
+2026-06-29 07:45:45.784 +02:00 [INF] Executed PartialViewResult - view _PhotoList executed in 0.5362ms.
+2026-06-29 07:45:45.784 +02:00 [INF] Executed action EscapeRoomReviews.Controllers.ManageEscapeRoomController.GetPhotos (EscapeRoomReviews) in 2.2565ms
+2026-06-29 07:45:45.784 +02:00 [INF] Executed endpoint 'EscapeRoomReviews.Controllers.ManageEscapeRoomController.GetPhotos (EscapeRoomReviews)'
+2026-06-29 07:45:45.784 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5241/ManageEscapeRoom/GetPhotos?escapeRoomId=2 - 200 null text/html; charset=utf-8 3.1759ms
+2026-06-29 07:45:45.788 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5241/images/raven-2.jpg - null null
+2026-06-29 07:45:45.789 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5241/images/raven-2.jpg - 404 0 null 1.1504ms
+2026-06-29 07:45:45.790 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5241/images/raven-2.jpg, Response status code: 404
+2026-06-29 07:45:47.882 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5241/ManageEscapeRoom/DeletePhoto - application/x-www-form-urlencoded; charset=UTF-8 4
+2026-06-29 07:45:47.883 +02:00 [INF] Executing endpoint 'EscapeRoomReviews.Controllers.ManageEscapeRoomController.DeletePhoto (EscapeRoomReviews)'
+2026-06-29 07:45:47.883 +02:00 [INF] Route matched with {action = "DeletePhoto", controller = "ManageEscapeRoom", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult DeletePhoto(Int32) on controller EscapeRoomReviews.Controllers.ManageEscapeRoomController (EscapeRoomReviews).
+2026-06-29 07:45:47.885 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `p`.`Id`, `p`.`ContentType`, `p`.`CreatedAt`, `p`.`EscapeRoomId`, `p`.`FileName`, `p`.`FileSize`, `p`.`Url`
+FROM `Photos` AS `p`
+WHERE `p`.`Id` = @__id_0
+LIMIT 1
+2026-06-29 07:45:47.897 +02:00 [INF] Executed DbCommand (11ms) [Parameters=[@p0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+DELETE FROM `Photos`
+WHERE `Id` = @p0;
+SELECT ROW_COUNT();
+2026-06-29 07:45:47.898 +02:00 [INF] Deleted photo 4
+2026-06-29 07:45:47.898 +02:00 [INF] Executing JsonResult, writing value of type '<>f__AnonymousType4`1[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-06-29 07:45:47.898 +02:00 [INF] Executed action EscapeRoomReviews.Controllers.ManageEscapeRoomController.DeletePhoto (EscapeRoomReviews) in 15.625ms
+2026-06-29 07:45:47.898 +02:00 [INF] Executed endpoint 'EscapeRoomReviews.Controllers.ManageEscapeRoomController.DeletePhoto (EscapeRoomReviews)'
+2026-06-29 07:45:47.899 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5241/ManageEscapeRoom/DeletePhoto - 200 null application/json; charset=utf-8 16.7997ms
+2026-06-29 07:45:47.901 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5241/ManageEscapeRoom/GetPhotos?escapeRoomId=2 - null null
+2026-06-29 07:45:47.902 +02:00 [INF] Executing endpoint 'EscapeRoomReviews.Controllers.ManageEscapeRoomController.GetPhotos (EscapeRoomReviews)'
+2026-06-29 07:45:47.902 +02:00 [INF] Route matched with {action = "GetPhotos", controller = "ManageEscapeRoom", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetPhotos(Int32) on controller EscapeRoomReviews.Controllers.ManageEscapeRoomController (EscapeRoomReviews).
+2026-06-29 07:45:47.904 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__escapeRoomId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `p`.`Id`, `p`.`ContentType`, `p`.`CreatedAt`, `p`.`EscapeRoomId`, `p`.`FileName`, `p`.`FileSize`, `p`.`Url`
+FROM `Photos` AS `p`
+WHERE `p`.`EscapeRoomId` = @__escapeRoomId_0
+ORDER BY `p`.`CreatedAt` DESC
+2026-06-29 07:45:47.905 +02:00 [INF] Executing PartialViewResult, running view _PhotoList.
+2026-06-29 07:45:47.905 +02:00 [INF] Executed PartialViewResult - view _PhotoList executed in 0.1638ms.
+2026-06-29 07:45:47.905 +02:00 [INF] Executed action EscapeRoomReviews.Controllers.ManageEscapeRoomController.GetPhotos (EscapeRoomReviews) in 2.8065ms
+2026-06-29 07:45:47.905 +02:00 [INF] Executed endpoint 'EscapeRoomReviews.Controllers.ManageEscapeRoomController.GetPhotos (EscapeRoomReviews)'
+2026-06-29 07:45:47.905 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5241/ManageEscapeRoom/GetPhotos?escapeRoomId=2 - 200 null text/html; charset=utf-8 3.7761ms
+2026-06-29 07:45:49.968 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5241/ManageEscapeRoom/Edit/2 - application/x-www-form-urlencoded 467
+2026-06-29 07:45:49.969 +02:00 [INF] Executing endpoint 'EscapeRoomReviews.Controllers.ManageEscapeRoomController.EditPost (EscapeRoomReviews)'
+2026-06-29 07:45:49.974 +02:00 [INF] Route matched with {action = "Edit", controller = "ManageEscapeRoom", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult EditPost(EscapeRoomReviews.Models.Forms.EscapeRoomEditModel) on controller EscapeRoomReviews.Controllers.ManageEscapeRoomController (EscapeRoomReviews).
+2026-06-29 07:45:50.019 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__model_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `e1`.`Id`, `e1`.`CompanyId`, `e1`.`CreatedAt`, `e1`.`DeletedAt`, `e1`.`Description`, `e1`.`Difficulty`, `e1`.`LocationId`, `e1`.`MaxPlayers`, `e1`.`Name`, `e1`.`Price`, `s`.`EscapeRoomsId`, `s`.`ThemesId`, `s`.`Id`, `s`.`DeletedAt`, `s`.`IconUrl`, `s`.`Name`
+FROM (
+    SELECT `e`.`Id`, `e`.`CompanyId`, `e`.`CreatedAt`, `e`.`DeletedAt`, `e`.`Description`, `e`.`Difficulty`, `e`.`LocationId`, `e`.`MaxPlayers`, `e`.`Name`, `e`.`Price`
+    FROM `EscapeRooms` AS `e`
+    WHERE (`e`.`Id` = @__model_Id_0) AND `e`.`DeletedAt` IS NULL
+    LIMIT 1
+) AS `e1`
+LEFT JOIN (
+    SELECT `e0`.`EscapeRoomsId`, `e0`.`ThemesId`, `t`.`Id`, `t`.`DeletedAt`, `t`.`IconUrl`, `t`.`Name`
+    FROM `EscapeRoomTheme` AS `e0`
+    INNER JOIN `Themes` AS `t` ON `e0`.`ThemesId` = `t`.`Id`
+) AS `s` ON `e1`.`Id` = `s`.`EscapeRoomsId`
+ORDER BY `e1`.`Id`, `s`.`EscapeRoomsId`, `s`.`ThemesId`
+2026-06-29 07:45:50.066 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`DeletedAt`, `t`.`IconUrl`, `t`.`Name`
+FROM `Themes` AS `t`
+WHERE `t`.`Id` IN (4, 2) AND (`t`.`DeletedAt` IS NULL)
+2026-06-29 07:45:50.099 +02:00 [INF] Executed DbCommand (6ms) [Parameters=[@p1='?' (DbType = Int32), @p0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+UPDATE `EscapeRooms` SET `Difficulty` = @p0
+WHERE `Id` = @p1;
+SELECT ROW_COUNT();
+2026-06-29 07:45:50.100 +02:00 [INF] Updated EscapeRoom 2
+2026-06-29 07:45:50.100 +02:00 [INF] Executing RedirectResult, redirecting to /ManageEscapeRoom.
+2026-06-29 07:45:50.100 +02:00 [INF] Executed action EscapeRoomReviews.Controllers.ManageEscapeRoomController.EditPost (EscapeRoomReviews) in 126.1523ms
+2026-06-29 07:45:50.101 +02:00 [INF] Executed endpoint 'EscapeRoomReviews.Controllers.ManageEscapeRoomController.EditPost (EscapeRoomReviews)'
+2026-06-29 07:45:50.101 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5241/ManageEscapeRoom/Edit/2 - 302 0 null 132.5511ms
+2026-06-29 07:45:50.105 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5241/ManageEscapeRoom - null null
+2026-06-29 07:45:50.105 +02:00 [INF] Executing endpoint 'EscapeRoomReviews.Controllers.ManageEscapeRoomController.Index (EscapeRoomReviews)'
+2026-06-29 07:45:50.106 +02:00 [INF] Route matched with {action = "Index", controller = "ManageEscapeRoom", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller EscapeRoomReviews.Controllers.ManageEscapeRoomController (EscapeRoomReviews).
+2026-06-29 07:45:50.110 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `e`.`Id`, `e`.`CompanyId`, `e`.`CreatedAt`, `e`.`DeletedAt`, `e`.`Description`, `e`.`Difficulty`, `e`.`LocationId`, `e`.`MaxPlayers`, `e`.`Name`, `e`.`Price`, `l`.`Id`, `l`.`Address`, `l`.`City`, `l`.`DeletedAt`, `l`.`Latitude`, `l`.`Longitude`, `l`.`PostalCode`, `c`.`Id`, `c`.`DeletedAt`, `c`.`Name`, `c`.`Website`
+FROM `EscapeRooms` AS `e`
+INNER JOIN `Locations` AS `l` ON `e`.`LocationId` = `l`.`Id`
+INNER JOIN `Companies` AS `c` ON `e`.`CompanyId` = `c`.`Id`
+WHERE `e`.`DeletedAt` IS NULL
+2026-06-29 07:45:50.110 +02:00 [INF] Executing ViewResult, running view Index.
+2026-06-29 07:45:50.112 +02:00 [INF] Executed ViewResult - view Index executed in 1.6368ms.
+2026-06-29 07:45:50.112 +02:00 [INF] Executed action EscapeRoomReviews.Controllers.ManageEscapeRoomController.Index (EscapeRoomReviews) in 6.1725ms
+2026-06-29 07:45:50.112 +02:00 [INF] Executed endpoint 'EscapeRoomReviews.Controllers.ManageEscapeRoomController.Index (EscapeRoomReviews)'
+2026-06-29 07:45:50.112 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5241/ManageEscapeRoom - 200 null text/html; charset=utf-8 7.4238ms
+2026-06-29 07:45:52.008 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5241/ - null null
+2026-06-29 07:45:52.009 +02:00 [INF] Executing endpoint 'EscapeRoomReviews.Controllers.EscapeRoomController.Index (EscapeRoomReviews)'
+2026-06-29 07:45:52.009 +02:00 [INF] Route matched with {action = "Index", controller = "EscapeRoom", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index(System.String[], System.String[], System.String[], System.String) on controller EscapeRoomReviews.Controllers.EscapeRoomController (EscapeRoomReviews).
+2026-06-29 07:45:52.026 +02:00 [INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `e`.`Id`, `e`.`CompanyId`, `e`.`CreatedAt`, `e`.`DeletedAt`, `e`.`Description`, `e`.`Difficulty`, `e`.`LocationId`, `e`.`MaxPlayers`, `e`.`Name`, `e`.`Price`, `l`.`Id`, `l`.`Address`, `l`.`City`, `l`.`DeletedAt`, `l`.`Latitude`, `l`.`Longitude`, `l`.`PostalCode`, `c`.`Id`, `c`.`DeletedAt`, `c`.`Name`, `c`.`Website`, `s`.`Id`, `s`.`DeletedAt`, `s`.`IconUrl`, `s`.`Name`, `s`.`EscapeRoomsId`, `s`.`ThemesId`, `p`.`Id`, `p`.`ContentType`, `p`.`CreatedAt`, `p`.`EscapeRoomId`, `p`.`FileName`, `p`.`FileSize`, `p`.`Url`, `s0`.`Id`, `s0`.`Comment`, `s0`.`CreatedAt`, `s0`.`DeletedAt`, `s0`.`EscapeRoomId`, `s0`.`IsVerified`, `s0`.`PlayersCount`, `s0`.`Rating`, `s0`.`UserId`, `s0`.`VisitedAt`, `s0`.`Id0`, `s0`.`DeletedAt0`, `s0`.`Email`, `s0`.`RegisteredAt`, `s0`.`Role`, `s0`.`TotalRoomsPlayed`, `s0`.`Username`
+FROM `EscapeRooms` AS `e`
+INNER JOIN `Locations` AS `l` ON `e`.`LocationId` = `l`.`Id`
+INNER JOIN `Companies` AS `c` ON `e`.`CompanyId` = `c`.`Id`
+LEFT JOIN (
+    SELECT `t`.`Id`, `t`.`DeletedAt`, `t`.`IconUrl`, `t`.`Name`, `e0`.`EscapeRoomsId`, `e0`.`ThemesId`
+    FROM `EscapeRoomTheme` AS `e0`
+    INNER JOIN `Themes` AS `t` ON `e0`.`ThemesId` = `t`.`Id`
+) AS `s` ON `e`.`Id` = `s`.`EscapeRoomsId`
+LEFT JOIN `Photos` AS `p` ON `e`.`Id` = `p`.`EscapeRoomId`
+LEFT JOIN (
+    SELECT `r`.`Id`, `r`.`Comment`, `r`.`CreatedAt`, `r`.`DeletedAt`, `r`.`EscapeRoomId`, `r`.`IsVerified`, `r`.`PlayersCount`, `r`.`Rating`, `r`.`UserId`, `r`.`VisitedAt`, `u`.`Id` AS `Id0`, `u`.`DeletedAt` AS `DeletedAt0`, `u`.`Email`, `u`.`RegisteredAt`, `u`.`Role`, `u`.`TotalRoomsPlayed`, `u`.`Username`
+    FROM `Reviews` AS `r`
+    INNER JOIN `Users` AS `u` ON `r`.`UserId` = `u`.`Id`
+    WHERE `r`.`DeletedAt` IS NULL
+) AS `s0` ON `e`.`Id` = `s0`.`EscapeRoomId`
+WHERE `e`.`DeletedAt` IS NULL
+ORDER BY `e`.`Id`, `l`.`Id`, `c`.`Id`, `s`.`EscapeRoomsId`, `s`.`ThemesId`, `s`.`Id`, `p`.`Id`, `s0`.`Id`
+2026-06-29 07:45:52.029 +02:00 [INF] Executing ViewResult, running view Index.
+2026-06-29 07:45:52.030 +02:00 [INF] Executed ViewResult - view Index executed in 0.9734ms.
+2026-06-29 07:45:52.030 +02:00 [INF] Executed action EscapeRoomReviews.Controllers.EscapeRoomController.Index (EscapeRoomReviews) in 20.5146ms
+2026-06-29 07:45:52.030 +02:00 [INF] Executed endpoint 'EscapeRoomReviews.Controllers.EscapeRoomController.Index (EscapeRoomReviews)'
+2026-06-29 07:45:52.030 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5241/ - 200 null text/html; charset=utf-8 21.4204ms
+2026-06-29 07:46:27.843 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5241/soba/1 - null null
+2026-06-29 07:46:27.845 +02:00 [INF] Executing endpoint 'EscapeRoomReviews.Controllers.EscapeRoomController.Details (EscapeRoomReviews)'
+2026-06-29 07:46:27.845 +02:00 [INF] Route matched with {action = "Details", controller = "EscapeRoom", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Details(Int32) on controller EscapeRoomReviews.Controllers.EscapeRoomController (EscapeRoomReviews).
+2026-06-29 07:46:27.851 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CompanyId`, `s`.`CreatedAt`, `s`.`DeletedAt`, `s`.`Description`, `s`.`Difficulty`, `s`.`LocationId`, `s`.`MaxPlayers`, `s`.`Name`, `s`.`Price`, `s`.`Id0`, `s`.`Address`, `s`.`City`, `s`.`DeletedAt0`, `s`.`Latitude`, `s`.`Longitude`, `s`.`PostalCode`, `s`.`Id1`, `s`.`DeletedAt1`, `s`.`Name0`, `s`.`Website`, `s0`.`Id`, `s0`.`DeletedAt`, `s0`.`IconUrl`, `s0`.`Name`, `s0`.`EscapeRoomsId`, `s0`.`ThemesId`, `p`.`Id`, `p`.`ContentType`, `p`.`CreatedAt`, `p`.`EscapeRoomId`, `p`.`FileName`, `p`.`FileSize`, `p`.`Url`, `s1`.`Id`, `s1`.`Comment`, `s1`.`CreatedAt`, `s1`.`DeletedAt`, `s1`.`EscapeRoomId`, `s1`.`IsVerified`, `s1`.`PlayersCount`, `s1`.`Rating`, `s1`.`UserId`, `s1`.`VisitedAt`, `s1`.`Id0`, `s1`.`DeletedAt0`, `s1`.`Email`, `s1`.`RegisteredAt`, `s1`.`Role`, `s1`.`TotalRoomsPlayed`, `s1`.`Username`
+FROM (
+    SELECT `e`.`Id`, `e`.`CompanyId`, `e`.`CreatedAt`, `e`.`DeletedAt`, `e`.`Description`, `e`.`Difficulty`, `e`.`LocationId`, `e`.`MaxPlayers`, `e`.`Name`, `e`.`Price`, `l`.`Id` AS `Id0`, `l`.`Address`, `l`.`City`, `l`.`DeletedAt` AS `DeletedAt0`, `l`.`Latitude`, `l`.`Longitude`, `l`.`PostalCode`, `c`.`Id` AS `Id1`, `c`.`DeletedAt` AS `DeletedAt1`, `c`.`Name` AS `Name0`, `c`.`Website`
+    FROM `EscapeRooms` AS `e`
+    INNER JOIN `Locations` AS `l` ON `e`.`LocationId` = `l`.`Id`
+    INNER JOIN `Companies` AS `c` ON `e`.`CompanyId` = `c`.`Id`
+    WHERE `e`.`DeletedAt` IS NULL AND (`e`.`Id` = @__id_0)
+    LIMIT 1
+) AS `s`
+LEFT JOIN (
+    SELECT `t`.`Id`, `t`.`DeletedAt`, `t`.`IconUrl`, `t`.`Name`, `e0`.`EscapeRoomsId`, `e0`.`ThemesId`
+    FROM `EscapeRoomTheme` AS `e0`
+    INNER JOIN `Themes` AS `t` ON `e0`.`ThemesId` = `t`.`Id`
+) AS `s0` ON `s`.`Id` = `s0`.`EscapeRoomsId`
+LEFT JOIN `Photos` AS `p` ON `s`.`Id` = `p`.`EscapeRoomId`
+LEFT JOIN (
+    SELECT `r`.`Id`, `r`.`Comment`, `r`.`CreatedAt`, `r`.`DeletedAt`, `r`.`EscapeRoomId`, `r`.`IsVerified`, `r`.`PlayersCount`, `r`.`Rating`, `r`.`UserId`, `r`.`VisitedAt`, `u`.`Id` AS `Id0`, `u`.`DeletedAt` AS `DeletedAt0`, `u`.`Email`, `u`.`RegisteredAt`, `u`.`Role`, `u`.`TotalRoomsPlayed`, `u`.`Username`
+    FROM `Reviews` AS `r`
+    INNER JOIN `Users` AS `u` ON `r`.`UserId` = `u`.`Id`
+    WHERE `r`.`DeletedAt` IS NULL
+) AS `s1` ON `s`.`Id` = `s1`.`EscapeRoomId`
+ORDER BY `s`.`Id`, `s`.`Id0`, `s`.`Id1`, `s0`.`EscapeRoomsId`, `s0`.`ThemesId`, `s0`.`Id`, `p`.`Id`, `s1`.`Id`
+2026-06-29 07:46:27.852 +02:00 [INF] Executing ViewResult, running view Details.
+2026-06-29 07:46:27.854 +02:00 [INF] Executed ViewResult - view Details executed in 1.6079ms.
+2026-06-29 07:46:27.854 +02:00 [INF] Executed action EscapeRoomReviews.Controllers.EscapeRoomController.Details (EscapeRoomReviews) in 9.1862ms
+2026-06-29 07:46:27.854 +02:00 [INF] Executed endpoint 'EscapeRoomReviews.Controllers.EscapeRoomController.Details (EscapeRoomReviews)'
+2026-06-29 07:46:27.855 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5241/soba/1 - 200 null text/html; charset=utf-8 11.1115ms
+2026-06-29 07:46:31.187 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5241/ - null null
+2026-06-29 07:46:31.188 +02:00 [INF] Executing endpoint 'EscapeRoomReviews.Controllers.EscapeRoomController.Index (EscapeRoomReviews)'
+2026-06-29 07:46:31.188 +02:00 [INF] Route matched with {action = "Index", controller = "EscapeRoom", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index(System.String[], System.String[], System.String[], System.String) on controller EscapeRoomReviews.Controllers.EscapeRoomController (EscapeRoomReviews).
+2026-06-29 07:46:31.193 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `e`.`Id`, `e`.`CompanyId`, `e`.`CreatedAt`, `e`.`DeletedAt`, `e`.`Description`, `e`.`Difficulty`, `e`.`LocationId`, `e`.`MaxPlayers`, `e`.`Name`, `e`.`Price`, `l`.`Id`, `l`.`Address`, `l`.`City`, `l`.`DeletedAt`, `l`.`Latitude`, `l`.`Longitude`, `l`.`PostalCode`, `c`.`Id`, `c`.`DeletedAt`, `c`.`Name`, `c`.`Website`, `s`.`Id`, `s`.`DeletedAt`, `s`.`IconUrl`, `s`.`Name`, `s`.`EscapeRoomsId`, `s`.`ThemesId`, `p`.`Id`, `p`.`ContentType`, `p`.`CreatedAt`, `p`.`EscapeRoomId`, `p`.`FileName`, `p`.`FileSize`, `p`.`Url`, `s0`.`Id`, `s0`.`Comment`, `s0`.`CreatedAt`, `s0`.`DeletedAt`, `s0`.`EscapeRoomId`, `s0`.`IsVerified`, `s0`.`PlayersCount`, `s0`.`Rating`, `s0`.`UserId`, `s0`.`VisitedAt`, `s0`.`Id0`, `s0`.`DeletedAt0`, `s0`.`Email`, `s0`.`RegisteredAt`, `s0`.`Role`, `s0`.`TotalRoomsPlayed`, `s0`.`Username`
+FROM `EscapeRooms` AS `e`
+INNER JOIN `Locations` AS `l` ON `e`.`LocationId` = `l`.`Id`
+INNER JOIN `Companies` AS `c` ON `e`.`CompanyId` = `c`.`Id`
+LEFT JOIN (
+    SELECT `t`.`Id`, `t`.`DeletedAt`, `t`.`IconUrl`, `t`.`Name`, `e0`.`EscapeRoomsId`, `e0`.`ThemesId`
+    FROM `EscapeRoomTheme` AS `e0`
+    INNER JOIN `Themes` AS `t` ON `e0`.`ThemesId` = `t`.`Id`
+) AS `s` ON `e`.`Id` = `s`.`EscapeRoomsId`
+LEFT JOIN `Photos` AS `p` ON `e`.`Id` = `p`.`EscapeRoomId`
+LEFT JOIN (
+    SELECT `r`.`Id`, `r`.`Comment`, `r`.`CreatedAt`, `r`.`DeletedAt`, `r`.`EscapeRoomId`, `r`.`IsVerified`, `r`.`PlayersCount`, `r`.`Rating`, `r`.`UserId`, `r`.`VisitedAt`, `u`.`Id` AS `Id0`, `u`.`DeletedAt` AS `DeletedAt0`, `u`.`Email`, `u`.`RegisteredAt`, `u`.`Role`, `u`.`TotalRoomsPlayed`, `u`.`Username`
+    FROM `Reviews` AS `r`
+    INNER JOIN `Users` AS `u` ON `r`.`UserId` = `u`.`Id`
+    WHERE `r`.`DeletedAt` IS NULL
+) AS `s0` ON `e`.`Id` = `s0`.`EscapeRoomId`
+WHERE `e`.`DeletedAt` IS NULL
+ORDER BY `e`.`Id`, `l`.`Id`, `c`.`Id`, `s`.`EscapeRoomsId`, `s`.`ThemesId`, `s`.`Id`, `p`.`Id`, `s0`.`Id`
+2026-06-29 07:46:31.205 +02:00 [INF] Executing ViewResult, running view Index.
+2026-06-29 07:46:31.207 +02:00 [INF] Executed ViewResult - view Index executed in 2.2186ms.
+2026-06-29 07:46:31.207 +02:00 [INF] Executed action EscapeRoomReviews.Controllers.EscapeRoomController.Index (EscapeRoomReviews) in 19.3745ms
+2026-06-29 07:46:31.207 +02:00 [INF] Executed endpoint 'EscapeRoomReviews.Controllers.EscapeRoomController.Index (EscapeRoomReviews)'
+2026-06-29 07:46:31.208 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5241/ - 200 null text/html; charset=utf-8 21.0656ms
+2026-06-29 07:46:32.409 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5241/soba/3 - null null
+2026-06-29 07:46:32.410 +02:00 [INF] Executing endpoint 'EscapeRoomReviews.Controllers.EscapeRoomController.Details (EscapeRoomReviews)'
+2026-06-29 07:46:32.411 +02:00 [INF] Route matched with {action = "Details", controller = "EscapeRoom", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Details(Int32) on controller EscapeRoomReviews.Controllers.EscapeRoomController (EscapeRoomReviews).
+2026-06-29 07:46:32.416 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CompanyId`, `s`.`CreatedAt`, `s`.`DeletedAt`, `s`.`Description`, `s`.`Difficulty`, `s`.`LocationId`, `s`.`MaxPlayers`, `s`.`Name`, `s`.`Price`, `s`.`Id0`, `s`.`Address`, `s`.`City`, `s`.`DeletedAt0`, `s`.`Latitude`, `s`.`Longitude`, `s`.`PostalCode`, `s`.`Id1`, `s`.`DeletedAt1`, `s`.`Name0`, `s`.`Website`, `s0`.`Id`, `s0`.`DeletedAt`, `s0`.`IconUrl`, `s0`.`Name`, `s0`.`EscapeRoomsId`, `s0`.`ThemesId`, `p`.`Id`, `p`.`ContentType`, `p`.`CreatedAt`, `p`.`EscapeRoomId`, `p`.`FileName`, `p`.`FileSize`, `p`.`Url`, `s1`.`Id`, `s1`.`Comment`, `s1`.`CreatedAt`, `s1`.`DeletedAt`, `s1`.`EscapeRoomId`, `s1`.`IsVerified`, `s1`.`PlayersCount`, `s1`.`Rating`, `s1`.`UserId`, `s1`.`VisitedAt`, `s1`.`Id0`, `s1`.`DeletedAt0`, `s1`.`Email`, `s1`.`RegisteredAt`, `s1`.`Role`, `s1`.`TotalRoomsPlayed`, `s1`.`Username`
+FROM (
+    SELECT `e`.`Id`, `e`.`CompanyId`, `e`.`CreatedAt`, `e`.`DeletedAt`, `e`.`Description`, `e`.`Difficulty`, `e`.`LocationId`, `e`.`MaxPlayers`, `e`.`Name`, `e`.`Price`, `l`.`Id` AS `Id0`, `l`.`Address`, `l`.`City`, `l`.`DeletedAt` AS `DeletedAt0`, `l`.`Latitude`, `l`.`Longitude`, `l`.`PostalCode`, `c`.`Id` AS `Id1`, `c`.`DeletedAt` AS `DeletedAt1`, `c`.`Name` AS `Name0`, `c`.`Website`
+    FROM `EscapeRooms` AS `e`
+    INNER JOIN `Locations` AS `l` ON `e`.`LocationId` = `l`.`Id`
+    INNER JOIN `Companies` AS `c` ON `e`.`CompanyId` = `c`.`Id`
+    WHERE `e`.`DeletedAt` IS NULL AND (`e`.`Id` = @__id_0)
+    LIMIT 1
+) AS `s`
+LEFT JOIN (
+    SELECT `t`.`Id`, `t`.`DeletedAt`, `t`.`IconUrl`, `t`.`Name`, `e0`.`EscapeRoomsId`, `e0`.`ThemesId`
+    FROM `EscapeRoomTheme` AS `e0`
+    INNER JOIN `Themes` AS `t` ON `e0`.`ThemesId` = `t`.`Id`
+) AS `s0` ON `s`.`Id` = `s0`.`EscapeRoomsId`
+LEFT JOIN `Photos` AS `p` ON `s`.`Id` = `p`.`EscapeRoomId`
+LEFT JOIN (
+    SELECT `r`.`Id`, `r`.`Comment`, `r`.`CreatedAt`, `r`.`DeletedAt`, `r`.`EscapeRoomId`, `r`.`IsVerified`, `r`.`PlayersCount`, `r`.`Rating`, `r`.`UserId`, `r`.`VisitedAt`, `u`.`Id` AS `Id0`, `u`.`DeletedAt` AS `DeletedAt0`, `u`.`Email`, `u`.`RegisteredAt`, `u`.`Role`, `u`.`TotalRoomsPlayed`, `u`.`Username`
+    FROM `Reviews` AS `r`
+    INNER JOIN `Users` AS `u` ON `r`.`UserId` = `u`.`Id`
+    WHERE `r`.`DeletedAt` IS NULL
+) AS `s1` ON `s`.`Id` = `s1`.`EscapeRoomId`
+ORDER BY `s`.`Id`, `s`.`Id0`, `s`.`Id1`, `s0`.`EscapeRoomsId`, `s0`.`ThemesId`, `s0`.`Id`, `p`.`Id`, `s1`.`Id`
+2026-06-29 07:46:32.418 +02:00 [INF] Executing ViewResult, running view Details.
+2026-06-29 07:46:32.420 +02:00 [INF] Executed ViewResult - view Details executed in 1.6097ms.
+2026-06-29 07:46:32.420 +02:00 [INF] Executed action EscapeRoomReviews.Controllers.EscapeRoomController.Details (EscapeRoomReviews) in 8.861ms
+2026-06-29 07:46:32.420 +02:00 [INF] Executed endpoint 'EscapeRoomReviews.Controllers.EscapeRoomController.Details (EscapeRoomReviews)'
+2026-06-29 07:46:32.420 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5241/soba/3 - 200 null text/html; charset=utf-8 11.5249ms
+2026-06-29 07:46:34.589 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5241/ - null null
+2026-06-29 07:46:34.590 +02:00 [INF] Executing endpoint 'EscapeRoomReviews.Controllers.EscapeRoomController.Index (EscapeRoomReviews)'
+2026-06-29 07:46:34.590 +02:00 [INF] Route matched with {action = "Index", controller = "EscapeRoom", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index(System.String[], System.String[], System.String[], System.String) on controller EscapeRoomReviews.Controllers.EscapeRoomController (EscapeRoomReviews).
+2026-06-29 07:46:34.594 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `e`.`Id`, `e`.`CompanyId`, `e`.`CreatedAt`, `e`.`DeletedAt`, `e`.`Description`, `e`.`Difficulty`, `e`.`LocationId`, `e`.`MaxPlayers`, `e`.`Name`, `e`.`Price`, `l`.`Id`, `l`.`Address`, `l`.`City`, `l`.`DeletedAt`, `l`.`Latitude`, `l`.`Longitude`, `l`.`PostalCode`, `c`.`Id`, `c`.`DeletedAt`, `c`.`Name`, `c`.`Website`, `s`.`Id`, `s`.`DeletedAt`, `s`.`IconUrl`, `s`.`Name`, `s`.`EscapeRoomsId`, `s`.`ThemesId`, `p`.`Id`, `p`.`ContentType`, `p`.`CreatedAt`, `p`.`EscapeRoomId`, `p`.`FileName`, `p`.`FileSize`, `p`.`Url`, `s0`.`Id`, `s0`.`Comment`, `s0`.`CreatedAt`, `s0`.`DeletedAt`, `s0`.`EscapeRoomId`, `s0`.`IsVerified`, `s0`.`PlayersCount`, `s0`.`Rating`, `s0`.`UserId`, `s0`.`VisitedAt`, `s0`.`Id0`, `s0`.`DeletedAt0`, `s0`.`Email`, `s0`.`RegisteredAt`, `s0`.`Role`, `s0`.`TotalRoomsPlayed`, `s0`.`Username`
+FROM `EscapeRooms` AS `e`
+INNER JOIN `Locations` AS `l` ON `e`.`LocationId` = `l`.`Id`
+INNER JOIN `Companies` AS `c` ON `e`.`CompanyId` = `c`.`Id`
+LEFT JOIN (
+    SELECT `t`.`Id`, `t`.`DeletedAt`, `t`.`IconUrl`, `t`.`Name`, `e0`.`EscapeRoomsId`, `e0`.`ThemesId`
+    FROM `EscapeRoomTheme` AS `e0`
+    INNER JOIN `Themes` AS `t` ON `e0`.`ThemesId` = `t`.`Id`
+) AS `s` ON `e`.`Id` = `s`.`EscapeRoomsId`
+LEFT JOIN `Photos` AS `p` ON `e`.`Id` = `p`.`EscapeRoomId`
+LEFT JOIN (
+    SELECT `r`.`Id`, `r`.`Comment`, `r`.`CreatedAt`, `r`.`DeletedAt`, `r`.`EscapeRoomId`, `r`.`IsVerified`, `r`.`PlayersCount`, `r`.`Rating`, `r`.`UserId`, `r`.`VisitedAt`, `u`.`Id` AS `Id0`, `u`.`DeletedAt` AS `DeletedAt0`, `u`.`Email`, `u`.`RegisteredAt`, `u`.`Role`, `u`.`TotalRoomsPlayed`, `u`.`Username`
+    FROM `Reviews` AS `r`
+    INNER JOIN `Users` AS `u` ON `r`.`UserId` = `u`.`Id`
+    WHERE `r`.`DeletedAt` IS NULL
+) AS `s0` ON `e`.`Id` = `s0`.`EscapeRoomId`
+WHERE `e`.`DeletedAt` IS NULL
+ORDER BY `e`.`Id`, `l`.`Id`, `c`.`Id`, `s`.`EscapeRoomsId`, `s`.`ThemesId`, `s`.`Id`, `p`.`Id`, `s0`.`Id`
+2026-06-29 07:46:34.598 +02:00 [INF] Executing ViewResult, running view Index.
+2026-06-29 07:46:34.599 +02:00 [INF] Executed ViewResult - view Index executed in 1.3215ms.
+2026-06-29 07:46:34.599 +02:00 [INF] Executed action EscapeRoomReviews.Controllers.EscapeRoomController.Index (EscapeRoomReviews) in 9.1423ms
+2026-06-29 07:46:34.599 +02:00 [INF] Executed endpoint 'EscapeRoomReviews.Controllers.EscapeRoomController.Index (EscapeRoomReviews)'
+2026-06-29 07:46:34.600 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5241/ - 200 null text/html; charset=utf-8 10.8833ms
+2026-06-29 07:46:35.949 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5241/soba/4 - null null
+2026-06-29 07:46:35.950 +02:00 [INF] Executing endpoint 'EscapeRoomReviews.Controllers.EscapeRoomController.Details (EscapeRoomReviews)'
+2026-06-29 07:46:35.950 +02:00 [INF] Route matched with {action = "Details", controller = "EscapeRoom", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Details(Int32) on controller EscapeRoomReviews.Controllers.EscapeRoomController (EscapeRoomReviews).
+2026-06-29 07:46:35.953 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CompanyId`, `s`.`CreatedAt`, `s`.`DeletedAt`, `s`.`Description`, `s`.`Difficulty`, `s`.`LocationId`, `s`.`MaxPlayers`, `s`.`Name`, `s`.`Price`, `s`.`Id0`, `s`.`Address`, `s`.`City`, `s`.`DeletedAt0`, `s`.`Latitude`, `s`.`Longitude`, `s`.`PostalCode`, `s`.`Id1`, `s`.`DeletedAt1`, `s`.`Name0`, `s`.`Website`, `s0`.`Id`, `s0`.`DeletedAt`, `s0`.`IconUrl`, `s0`.`Name`, `s0`.`EscapeRoomsId`, `s0`.`ThemesId`, `p`.`Id`, `p`.`ContentType`, `p`.`CreatedAt`, `p`.`EscapeRoomId`, `p`.`FileName`, `p`.`FileSize`, `p`.`Url`, `s1`.`Id`, `s1`.`Comment`, `s1`.`CreatedAt`, `s1`.`DeletedAt`, `s1`.`EscapeRoomId`, `s1`.`IsVerified`, `s1`.`PlayersCount`, `s1`.`Rating`, `s1`.`UserId`, `s1`.`VisitedAt`, `s1`.`Id0`, `s1`.`DeletedAt0`, `s1`.`Email`, `s1`.`RegisteredAt`, `s1`.`Role`, `s1`.`TotalRoomsPlayed`, `s1`.`Username`
+FROM (
+    SELECT `e`.`Id`, `e`.`CompanyId`, `e`.`CreatedAt`, `e`.`DeletedAt`, `e`.`Description`, `e`.`Difficulty`, `e`.`LocationId`, `e`.`MaxPlayers`, `e`.`Name`, `e`.`Price`, `l`.`Id` AS `Id0`, `l`.`Address`, `l`.`City`, `l`.`DeletedAt` AS `DeletedAt0`, `l`.`Latitude`, `l`.`Longitude`, `l`.`PostalCode`, `c`.`Id` AS `Id1`, `c`.`DeletedAt` AS `DeletedAt1`, `c`.`Name` AS `Name0`, `c`.`Website`
+    FROM `EscapeRooms` AS `e`
+    INNER JOIN `Locations` AS `l` ON `e`.`LocationId` = `l`.`Id`
+    INNER JOIN `Companies` AS `c` ON `e`.`CompanyId` = `c`.`Id`
+    WHERE `e`.`DeletedAt` IS NULL AND (`e`.`Id` = @__id_0)
+    LIMIT 1
+) AS `s`
+LEFT JOIN (
+    SELECT `t`.`Id`, `t`.`DeletedAt`, `t`.`IconUrl`, `t`.`Name`, `e0`.`EscapeRoomsId`, `e0`.`ThemesId`
+    FROM `EscapeRoomTheme` AS `e0`
+    INNER JOIN `Themes` AS `t` ON `e0`.`ThemesId` = `t`.`Id`
+) AS `s0` ON `s`.`Id` = `s0`.`EscapeRoomsId`
+LEFT JOIN `Photos` AS `p` ON `s`.`Id` = `p`.`EscapeRoomId`
+LEFT JOIN (
+    SELECT `r`.`Id`, `r`.`Comment`, `r`.`CreatedAt`, `r`.`DeletedAt`, `r`.`EscapeRoomId`, `r`.`IsVerified`, `r`.`PlayersCount`, `r`.`Rating`, `r`.`UserId`, `r`.`VisitedAt`, `u`.`Id` AS `Id0`, `u`.`DeletedAt` AS `DeletedAt0`, `u`.`Email`, `u`.`RegisteredAt`, `u`.`Role`, `u`.`TotalRoomsPlayed`, `u`.`Username`
+    FROM `Reviews` AS `r`
+    INNER JOIN `Users` AS `u` ON `r`.`UserId` = `u`.`Id`
+    WHERE `r`.`DeletedAt` IS NULL
+) AS `s1` ON `s`.`Id` = `s1`.`EscapeRoomId`
+ORDER BY `s`.`Id`, `s`.`Id0`, `s`.`Id1`, `s0`.`EscapeRoomsId`, `s0`.`ThemesId`, `s0`.`Id`, `p`.`Id`, `s1`.`Id`
+2026-06-29 07:46:35.953 +02:00 [INF] Executing ViewResult, running view Details.
+2026-06-29 07:46:35.954 +02:00 [INF] Executed ViewResult - view Details executed in 0.792ms.
+2026-06-29 07:46:35.954 +02:00 [INF] Executed action EscapeRoomReviews.Controllers.EscapeRoomController.Details (EscapeRoomReviews) in 4.3586ms
+2026-06-29 07:46:35.954 +02:00 [INF] Executed endpoint 'EscapeRoomReviews.Controllers.EscapeRoomController.Details (EscapeRoomReviews)'
+2026-06-29 07:46:35.955 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5241/soba/4 - 200 null text/html; charset=utf-8 5.4359ms
+2026-06-29 07:46:37.541 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5241/ - null null
+2026-06-29 07:46:37.542 +02:00 [INF] Executing endpoint 'EscapeRoomReviews.Controllers.EscapeRoomController.Index (EscapeRoomReviews)'
+2026-06-29 07:46:37.542 +02:00 [INF] Route matched with {action = "Index", controller = "EscapeRoom", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index(System.String[], System.String[], System.String[], System.String) on controller EscapeRoomReviews.Controllers.EscapeRoomController (EscapeRoomReviews).
+2026-06-29 07:46:37.552 +02:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `e`.`Id`, `e`.`CompanyId`, `e`.`CreatedAt`, `e`.`DeletedAt`, `e`.`Description`, `e`.`Difficulty`, `e`.`LocationId`, `e`.`MaxPlayers`, `e`.`Name`, `e`.`Price`, `l`.`Id`, `l`.`Address`, `l`.`City`, `l`.`DeletedAt`, `l`.`Latitude`, `l`.`Longitude`, `l`.`PostalCode`, `c`.`Id`, `c`.`DeletedAt`, `c`.`Name`, `c`.`Website`, `s`.`Id`, `s`.`DeletedAt`, `s`.`IconUrl`, `s`.`Name`, `s`.`EscapeRoomsId`, `s`.`ThemesId`, `p`.`Id`, `p`.`ContentType`, `p`.`CreatedAt`, `p`.`EscapeRoomId`, `p`.`FileName`, `p`.`FileSize`, `p`.`Url`, `s0`.`Id`, `s0`.`Comment`, `s0`.`CreatedAt`, `s0`.`DeletedAt`, `s0`.`EscapeRoomId`, `s0`.`IsVerified`, `s0`.`PlayersCount`, `s0`.`Rating`, `s0`.`UserId`, `s0`.`VisitedAt`, `s0`.`Id0`, `s0`.`DeletedAt0`, `s0`.`Email`, `s0`.`RegisteredAt`, `s0`.`Role`, `s0`.`TotalRoomsPlayed`, `s0`.`Username`
+FROM `EscapeRooms` AS `e`
+INNER JOIN `Locations` AS `l` ON `e`.`LocationId` = `l`.`Id`
+INNER JOIN `Companies` AS `c` ON `e`.`CompanyId` = `c`.`Id`
+LEFT JOIN (
+    SELECT `t`.`Id`, `t`.`DeletedAt`, `t`.`IconUrl`, `t`.`Name`, `e0`.`EscapeRoomsId`, `e0`.`ThemesId`
+    FROM `EscapeRoomTheme` AS `e0`
+    INNER JOIN `Themes` AS `t` ON `e0`.`ThemesId` = `t`.`Id`
+) AS `s` ON `e`.`Id` = `s`.`EscapeRoomsId`
+LEFT JOIN `Photos` AS `p` ON `e`.`Id` = `p`.`EscapeRoomId`
+LEFT JOIN (
+    SELECT `r`.`Id`, `r`.`Comment`, `r`.`CreatedAt`, `r`.`DeletedAt`, `r`.`EscapeRoomId`, `r`.`IsVerified`, `r`.`PlayersCount`, `r`.`Rating`, `r`.`UserId`, `r`.`VisitedAt`, `u`.`Id` AS `Id0`, `u`.`DeletedAt` AS `DeletedAt0`, `u`.`Email`, `u`.`RegisteredAt`, `u`.`Role`, `u`.`TotalRoomsPlayed`, `u`.`Username`
+    FROM `Reviews` AS `r`
+    INNER JOIN `Users` AS `u` ON `r`.`UserId` = `u`.`Id`
+    WHERE `r`.`DeletedAt` IS NULL
+) AS `s0` ON `e`.`Id` = `s0`.`EscapeRoomId`
+WHERE `e`.`DeletedAt` IS NULL
+ORDER BY `e`.`Id`, `l`.`Id`, `c`.`Id`, `s`.`EscapeRoomsId`, `s`.`ThemesId`, `s`.`Id`, `p`.`Id`, `s0`.`Id`
+2026-06-29 07:46:37.555 +02:00 [INF] Executing ViewResult, running view Index.
+2026-06-29 07:46:37.556 +02:00 [INF] Executed ViewResult - view Index executed in 1.3256ms.
+2026-06-29 07:46:37.556 +02:00 [INF] Executed action EscapeRoomReviews.Controllers.EscapeRoomController.Index (EscapeRoomReviews) in 14.0847ms
+2026-06-29 07:46:37.556 +02:00 [INF] Executed endpoint 'EscapeRoomReviews.Controllers.EscapeRoomController.Index (EscapeRoomReviews)'
+2026-06-29 07:46:37.556 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5241/ - 200 null text/html; charset=utf-8 15.1312ms
+2026-06-29 07:46:39.393 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5241/soba/2 - null null
+2026-06-29 07:46:39.394 +02:00 [INF] Executing endpoint 'EscapeRoomReviews.Controllers.EscapeRoomController.Details (EscapeRoomReviews)'
+2026-06-29 07:46:39.394 +02:00 [INF] Route matched with {action = "Details", controller = "EscapeRoom", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Details(Int32) on controller EscapeRoomReviews.Controllers.EscapeRoomController (EscapeRoomReviews).
+2026-06-29 07:46:39.399 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CompanyId`, `s`.`CreatedAt`, `s`.`DeletedAt`, `s`.`Description`, `s`.`Difficulty`, `s`.`LocationId`, `s`.`MaxPlayers`, `s`.`Name`, `s`.`Price`, `s`.`Id0`, `s`.`Address`, `s`.`City`, `s`.`DeletedAt0`, `s`.`Latitude`, `s`.`Longitude`, `s`.`PostalCode`, `s`.`Id1`, `s`.`DeletedAt1`, `s`.`Name0`, `s`.`Website`, `s0`.`Id`, `s0`.`DeletedAt`, `s0`.`IconUrl`, `s0`.`Name`, `s0`.`EscapeRoomsId`, `s0`.`ThemesId`, `p`.`Id`, `p`.`ContentType`, `p`.`CreatedAt`, `p`.`EscapeRoomId`, `p`.`FileName`, `p`.`FileSize`, `p`.`Url`, `s1`.`Id`, `s1`.`Comment`, `s1`.`CreatedAt`, `s1`.`DeletedAt`, `s1`.`EscapeRoomId`, `s1`.`IsVerified`, `s1`.`PlayersCount`, `s1`.`Rating`, `s1`.`UserId`, `s1`.`VisitedAt`, `s1`.`Id0`, `s1`.`DeletedAt0`, `s1`.`Email`, `s1`.`RegisteredAt`, `s1`.`Role`, `s1`.`TotalRoomsPlayed`, `s1`.`Username`
+FROM (
+    SELECT `e`.`Id`, `e`.`CompanyId`, `e`.`CreatedAt`, `e`.`DeletedAt`, `e`.`Description`, `e`.`Difficulty`, `e`.`LocationId`, `e`.`MaxPlayers`, `e`.`Name`, `e`.`Price`, `l`.`Id` AS `Id0`, `l`.`Address`, `l`.`City`, `l`.`DeletedAt` AS `DeletedAt0`, `l`.`Latitude`, `l`.`Longitude`, `l`.`PostalCode`, `c`.`Id` AS `Id1`, `c`.`DeletedAt` AS `DeletedAt1`, `c`.`Name` AS `Name0`, `c`.`Website`
+    FROM `EscapeRooms` AS `e`
+    INNER JOIN `Locations` AS `l` ON `e`.`LocationId` = `l`.`Id`
+    INNER JOIN `Companies` AS `c` ON `e`.`CompanyId` = `c`.`Id`
+    WHERE `e`.`DeletedAt` IS NULL AND (`e`.`Id` = @__id_0)
+    LIMIT 1
+) AS `s`
+LEFT JOIN (
+    SELECT `t`.`Id`, `t`.`DeletedAt`, `t`.`IconUrl`, `t`.`Name`, `e0`.`EscapeRoomsId`, `e0`.`ThemesId`
+    FROM `EscapeRoomTheme` AS `e0`
+    INNER JOIN `Themes` AS `t` ON `e0`.`ThemesId` = `t`.`Id`
+) AS `s0` ON `s`.`Id` = `s0`.`EscapeRoomsId`
+LEFT JOIN `Photos` AS `p` ON `s`.`Id` = `p`.`EscapeRoomId`
+LEFT JOIN (
+    SELECT `r`.`Id`, `r`.`Comment`, `r`.`CreatedAt`, `r`.`DeletedAt`, `r`.`EscapeRoomId`, `r`.`IsVerified`, `r`.`PlayersCount`, `r`.`Rating`, `r`.`UserId`, `r`.`VisitedAt`, `u`.`Id` AS `Id0`, `u`.`DeletedAt` AS `DeletedAt0`, `u`.`Email`, `u`.`RegisteredAt`, `u`.`Role`, `u`.`TotalRoomsPlayed`, `u`.`Username`
+    FROM `Reviews` AS `r`
+    INNER JOIN `Users` AS `u` ON `r`.`UserId` = `u`.`Id`
+    WHERE `r`.`DeletedAt` IS NULL
+) AS `s1` ON `s`.`Id` = `s1`.`EscapeRoomId`
+ORDER BY `s`.`Id`, `s`.`Id0`, `s`.`Id1`, `s0`.`EscapeRoomsId`, `s0`.`ThemesId`, `s0`.`Id`, `p`.`Id`, `s1`.`Id`
+2026-06-29 07:46:39.400 +02:00 [INF] Executing ViewResult, running view Details.
+2026-06-29 07:46:39.401 +02:00 [INF] Executed ViewResult - view Details executed in 1.3247ms.
+2026-06-29 07:46:39.402 +02:00 [INF] Executed action EscapeRoomReviews.Controllers.EscapeRoomController.Details (EscapeRoomReviews) in 7.6122ms
+2026-06-29 07:46:39.402 +02:00 [INF] Executed endpoint 'EscapeRoomReviews.Controllers.EscapeRoomController.Details (EscapeRoomReviews)'
+2026-06-29 07:46:39.402 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5241/soba/2 - 200 null text/html; charset=utf-8 9.006ms
+2026-06-29 07:46:40.992 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5241/ - null null
+2026-06-29 07:46:40.993 +02:00 [INF] Executing endpoint 'EscapeRoomReviews.Controllers.EscapeRoomController.Index (EscapeRoomReviews)'
+2026-06-29 07:46:40.993 +02:00 [INF] Route matched with {action = "Index", controller = "EscapeRoom", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index(System.String[], System.String[], System.String[], System.String) on controller EscapeRoomReviews.Controllers.EscapeRoomController (EscapeRoomReviews).
+2026-06-29 07:46:40.997 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `e`.`Id`, `e`.`CompanyId`, `e`.`CreatedAt`, `e`.`DeletedAt`, `e`.`Description`, `e`.`Difficulty`, `e`.`LocationId`, `e`.`MaxPlayers`, `e`.`Name`, `e`.`Price`, `l`.`Id`, `l`.`Address`, `l`.`City`, `l`.`DeletedAt`, `l`.`Latitude`, `l`.`Longitude`, `l`.`PostalCode`, `c`.`Id`, `c`.`DeletedAt`, `c`.`Name`, `c`.`Website`, `s`.`Id`, `s`.`DeletedAt`, `s`.`IconUrl`, `s`.`Name`, `s`.`EscapeRoomsId`, `s`.`ThemesId`, `p`.`Id`, `p`.`ContentType`, `p`.`CreatedAt`, `p`.`EscapeRoomId`, `p`.`FileName`, `p`.`FileSize`, `p`.`Url`, `s0`.`Id`, `s0`.`Comment`, `s0`.`CreatedAt`, `s0`.`DeletedAt`, `s0`.`EscapeRoomId`, `s0`.`IsVerified`, `s0`.`PlayersCount`, `s0`.`Rating`, `s0`.`UserId`, `s0`.`VisitedAt`, `s0`.`Id0`, `s0`.`DeletedAt0`, `s0`.`Email`, `s0`.`RegisteredAt`, `s0`.`Role`, `s0`.`TotalRoomsPlayed`, `s0`.`Username`
+FROM `EscapeRooms` AS `e`
+INNER JOIN `Locations` AS `l` ON `e`.`LocationId` = `l`.`Id`
+INNER JOIN `Companies` AS `c` ON `e`.`CompanyId` = `c`.`Id`
+LEFT JOIN (
+    SELECT `t`.`Id`, `t`.`DeletedAt`, `t`.`IconUrl`, `t`.`Name`, `e0`.`EscapeRoomsId`, `e0`.`ThemesId`
+    FROM `EscapeRoomTheme` AS `e0`
+    INNER JOIN `Themes` AS `t` ON `e0`.`ThemesId` = `t`.`Id`
+) AS `s` ON `e`.`Id` = `s`.`EscapeRoomsId`
+LEFT JOIN `Photos` AS `p` ON `e`.`Id` = `p`.`EscapeRoomId`
+LEFT JOIN (
+    SELECT `r`.`Id`, `r`.`Comment`, `r`.`CreatedAt`, `r`.`DeletedAt`, `r`.`EscapeRoomId`, `r`.`IsVerified`, `r`.`PlayersCount`, `r`.`Rating`, `r`.`UserId`, `r`.`VisitedAt`, `u`.`Id` AS `Id0`, `u`.`DeletedAt` AS `DeletedAt0`, `u`.`Email`, `u`.`RegisteredAt`, `u`.`Role`, `u`.`TotalRoomsPlayed`, `u`.`Username`
+    FROM `Reviews` AS `r`
+    INNER JOIN `Users` AS `u` ON `r`.`UserId` = `u`.`Id`
+    WHERE `r`.`DeletedAt` IS NULL
+) AS `s0` ON `e`.`Id` = `s0`.`EscapeRoomId`
+WHERE `e`.`DeletedAt` IS NULL
+ORDER BY `e`.`Id`, `l`.`Id`, `c`.`Id`, `s`.`EscapeRoomsId`, `s`.`ThemesId`, `s`.`Id`, `p`.`Id`, `s0`.`Id`
+2026-06-29 07:46:41.000 +02:00 [INF] Executing ViewResult, running view Index.
+2026-06-29 07:46:41.001 +02:00 [INF] Executed ViewResult - view Index executed in 1.2823ms.
+2026-06-29 07:46:41.001 +02:00 [INF] Executed action EscapeRoomReviews.Controllers.EscapeRoomController.Index (EscapeRoomReviews) in 8.1934ms
+2026-06-29 07:46:41.001 +02:00 [INF] Executed endpoint 'EscapeRoomReviews.Controllers.EscapeRoomController.Index (EscapeRoomReviews)'
+2026-06-29 07:46:41.001 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5241/ - 200 null text/html; charset=utf-8 9.2263ms
+2026-06-29 07:46:42.525 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5241/soba/4 - null null
+2026-06-29 07:46:42.526 +02:00 [INF] Executing endpoint 'EscapeRoomReviews.Controllers.EscapeRoomController.Details (EscapeRoomReviews)'
+2026-06-29 07:46:42.526 +02:00 [INF] Route matched with {action = "Details", controller = "EscapeRoom", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Details(Int32) on controller EscapeRoomReviews.Controllers.EscapeRoomController (EscapeRoomReviews).
+2026-06-29 07:46:42.530 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CompanyId`, `s`.`CreatedAt`, `s`.`DeletedAt`, `s`.`Description`, `s`.`Difficulty`, `s`.`LocationId`, `s`.`MaxPlayers`, `s`.`Name`, `s`.`Price`, `s`.`Id0`, `s`.`Address`, `s`.`City`, `s`.`DeletedAt0`, `s`.`Latitude`, `s`.`Longitude`, `s`.`PostalCode`, `s`.`Id1`, `s`.`DeletedAt1`, `s`.`Name0`, `s`.`Website`, `s0`.`Id`, `s0`.`DeletedAt`, `s0`.`IconUrl`, `s0`.`Name`, `s0`.`EscapeRoomsId`, `s0`.`ThemesId`, `p`.`Id`, `p`.`ContentType`, `p`.`CreatedAt`, `p`.`EscapeRoomId`, `p`.`FileName`, `p`.`FileSize`, `p`.`Url`, `s1`.`Id`, `s1`.`Comment`, `s1`.`CreatedAt`, `s1`.`DeletedAt`, `s1`.`EscapeRoomId`, `s1`.`IsVerified`, `s1`.`PlayersCount`, `s1`.`Rating`, `s1`.`UserId`, `s1`.`VisitedAt`, `s1`.`Id0`, `s1`.`DeletedAt0`, `s1`.`Email`, `s1`.`RegisteredAt`, `s1`.`Role`, `s1`.`TotalRoomsPlayed`, `s1`.`Username`
+FROM (
+    SELECT `e`.`Id`, `e`.`CompanyId`, `e`.`CreatedAt`, `e`.`DeletedAt`, `e`.`Description`, `e`.`Difficulty`, `e`.`LocationId`, `e`.`MaxPlayers`, `e`.`Name`, `e`.`Price`, `l`.`Id` AS `Id0`, `l`.`Address`, `l`.`City`, `l`.`DeletedAt` AS `DeletedAt0`, `l`.`Latitude`, `l`.`Longitude`, `l`.`PostalCode`, `c`.`Id` AS `Id1`, `c`.`DeletedAt` AS `DeletedAt1`, `c`.`Name` AS `Name0`, `c`.`Website`
+    FROM `EscapeRooms` AS `e`
+    INNER JOIN `Locations` AS `l` ON `e`.`LocationId` = `l`.`Id`
+    INNER JOIN `Companies` AS `c` ON `e`.`CompanyId` = `c`.`Id`
+    WHERE `e`.`DeletedAt` IS NULL AND (`e`.`Id` = @__id_0)
+    LIMIT 1
+) AS `s`
+LEFT JOIN (
+    SELECT `t`.`Id`, `t`.`DeletedAt`, `t`.`IconUrl`, `t`.`Name`, `e0`.`EscapeRoomsId`, `e0`.`ThemesId`
+    FROM `EscapeRoomTheme` AS `e0`
+    INNER JOIN `Themes` AS `t` ON `e0`.`ThemesId` = `t`.`Id`
+) AS `s0` ON `s`.`Id` = `s0`.`EscapeRoomsId`
+LEFT JOIN `Photos` AS `p` ON `s`.`Id` = `p`.`EscapeRoomId`
+LEFT JOIN (
+    SELECT `r`.`Id`, `r`.`Comment`, `r`.`CreatedAt`, `r`.`DeletedAt`, `r`.`EscapeRoomId`, `r`.`IsVerified`, `r`.`PlayersCount`, `r`.`Rating`, `r`.`UserId`, `r`.`VisitedAt`, `u`.`Id` AS `Id0`, `u`.`DeletedAt` AS `DeletedAt0`, `u`.`Email`, `u`.`RegisteredAt`, `u`.`Role`, `u`.`TotalRoomsPlayed`, `u`.`Username`
+    FROM `Reviews` AS `r`
+    INNER JOIN `Users` AS `u` ON `r`.`UserId` = `u`.`Id`
+    WHERE `r`.`DeletedAt` IS NULL
+) AS `s1` ON `s`.`Id` = `s1`.`EscapeRoomId`
+ORDER BY `s`.`Id`, `s`.`Id0`, `s`.`Id1`, `s0`.`EscapeRoomsId`, `s0`.`ThemesId`, `s0`.`Id`, `p`.`Id`, `s1`.`Id`
+2026-06-29 07:46:42.530 +02:00 [INF] Executing ViewResult, running view Details.
+2026-06-29 07:46:42.531 +02:00 [INF] Executed ViewResult - view Details executed in 1.0156ms.
+2026-06-29 07:46:42.532 +02:00 [INF] Executed action EscapeRoomReviews.Controllers.EscapeRoomController.Details (EscapeRoomReviews) in 5.1693ms
+2026-06-29 07:46:42.532 +02:00 [INF] Executed endpoint 'EscapeRoomReviews.Controllers.EscapeRoomController.Details (EscapeRoomReviews)'
+2026-06-29 07:46:42.532 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5241/soba/4 - 200 null text/html; charset=utf-8 6.9775ms
+2026-06-29 07:46:46.447 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5241/ - null null
+2026-06-29 07:46:46.448 +02:00 [INF] Executing endpoint 'EscapeRoomReviews.Controllers.EscapeRoomController.Index (EscapeRoomReviews)'
+2026-06-29 07:46:46.448 +02:00 [INF] Route matched with {action = "Index", controller = "EscapeRoom", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index(System.String[], System.String[], System.String[], System.String) on controller EscapeRoomReviews.Controllers.EscapeRoomController (EscapeRoomReviews).
+2026-06-29 07:46:46.452 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `e`.`Id`, `e`.`CompanyId`, `e`.`CreatedAt`, `e`.`DeletedAt`, `e`.`Description`, `e`.`Difficulty`, `e`.`LocationId`, `e`.`MaxPlayers`, `e`.`Name`, `e`.`Price`, `l`.`Id`, `l`.`Address`, `l`.`City`, `l`.`DeletedAt`, `l`.`Latitude`, `l`.`Longitude`, `l`.`PostalCode`, `c`.`Id`, `c`.`DeletedAt`, `c`.`Name`, `c`.`Website`, `s`.`Id`, `s`.`DeletedAt`, `s`.`IconUrl`, `s`.`Name`, `s`.`EscapeRoomsId`, `s`.`ThemesId`, `p`.`Id`, `p`.`ContentType`, `p`.`CreatedAt`, `p`.`EscapeRoomId`, `p`.`FileName`, `p`.`FileSize`, `p`.`Url`, `s0`.`Id`, `s0`.`Comment`, `s0`.`CreatedAt`, `s0`.`DeletedAt`, `s0`.`EscapeRoomId`, `s0`.`IsVerified`, `s0`.`PlayersCount`, `s0`.`Rating`, `s0`.`UserId`, `s0`.`VisitedAt`, `s0`.`Id0`, `s0`.`DeletedAt0`, `s0`.`Email`, `s0`.`RegisteredAt`, `s0`.`Role`, `s0`.`TotalRoomsPlayed`, `s0`.`Username`
+FROM `EscapeRooms` AS `e`
+INNER JOIN `Locations` AS `l` ON `e`.`LocationId` = `l`.`Id`
+INNER JOIN `Companies` AS `c` ON `e`.`CompanyId` = `c`.`Id`
+LEFT JOIN (
+    SELECT `t`.`Id`, `t`.`DeletedAt`, `t`.`IconUrl`, `t`.`Name`, `e0`.`EscapeRoomsId`, `e0`.`ThemesId`
+    FROM `EscapeRoomTheme` AS `e0`
+    INNER JOIN `Themes` AS `t` ON `e0`.`ThemesId` = `t`.`Id`
+) AS `s` ON `e`.`Id` = `s`.`EscapeRoomsId`
+LEFT JOIN `Photos` AS `p` ON `e`.`Id` = `p`.`EscapeRoomId`
+LEFT JOIN (
+    SELECT `r`.`Id`, `r`.`Comment`, `r`.`CreatedAt`, `r`.`DeletedAt`, `r`.`EscapeRoomId`, `r`.`IsVerified`, `r`.`PlayersCount`, `r`.`Rating`, `r`.`UserId`, `r`.`VisitedAt`, `u`.`Id` AS `Id0`, `u`.`DeletedAt` AS `DeletedAt0`, `u`.`Email`, `u`.`RegisteredAt`, `u`.`Role`, `u`.`TotalRoomsPlayed`, `u`.`Username`
+    FROM `Reviews` AS `r`
+    INNER JOIN `Users` AS `u` ON `r`.`UserId` = `u`.`Id`
+    WHERE `r`.`DeletedAt` IS NULL
+) AS `s0` ON `e`.`Id` = `s0`.`EscapeRoomId`
+WHERE `e`.`DeletedAt` IS NULL
+ORDER BY `e`.`Id`, `l`.`Id`, `c`.`Id`, `s`.`EscapeRoomsId`, `s`.`ThemesId`, `s`.`Id`, `p`.`Id`, `s0`.`Id`
+2026-06-29 07:46:46.455 +02:00 [INF] Executing ViewResult, running view Index.
+2026-06-29 07:46:46.457 +02:00 [INF] Executed ViewResult - view Index executed in 2.4467ms.
+2026-06-29 07:46:46.458 +02:00 [INF] Executed action EscapeRoomReviews.Controllers.EscapeRoomController.Index (EscapeRoomReviews) in 9.6943ms
+2026-06-29 07:46:46.458 +02:00 [INF] Executed endpoint 'EscapeRoomReviews.Controllers.EscapeRoomController.Index (EscapeRoomReviews)'
+2026-06-29 07:46:46.458 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5241/ - 200 null text/html; charset=utf-8 10.7051ms
+2026-06-29 07:48:44.204 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5241/soba/3 - null null
+2026-06-29 07:48:44.209 +02:00 [INF] Executing endpoint 'EscapeRoomReviews.Controllers.EscapeRoomController.Details (EscapeRoomReviews)'
+2026-06-29 07:48:44.209 +02:00 [INF] Route matched with {action = "Details", controller = "EscapeRoom", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Details(Int32) on controller EscapeRoomReviews.Controllers.EscapeRoomController (EscapeRoomReviews).
+2026-06-29 07:48:44.216 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CompanyId`, `s`.`CreatedAt`, `s`.`DeletedAt`, `s`.`Description`, `s`.`Difficulty`, `s`.`LocationId`, `s`.`MaxPlayers`, `s`.`Name`, `s`.`Price`, `s`.`Id0`, `s`.`Address`, `s`.`City`, `s`.`DeletedAt0`, `s`.`Latitude`, `s`.`Longitude`, `s`.`PostalCode`, `s`.`Id1`, `s`.`DeletedAt1`, `s`.`Name0`, `s`.`Website`, `s0`.`Id`, `s0`.`DeletedAt`, `s0`.`IconUrl`, `s0`.`Name`, `s0`.`EscapeRoomsId`, `s0`.`ThemesId`, `p`.`Id`, `p`.`ContentType`, `p`.`CreatedAt`, `p`.`EscapeRoomId`, `p`.`FileName`, `p`.`FileSize`, `p`.`Url`, `s1`.`Id`, `s1`.`Comment`, `s1`.`CreatedAt`, `s1`.`DeletedAt`, `s1`.`EscapeRoomId`, `s1`.`IsVerified`, `s1`.`PlayersCount`, `s1`.`Rating`, `s1`.`UserId`, `s1`.`VisitedAt`, `s1`.`Id0`, `s1`.`DeletedAt0`, `s1`.`Email`, `s1`.`RegisteredAt`, `s1`.`Role`, `s1`.`TotalRoomsPlayed`, `s1`.`Username`
+FROM (
+    SELECT `e`.`Id`, `e`.`CompanyId`, `e`.`CreatedAt`, `e`.`DeletedAt`, `e`.`Description`, `e`.`Difficulty`, `e`.`LocationId`, `e`.`MaxPlayers`, `e`.`Name`, `e`.`Price`, `l`.`Id` AS `Id0`, `l`.`Address`, `l`.`City`, `l`.`DeletedAt` AS `DeletedAt0`, `l`.`Latitude`, `l`.`Longitude`, `l`.`PostalCode`, `c`.`Id` AS `Id1`, `c`.`DeletedAt` AS `DeletedAt1`, `c`.`Name` AS `Name0`, `c`.`Website`
+    FROM `EscapeRooms` AS `e`
+    INNER JOIN `Locations` AS `l` ON `e`.`LocationId` = `l`.`Id`
+    INNER JOIN `Companies` AS `c` ON `e`.`CompanyId` = `c`.`Id`
+    WHERE `e`.`DeletedAt` IS NULL AND (`e`.`Id` = @__id_0)
+    LIMIT 1
+) AS `s`
+LEFT JOIN (
+    SELECT `t`.`Id`, `t`.`DeletedAt`, `t`.`IconUrl`, `t`.`Name`, `e0`.`EscapeRoomsId`, `e0`.`ThemesId`
+    FROM `EscapeRoomTheme` AS `e0`
+    INNER JOIN `Themes` AS `t` ON `e0`.`ThemesId` = `t`.`Id`
+) AS `s0` ON `s`.`Id` = `s0`.`EscapeRoomsId`
+LEFT JOIN `Photos` AS `p` ON `s`.`Id` = `p`.`EscapeRoomId`
+LEFT JOIN (
+    SELECT `r`.`Id`, `r`.`Comment`, `r`.`CreatedAt`, `r`.`DeletedAt`, `r`.`EscapeRoomId`, `r`.`IsVerified`, `r`.`PlayersCount`, `r`.`Rating`, `r`.`UserId`, `r`.`VisitedAt`, `u`.`Id` AS `Id0`, `u`.`DeletedAt` AS `DeletedAt0`, `u`.`Email`, `u`.`RegisteredAt`, `u`.`Role`, `u`.`TotalRoomsPlayed`, `u`.`Username`
+    FROM `Reviews` AS `r`
+    INNER JOIN `Users` AS `u` ON `r`.`UserId` = `u`.`Id`
+    WHERE `r`.`DeletedAt` IS NULL
+) AS `s1` ON `s`.`Id` = `s1`.`EscapeRoomId`
+ORDER BY `s`.`Id`, `s`.`Id0`, `s`.`Id1`, `s0`.`EscapeRoomsId`, `s0`.`ThemesId`, `s0`.`Id`, `p`.`Id`, `s1`.`Id`
+2026-06-29 07:48:44.218 +02:00 [INF] Executing ViewResult, running view Details.
+2026-06-29 07:48:44.220 +02:00 [INF] Executed ViewResult - view Details executed in 1.7985ms.
+2026-06-29 07:48:44.220 +02:00 [INF] Executed action EscapeRoomReviews.Controllers.EscapeRoomController.Details (EscapeRoomReviews) in 10.6491ms
+2026-06-29 07:48:44.220 +02:00 [INF] Executed endpoint 'EscapeRoomReviews.Controllers.EscapeRoomController.Details (EscapeRoomReviews)'
+2026-06-29 07:48:44.220 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5241/soba/3 - 200 null text/html; charset=utf-8 16.4155ms
+2026-06-29 07:48:50.085 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5241/ - null null
+2026-06-29 07:48:50.086 +02:00 [INF] Executing endpoint 'EscapeRoomReviews.Controllers.EscapeRoomController.Index (EscapeRoomReviews)'
+2026-06-29 07:48:50.086 +02:00 [INF] Route matched with {action = "Index", controller = "EscapeRoom", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index(System.String[], System.String[], System.String[], System.String) on controller EscapeRoomReviews.Controllers.EscapeRoomController (EscapeRoomReviews).
+2026-06-29 07:48:50.089 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `e`.`Id`, `e`.`CompanyId`, `e`.`CreatedAt`, `e`.`DeletedAt`, `e`.`Description`, `e`.`Difficulty`, `e`.`LocationId`, `e`.`MaxPlayers`, `e`.`Name`, `e`.`Price`, `l`.`Id`, `l`.`Address`, `l`.`City`, `l`.`DeletedAt`, `l`.`Latitude`, `l`.`Longitude`, `l`.`PostalCode`, `c`.`Id`, `c`.`DeletedAt`, `c`.`Name`, `c`.`Website`, `s`.`Id`, `s`.`DeletedAt`, `s`.`IconUrl`, `s`.`Name`, `s`.`EscapeRoomsId`, `s`.`ThemesId`, `p`.`Id`, `p`.`ContentType`, `p`.`CreatedAt`, `p`.`EscapeRoomId`, `p`.`FileName`, `p`.`FileSize`, `p`.`Url`, `s0`.`Id`, `s0`.`Comment`, `s0`.`CreatedAt`, `s0`.`DeletedAt`, `s0`.`EscapeRoomId`, `s0`.`IsVerified`, `s0`.`PlayersCount`, `s0`.`Rating`, `s0`.`UserId`, `s0`.`VisitedAt`, `s0`.`Id0`, `s0`.`DeletedAt0`, `s0`.`Email`, `s0`.`RegisteredAt`, `s0`.`Role`, `s0`.`TotalRoomsPlayed`, `s0`.`Username`
+FROM `EscapeRooms` AS `e`
+INNER JOIN `Locations` AS `l` ON `e`.`LocationId` = `l`.`Id`
+INNER JOIN `Companies` AS `c` ON `e`.`CompanyId` = `c`.`Id`
+LEFT JOIN (
+    SELECT `t`.`Id`, `t`.`DeletedAt`, `t`.`IconUrl`, `t`.`Name`, `e0`.`EscapeRoomsId`, `e0`.`ThemesId`
+    FROM `EscapeRoomTheme` AS `e0`
+    INNER JOIN `Themes` AS `t` ON `e0`.`ThemesId` = `t`.`Id`
+) AS `s` ON `e`.`Id` = `s`.`EscapeRoomsId`
+LEFT JOIN `Photos` AS `p` ON `e`.`Id` = `p`.`EscapeRoomId`
+LEFT JOIN (
+    SELECT `r`.`Id`, `r`.`Comment`, `r`.`CreatedAt`, `r`.`DeletedAt`, `r`.`EscapeRoomId`, `r`.`IsVerified`, `r`.`PlayersCount`, `r`.`Rating`, `r`.`UserId`, `r`.`VisitedAt`, `u`.`Id` AS `Id0`, `u`.`DeletedAt` AS `DeletedAt0`, `u`.`Email`, `u`.`RegisteredAt`, `u`.`Role`, `u`.`TotalRoomsPlayed`, `u`.`Username`
+    FROM `Reviews` AS `r`
+    INNER JOIN `Users` AS `u` ON `r`.`UserId` = `u`.`Id`
+    WHERE `r`.`DeletedAt` IS NULL
+) AS `s0` ON `e`.`Id` = `s0`.`EscapeRoomId`
+WHERE `e`.`DeletedAt` IS NULL
+ORDER BY `e`.`Id`, `l`.`Id`, `c`.`Id`, `s`.`EscapeRoomsId`, `s`.`ThemesId`, `s`.`Id`, `p`.`Id`, `s0`.`Id`
+2026-06-29 07:48:50.091 +02:00 [INF] Executing ViewResult, running view Index.
+2026-06-29 07:48:50.093 +02:00 [INF] Executed ViewResult - view Index executed in 2.4485ms.
+2026-06-29 07:48:50.094 +02:00 [INF] Executed action EscapeRoomReviews.Controllers.EscapeRoomController.Index (EscapeRoomReviews) in 7.8337ms
+2026-06-29 07:48:50.094 +02:00 [INF] Executed endpoint 'EscapeRoomReviews.Controllers.EscapeRoomController.Index (EscapeRoomReviews)'
+2026-06-29 07:48:50.094 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5241/ - 200 null text/html; charset=utf-8 8.9834ms
+2026-06-29 07:51:40.771 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5241/ - null null
+2026-06-29 07:51:40.788 +02:00 [INF] Executing endpoint 'EscapeRoomReviews.Controllers.EscapeRoomController.Index (EscapeRoomReviews)'
+2026-06-29 07:51:40.791 +02:00 [INF] Route matched with {action = "Index", controller = "EscapeRoom", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index(System.String[], System.String[], System.String[], System.String) on controller EscapeRoomReviews.Controllers.EscapeRoomController (EscapeRoomReviews).
+2026-06-29 07:51:40.928 +02:00 [INF] Executed DbCommand (53ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `e`.`Id`, `e`.`CompanyId`, `e`.`CreatedAt`, `e`.`DeletedAt`, `e`.`Description`, `e`.`Difficulty`, `e`.`LocationId`, `e`.`MaxPlayers`, `e`.`Name`, `e`.`Price`, `l`.`Id`, `l`.`Address`, `l`.`City`, `l`.`DeletedAt`, `l`.`Latitude`, `l`.`Longitude`, `l`.`PostalCode`, `c`.`Id`, `c`.`DeletedAt`, `c`.`Name`, `c`.`Website`, `s`.`Id`, `s`.`DeletedAt`, `s`.`IconUrl`, `s`.`Name`, `s`.`EscapeRoomsId`, `s`.`ThemesId`, `p`.`Id`, `p`.`ContentType`, `p`.`CreatedAt`, `p`.`EscapeRoomId`, `p`.`FileName`, `p`.`FileSize`, `p`.`Url`, `s0`.`Id`, `s0`.`Comment`, `s0`.`CreatedAt`, `s0`.`DeletedAt`, `s0`.`EscapeRoomId`, `s0`.`IsVerified`, `s0`.`PlayersCount`, `s0`.`Rating`, `s0`.`UserId`, `s0`.`VisitedAt`, `s0`.`Id0`, `s0`.`DeletedAt0`, `s0`.`Email`, `s0`.`RegisteredAt`, `s0`.`Role`, `s0`.`TotalRoomsPlayed`, `s0`.`Username`
+FROM `EscapeRooms` AS `e`
+INNER JOIN `Locations` AS `l` ON `e`.`LocationId` = `l`.`Id`
+INNER JOIN `Companies` AS `c` ON `e`.`CompanyId` = `c`.`Id`
+LEFT JOIN (
+    SELECT `t`.`Id`, `t`.`DeletedAt`, `t`.`IconUrl`, `t`.`Name`, `e0`.`EscapeRoomsId`, `e0`.`ThemesId`
+    FROM `EscapeRoomTheme` AS `e0`
+    INNER JOIN `Themes` AS `t` ON `e0`.`ThemesId` = `t`.`Id`
+) AS `s` ON `e`.`Id` = `s`.`EscapeRoomsId`
+LEFT JOIN `Photos` AS `p` ON `e`.`Id` = `p`.`EscapeRoomId`
+LEFT JOIN (
+    SELECT `r`.`Id`, `r`.`Comment`, `r`.`CreatedAt`, `r`.`DeletedAt`, `r`.`EscapeRoomId`, `r`.`IsVerified`, `r`.`PlayersCount`, `r`.`Rating`, `r`.`UserId`, `r`.`VisitedAt`, `u`.`Id` AS `Id0`, `u`.`DeletedAt` AS `DeletedAt0`, `u`.`Email`, `u`.`RegisteredAt`, `u`.`Role`, `u`.`TotalRoomsPlayed`, `u`.`Username`
+    FROM `Reviews` AS `r`
+    INNER JOIN `Users` AS `u` ON `r`.`UserId` = `u`.`Id`
+    WHERE `r`.`DeletedAt` IS NULL
+) AS `s0` ON `e`.`Id` = `s0`.`EscapeRoomId`
+WHERE `e`.`DeletedAt` IS NULL
+ORDER BY `e`.`Id`, `l`.`Id`, `c`.`Id`, `s`.`EscapeRoomsId`, `s`.`ThemesId`, `s`.`Id`, `p`.`Id`, `s0`.`Id`
+2026-06-29 07:51:40.939 +02:00 [INF] Executing ViewResult, running view Index.
+2026-06-29 07:51:40.962 +02:00 [INF] Executed ViewResult - view Index executed in 23.4372ms.
+2026-06-29 07:51:40.962 +02:00 [INF] Executed action EscapeRoomReviews.Controllers.EscapeRoomController.Index (EscapeRoomReviews) in 171.0039ms
+2026-06-29 07:51:40.963 +02:00 [INF] Executed endpoint 'EscapeRoomReviews.Controllers.EscapeRoomController.Index (EscapeRoomReviews)'
+2026-06-29 07:51:40.963 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5241/ - 200 null text/html; charset=utf-8 192.8567ms
+2026-06-29 07:52:06.633 +02:00 [INF] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT GET_LOCK('__EscapeRoomReviews_EFMigrationsLock', 259200)
+2026-06-29 07:52:06.824 +02:00 [INF] Executed DbCommand (33ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS `__EFMigrationsHistory` (
+    `MigrationId` varchar(150) CHARACTER SET utf8mb4 NOT NULL,
+    `ProductVersion` varchar(32) CHARACTER SET utf8mb4 NOT NULL,
+    CONSTRAINT `PK___EFMigrationsHistory` PRIMARY KEY (`MigrationId`)
+) CHARACTER SET=utf8mb4;
+2026-06-29 07:52:06.888 +02:00 [INF] Executed DbCommand (27ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='EscapeRoomReviews' AND TABLE_NAME='__EFMigrationsHistory';
+2026-06-29 07:52:06.896 +02:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `MigrationId`, `ProductVersion`
+FROM `__EFMigrationsHistory`
+ORDER BY `MigrationId`;
+2026-06-29 07:52:06.912 +02:00 [INF] No migrations were applied. The database is already up to date.
+2026-06-29 07:52:06.922 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT RELEASE_LOCK('__EscapeRoomReviews_EFMigrationsLock')
+2026-06-29 07:52:07.227 +02:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM `Users` AS `u`)
+2026-06-29 07:52:07.259 +02:00 [INF] User profile is available. Using 'C:\Users\majda\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-06-29 07:52:07.445 +02:00 [INF] Executed DbCommand (49ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a`.`Id`, `a`.`ConcurrencyStamp`, `a`.`Name`, `a`.`NormalizedName`
+FROM `AspNetRoles` AS `a`
+WHERE `a`.`NormalizedName` = @__normalizedName_0
+LIMIT 1
+2026-06-29 07:52:08.225 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a`.`Id`, `a`.`ConcurrencyStamp`, `a`.`Name`, `a`.`NormalizedName`
+FROM `AspNetRoles` AS `a`
+WHERE `a`.`NormalizedName` = @__normalizedName_0
+LIMIT 1
+2026-06-29 07:52:08.245 +02:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `a`.`Id`, `a`.`AccessFailedCount`, `a`.`ConcurrencyStamp`, `a`.`Email`, `a`.`EmailConfirmed`, `a`.`FirstName`, `a`.`LastName`, `a`.`LockoutEnabled`, `a`.`LockoutEnd`, `a`.`NormalizedEmail`, `a`.`NormalizedUserName`, `a`.`PasswordHash`, `a`.`PhoneNumber`, `a`.`PhoneNumberConfirmed`, `a`.`SecurityStamp`, `a`.`TwoFactorEnabled`, `a`.`UserName`
+FROM `AspNetUsers` AS `a`
+ORDER BY `a`.`Id`
+LIMIT 1
+2026-06-29 07:52:08.303 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedRoleName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a`.`Id`, `a`.`ConcurrencyStamp`, `a`.`Name`, `a`.`NormalizedName`
+FROM `AspNetRoles` AS `a`
+WHERE `a`.`NormalizedName` = @__normalizedRoleName_0
+LIMIT 2
+2026-06-29 07:52:08.334 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (Size = 255), @__p_1='?' (Size = 255)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a`.`UserId`, `a`.`RoleId`
+FROM `AspNetUserRoles` AS `a`
+WHERE (`a`.`UserId` = @__p_0) AND (`a`.`RoleId` = @__p_1)
+LIMIT 1
+2026-06-29 07:52:08.490 +02:00 [WRN] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+2026-06-29 07:52:08.529 +02:00 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `e`.`Id`, `e`.`CompanyId`, `e`.`CreatedAt`, `e`.`DeletedAt`, `e`.`Description`, `e`.`Difficulty`, `e`.`LocationId`, `e`.`MaxPlayers`, `e`.`Name`, `e`.`Price`, `l`.`Id`, `l`.`Address`, `l`.`City`, `l`.`DeletedAt`, `l`.`Latitude`, `l`.`Longitude`, `l`.`PostalCode`, `c`.`Id`, `c`.`DeletedAt`, `c`.`Name`, `c`.`Website`, `s`.`Id`, `s`.`DeletedAt`, `s`.`IconUrl`, `s`.`Name`, `s`.`EscapeRoomsId`, `s`.`ThemesId`, `p`.`Id`, `p`.`ContentType`, `p`.`CreatedAt`, `p`.`EscapeRoomId`, `p`.`FileName`, `p`.`FileSize`, `p`.`Url`, `s0`.`Id`, `s0`.`Comment`, `s0`.`CreatedAt`, `s0`.`DeletedAt`, `s0`.`EscapeRoomId`, `s0`.`IsVerified`, `s0`.`PlayersCount`, `s0`.`Rating`, `s0`.`UserId`, `s0`.`VisitedAt`, `s0`.`Id0`, `s0`.`DeletedAt0`, `s0`.`Email`, `s0`.`RegisteredAt`, `s0`.`Role`, `s0`.`TotalRoomsPlayed`, `s0`.`Username`
+FROM `EscapeRooms` AS `e`
+INNER JOIN `Locations` AS `l` ON `e`.`LocationId` = `l`.`Id`
+INNER JOIN `Companies` AS `c` ON `e`.`CompanyId` = `c`.`Id`
+LEFT JOIN (
+    SELECT `t`.`Id`, `t`.`DeletedAt`, `t`.`IconUrl`, `t`.`Name`, `e0`.`EscapeRoomsId`, `e0`.`ThemesId`
+    FROM `EscapeRoomTheme` AS `e0`
+    INNER JOIN `Themes` AS `t` ON `e0`.`ThemesId` = `t`.`Id`
+) AS `s` ON `e`.`Id` = `s`.`EscapeRoomsId`
+LEFT JOIN `Photos` AS `p` ON `e`.`Id` = `p`.`EscapeRoomId`
+LEFT JOIN (
+    SELECT `r`.`Id`, `r`.`Comment`, `r`.`CreatedAt`, `r`.`DeletedAt`, `r`.`EscapeRoomId`, `r`.`IsVerified`, `r`.`PlayersCount`, `r`.`Rating`, `r`.`UserId`, `r`.`VisitedAt`, `u`.`Id` AS `Id0`, `u`.`DeletedAt` AS `DeletedAt0`, `u`.`Email`, `u`.`RegisteredAt`, `u`.`Role`, `u`.`TotalRoomsPlayed`, `u`.`Username`
+    FROM `Reviews` AS `r`
+    INNER JOIN `Users` AS `u` ON `r`.`UserId` = `u`.`Id`
+    WHERE `r`.`DeletedAt` IS NULL
+) AS `s0` ON `e`.`Id` = `s0`.`EscapeRoomId`
+WHERE `e`.`DeletedAt` IS NULL
+ORDER BY `e`.`Id`, `l`.`Id`, `c`.`Id`, `s`.`EscapeRoomsId`, `s`.`ThemesId`, `s`.`Id`, `p`.`Id`, `s0`.`Id`
+2026-06-29 07:52:08.572 +02:00 [INF] Ucitan primjer podataka: 4 escape room objekta.
+2026-06-29 07:52:08.573 +02:00 [INF] Top 5 verificiranih soba: Misija Mars: Zadnji Signal (5.00), Tajna Teslinog Laboratorija (4.50), Ukleta Vila Raven (3.33), Neka soba (0.00)
+2026-06-29 07:52:08.575 +02:00 [INF] Sobe u gradu Zagreb sortirane po tezini: Tajna Teslinog Laboratorija [Medium]
+2026-06-29 07:52:08.575 +02:00 [INF] Prosjecna verificirana ocjena za sobu ID 1: 4.50
+2026-06-29 07:52:08.842 +02:00 [INF] Now listening on: http://localhost:5241
+2026-06-29 07:52:08.842 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-06-29 07:52:08.842 +02:00 [INF] Hosting environment: Development
+2026-06-29 07:52:08.843 +02:00 [INF] Content root path: c:\Users\majda\OneDrive\Dokumenti\6. semestar\.NET\.NET---Escape-rooms-reviews-\EscapeRoomReviews
+2026-06-29 07:52:15.168 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5241/ - null null
+2026-06-29 07:52:15.174 +02:00 [WRN] Failed to determine the https port for redirect.
+2026-06-29 07:52:15.265 +02:00 [INF] Executing endpoint 'EscapeRoomReviews.Controllers.EscapeRoomController.Index (EscapeRoomReviews)'
+2026-06-29 07:52:15.293 +02:00 [INF] Route matched with {action = "Index", controller = "EscapeRoom", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index(System.String[], System.String[], System.String[], System.String) on controller EscapeRoomReviews.Controllers.EscapeRoomController (EscapeRoomReviews).
+2026-06-29 07:52:15.344 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `e`.`Id`, `e`.`CompanyId`, `e`.`CreatedAt`, `e`.`DeletedAt`, `e`.`Description`, `e`.`Difficulty`, `e`.`LocationId`, `e`.`MaxPlayers`, `e`.`Name`, `e`.`Price`, `l`.`Id`, `l`.`Address`, `l`.`City`, `l`.`DeletedAt`, `l`.`Latitude`, `l`.`Longitude`, `l`.`PostalCode`, `c`.`Id`, `c`.`DeletedAt`, `c`.`Name`, `c`.`Website`, `s`.`Id`, `s`.`DeletedAt`, `s`.`IconUrl`, `s`.`Name`, `s`.`EscapeRoomsId`, `s`.`ThemesId`, `p`.`Id`, `p`.`ContentType`, `p`.`CreatedAt`, `p`.`EscapeRoomId`, `p`.`FileName`, `p`.`FileSize`, `p`.`Url`, `s0`.`Id`, `s0`.`Comment`, `s0`.`CreatedAt`, `s0`.`DeletedAt`, `s0`.`EscapeRoomId`, `s0`.`IsVerified`, `s0`.`PlayersCount`, `s0`.`Rating`, `s0`.`UserId`, `s0`.`VisitedAt`, `s0`.`Id0`, `s0`.`DeletedAt0`, `s0`.`Email`, `s0`.`RegisteredAt`, `s0`.`Role`, `s0`.`TotalRoomsPlayed`, `s0`.`Username`
+FROM `EscapeRooms` AS `e`
+INNER JOIN `Locations` AS `l` ON `e`.`LocationId` = `l`.`Id`
+INNER JOIN `Companies` AS `c` ON `e`.`CompanyId` = `c`.`Id`
+LEFT JOIN (
+    SELECT `t`.`Id`, `t`.`DeletedAt`, `t`.`IconUrl`, `t`.`Name`, `e0`.`EscapeRoomsId`, `e0`.`ThemesId`
+    FROM `EscapeRoomTheme` AS `e0`
+    INNER JOIN `Themes` AS `t` ON `e0`.`ThemesId` = `t`.`Id`
+) AS `s` ON `e`.`Id` = `s`.`EscapeRoomsId`
+LEFT JOIN `Photos` AS `p` ON `e`.`Id` = `p`.`EscapeRoomId`
+LEFT JOIN (
+    SELECT `r`.`Id`, `r`.`Comment`, `r`.`CreatedAt`, `r`.`DeletedAt`, `r`.`EscapeRoomId`, `r`.`IsVerified`, `r`.`PlayersCount`, `r`.`Rating`, `r`.`UserId`, `r`.`VisitedAt`, `u`.`Id` AS `Id0`, `u`.`DeletedAt` AS `DeletedAt0`, `u`.`Email`, `u`.`RegisteredAt`, `u`.`Role`, `u`.`TotalRoomsPlayed`, `u`.`Username`
+    FROM `Reviews` AS `r`
+    INNER JOIN `Users` AS `u` ON `r`.`UserId` = `u`.`Id`
+    WHERE `r`.`DeletedAt` IS NULL
+) AS `s0` ON `e`.`Id` = `s0`.`EscapeRoomId`
+WHERE `e`.`DeletedAt` IS NULL
+ORDER BY `e`.`Id`, `l`.`Id`, `c`.`Id`, `s`.`EscapeRoomsId`, `s`.`ThemesId`, `s`.`Id`, `p`.`Id`, `s0`.`Id`
+2026-06-29 07:52:15.363 +02:00 [INF] Executing ViewResult, running view Index.
+2026-06-29 07:52:15.514 +02:00 [INF] Executed ViewResult - view Index executed in 152.5155ms.
+2026-06-29 07:52:15.515 +02:00 [INF] Executed action EscapeRoomReviews.Controllers.EscapeRoomController.Index (EscapeRoomReviews) in 220.6107ms
+2026-06-29 07:52:15.515 +02:00 [INF] Executed endpoint 'EscapeRoomReviews.Controllers.EscapeRoomController.Index (EscapeRoomReviews)'
+2026-06-29 07:52:15.525 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5241/ - 200 null text/html; charset=utf-8 358.512ms
+2026-06-29 07:52:36.289 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5241/soba/4 - null null
+2026-06-29 07:52:36.301 +02:00 [INF] Executing endpoint 'EscapeRoomReviews.Controllers.EscapeRoomController.Details (EscapeRoomReviews)'
+2026-06-29 07:52:36.305 +02:00 [INF] Route matched with {action = "Details", controller = "EscapeRoom", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Details(Int32) on controller EscapeRoomReviews.Controllers.EscapeRoomController (EscapeRoomReviews).
+2026-06-29 07:52:36.376 +02:00 [WRN] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+2026-06-29 07:52:36.398 +02:00 [INF] Executed DbCommand (7ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CompanyId`, `s`.`CreatedAt`, `s`.`DeletedAt`, `s`.`Description`, `s`.`Difficulty`, `s`.`LocationId`, `s`.`MaxPlayers`, `s`.`Name`, `s`.`Price`, `s`.`Id0`, `s`.`Address`, `s`.`City`, `s`.`DeletedAt0`, `s`.`Latitude`, `s`.`Longitude`, `s`.`PostalCode`, `s`.`Id1`, `s`.`DeletedAt1`, `s`.`Name0`, `s`.`Website`, `s0`.`Id`, `s0`.`DeletedAt`, `s0`.`IconUrl`, `s0`.`Name`, `s0`.`EscapeRoomsId`, `s0`.`ThemesId`, `p`.`Id`, `p`.`ContentType`, `p`.`CreatedAt`, `p`.`EscapeRoomId`, `p`.`FileName`, `p`.`FileSize`, `p`.`Url`, `s1`.`Id`, `s1`.`Comment`, `s1`.`CreatedAt`, `s1`.`DeletedAt`, `s1`.`EscapeRoomId`, `s1`.`IsVerified`, `s1`.`PlayersCount`, `s1`.`Rating`, `s1`.`UserId`, `s1`.`VisitedAt`, `s1`.`Id0`, `s1`.`DeletedAt0`, `s1`.`Email`, `s1`.`RegisteredAt`, `s1`.`Role`, `s1`.`TotalRoomsPlayed`, `s1`.`Username`
+FROM (
+    SELECT `e`.`Id`, `e`.`CompanyId`, `e`.`CreatedAt`, `e`.`DeletedAt`, `e`.`Description`, `e`.`Difficulty`, `e`.`LocationId`, `e`.`MaxPlayers`, `e`.`Name`, `e`.`Price`, `l`.`Id` AS `Id0`, `l`.`Address`, `l`.`City`, `l`.`DeletedAt` AS `DeletedAt0`, `l`.`Latitude`, `l`.`Longitude`, `l`.`PostalCode`, `c`.`Id` AS `Id1`, `c`.`DeletedAt` AS `DeletedAt1`, `c`.`Name` AS `Name0`, `c`.`Website`
+    FROM `EscapeRooms` AS `e`
+    INNER JOIN `Locations` AS `l` ON `e`.`LocationId` = `l`.`Id`
+    INNER JOIN `Companies` AS `c` ON `e`.`CompanyId` = `c`.`Id`
+    WHERE `e`.`DeletedAt` IS NULL AND (`e`.`Id` = @__id_0)
+    LIMIT 1
+) AS `s`
+LEFT JOIN (
+    SELECT `t`.`Id`, `t`.`DeletedAt`, `t`.`IconUrl`, `t`.`Name`, `e0`.`EscapeRoomsId`, `e0`.`ThemesId`
+    FROM `EscapeRoomTheme` AS `e0`
+    INNER JOIN `Themes` AS `t` ON `e0`.`ThemesId` = `t`.`Id`
+) AS `s0` ON `s`.`Id` = `s0`.`EscapeRoomsId`
+LEFT JOIN `Photos` AS `p` ON `s`.`Id` = `p`.`EscapeRoomId`
+LEFT JOIN (
+    SELECT `r`.`Id`, `r`.`Comment`, `r`.`CreatedAt`, `r`.`DeletedAt`, `r`.`EscapeRoomId`, `r`.`IsVerified`, `r`.`PlayersCount`, `r`.`Rating`, `r`.`UserId`, `r`.`VisitedAt`, `u`.`Id` AS `Id0`, `u`.`DeletedAt` AS `DeletedAt0`, `u`.`Email`, `u`.`RegisteredAt`, `u`.`Role`, `u`.`TotalRoomsPlayed`, `u`.`Username`
+    FROM `Reviews` AS `r`
+    INNER JOIN `Users` AS `u` ON `r`.`UserId` = `u`.`Id`
+    WHERE `r`.`DeletedAt` IS NULL
+) AS `s1` ON `s`.`Id` = `s1`.`EscapeRoomId`
+ORDER BY `s`.`Id`, `s`.`Id0`, `s`.`Id1`, `s0`.`EscapeRoomsId`, `s0`.`ThemesId`, `s0`.`Id`, `p`.`Id`, `s1`.`Id`
+2026-06-29 07:52:36.408 +02:00 [INF] Executing ViewResult, running view Details.
+2026-06-29 07:52:36.422 +02:00 [INF] Executed ViewResult - view Details executed in 15.0261ms.
+2026-06-29 07:52:36.423 +02:00 [INF] Executed action EscapeRoomReviews.Controllers.EscapeRoomController.Details (EscapeRoomReviews) in 117.4639ms
+2026-06-29 07:52:36.423 +02:00 [INF] Executed endpoint 'EscapeRoomReviews.Controllers.EscapeRoomController.Details (EscapeRoomReviews)'
+2026-06-29 07:52:36.423 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5241/soba/4 - 200 null text/html; charset=utf-8 133.7388ms
+2026-06-29 07:52:38.216 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5241/ - null null
+2026-06-29 07:52:38.233 +02:00 [INF] Executing endpoint 'EscapeRoomReviews.Controllers.EscapeRoomController.Index (EscapeRoomReviews)'
+2026-06-29 07:52:38.233 +02:00 [INF] Route matched with {action = "Index", controller = "EscapeRoom", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index(System.String[], System.String[], System.String[], System.String) on controller EscapeRoomReviews.Controllers.EscapeRoomController (EscapeRoomReviews).
+2026-06-29 07:52:38.237 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `e`.`Id`, `e`.`CompanyId`, `e`.`CreatedAt`, `e`.`DeletedAt`, `e`.`Description`, `e`.`Difficulty`, `e`.`LocationId`, `e`.`MaxPlayers`, `e`.`Name`, `e`.`Price`, `l`.`Id`, `l`.`Address`, `l`.`City`, `l`.`DeletedAt`, `l`.`Latitude`, `l`.`Longitude`, `l`.`PostalCode`, `c`.`Id`, `c`.`DeletedAt`, `c`.`Name`, `c`.`Website`, `s`.`Id`, `s`.`DeletedAt`, `s`.`IconUrl`, `s`.`Name`, `s`.`EscapeRoomsId`, `s`.`ThemesId`, `p`.`Id`, `p`.`ContentType`, `p`.`CreatedAt`, `p`.`EscapeRoomId`, `p`.`FileName`, `p`.`FileSize`, `p`.`Url`, `s0`.`Id`, `s0`.`Comment`, `s0`.`CreatedAt`, `s0`.`DeletedAt`, `s0`.`EscapeRoomId`, `s0`.`IsVerified`, `s0`.`PlayersCount`, `s0`.`Rating`, `s0`.`UserId`, `s0`.`VisitedAt`, `s0`.`Id0`, `s0`.`DeletedAt0`, `s0`.`Email`, `s0`.`RegisteredAt`, `s0`.`Role`, `s0`.`TotalRoomsPlayed`, `s0`.`Username`
+FROM `EscapeRooms` AS `e`
+INNER JOIN `Locations` AS `l` ON `e`.`LocationId` = `l`.`Id`
+INNER JOIN `Companies` AS `c` ON `e`.`CompanyId` = `c`.`Id`
+LEFT JOIN (
+    SELECT `t`.`Id`, `t`.`DeletedAt`, `t`.`IconUrl`, `t`.`Name`, `e0`.`EscapeRoomsId`, `e0`.`ThemesId`
+    FROM `EscapeRoomTheme` AS `e0`
+    INNER JOIN `Themes` AS `t` ON `e0`.`ThemesId` = `t`.`Id`
+) AS `s` ON `e`.`Id` = `s`.`EscapeRoomsId`
+LEFT JOIN `Photos` AS `p` ON `e`.`Id` = `p`.`EscapeRoomId`
+LEFT JOIN (
+    SELECT `r`.`Id`, `r`.`Comment`, `r`.`CreatedAt`, `r`.`DeletedAt`, `r`.`EscapeRoomId`, `r`.`IsVerified`, `r`.`PlayersCount`, `r`.`Rating`, `r`.`UserId`, `r`.`VisitedAt`, `u`.`Id` AS `Id0`, `u`.`DeletedAt` AS `DeletedAt0`, `u`.`Email`, `u`.`RegisteredAt`, `u`.`Role`, `u`.`TotalRoomsPlayed`, `u`.`Username`
+    FROM `Reviews` AS `r`
+    INNER JOIN `Users` AS `u` ON `r`.`UserId` = `u`.`Id`
+    WHERE `r`.`DeletedAt` IS NULL
+) AS `s0` ON `e`.`Id` = `s0`.`EscapeRoomId`
+WHERE `e`.`DeletedAt` IS NULL
+ORDER BY `e`.`Id`, `l`.`Id`, `c`.`Id`, `s`.`EscapeRoomsId`, `s`.`ThemesId`, `s`.`Id`, `p`.`Id`, `s0`.`Id`
+2026-06-29 07:52:38.240 +02:00 [INF] Executing ViewResult, running view Index.
+2026-06-29 07:52:38.246 +02:00 [INF] Executed ViewResult - view Index executed in 6.0061ms.
+2026-06-29 07:52:38.246 +02:00 [INF] Executed action EscapeRoomReviews.Controllers.EscapeRoomController.Index (EscapeRoomReviews) in 12.8648ms
+2026-06-29 07:52:38.246 +02:00 [INF] Executed endpoint 'EscapeRoomReviews.Controllers.EscapeRoomController.Index (EscapeRoomReviews)'
+2026-06-29 07:52:38.247 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5241/ - 200 null text/html; charset=utf-8 30.397ms
