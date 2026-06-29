@@ -45,7 +45,7 @@ public class ReviewApiTests : IClassFixture<CustomWebApplicationFactory>
         var review = new Review
         {
             Id = 100, Rating = 4, Comment = "Odlican escape room svakako preporucujem",
-            PlayersCount = 2, CreatedAt = DateTime.UtcNow, EscapeRoomId = 100, UserId = 100
+            PlayersCount = 2, CreatedAt = DateTime.UtcNow, EscapeRoomId = 100
         };
         db.Reviews.Add(review);
         await db.SaveChangesAsync();

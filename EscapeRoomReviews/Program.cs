@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 
+// Bootstrap logger za hvatanje grešaka prije nego što se DI kontejner postavi
 Log.Logger = new LoggerConfiguration()
     .WriteTo.Console()
     .WriteTo.File("logs/log-.txt", rollingInterval: RollingInterval.Day)
@@ -12,6 +13,7 @@ Log.Logger = new LoggerConfiguration()
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Serilog kao glavni logger — konzola + dnevne datoteke u logs/
 builder.Host.UseSerilog((ctx, services, cfg) => cfg
     .WriteTo.Console()
     .WriteTo.File("logs/log-.txt", rollingInterval: RollingInterval.Day));
@@ -20,12 +22,14 @@ builder.Host.UseSerilog((ctx, services, cfg) => cfg
 builder.Services.AddControllersWithViews();
 
 // Configure EF Core to use MySQL (Pomelo). Connection string from appsettings.json
+// MySQL baza podataka preko Pomelo drivera, connection string iz appsettings.json
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseMySql(
         builder.Configuration.GetConnectionString("DefaultConnection"),
         new MySqlServerVersion(new Version(8, 0, 36))
     ));
 
+// Identity sustav s podrškom za uloge (Admin, Editor...), potvrda emaila nije potrebna
 builder.Services
     .AddDefaultIdentity<AppUser>(options =>
     {
@@ -34,6 +38,7 @@ builder.Services
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
+// Google vanjska prijava, ClientId i ClientSecret iz konfiguracije
 builder.Services
     .AddAuthentication()
     .AddGoogle(options =>
@@ -44,10 +49,12 @@ builder.Services
 
 builder.Services.AddRazorPages();
 
+// Registracija repozitorija kao scoped servisa
 builder.Services.AddScoped<EfRepository>();
 
 var app = builder.Build();
 
+// Pokretanje migracija i seed podataka pri svakom startu aplikacije
 using (var scope = app.Services.CreateScope())
 {
     var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
@@ -124,10 +131,11 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-// Trenutno bez autentikacije, ali middleware ostaje spreman za role/policy pravila.
+// Authentihaction -> autothorization -> map controllers
 app.UseAuthentication();
 app.UseAuthorization();
 
+// Defaultna ruta — otvara EscapeRoomController.Index
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=EscapeRoom}/{action=Index}/{id?}");
