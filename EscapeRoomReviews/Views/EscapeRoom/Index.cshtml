@@ -161,10 +161,11 @@
                 <div class="col">
                     <a asp-action="Details" asp-route-id="@room.Id" style="text-decoration:none; color:inherit;">
                         <div class="card shadow-sm border-0 h-100 shadow-sm border-0 rounded-4 overflow-hidden room-card">
-                            <div class="card-img-top bg-light d-flex justify-content-center align-items-center" style="height: 280px; font-size: 3rem; background: linear-gradient(135deg, #fdfdfd 0%, #f0f0f0 100%); border-bottom: 1px solid #eee;">
+                            <div class="card-img-top d-flex justify-content-center align-items-center" style="height: 280px; position: relative; overflow: hidden; border-bottom: 1px solid #eee;">
                                 @if (!string.IsNullOrEmpty(room.FirstPhotoUrl))
                                 {
-                                    <img src="@room.FirstPhotoUrl" alt="@room.Name" style="width:100%; height:280px; object-fit:cover;" />
+                                    <div style="position:absolute; inset:0; background-image:url('@room.FirstPhotoUrl'); background-size:cover; background-position:center; filter:blur(10px) brightness(0.75); transform:scale(1.1);"></div>
+                                    <img src="@room.FirstPhotoUrl" alt="@room.Name" style="position:relative; z-index:1; max-width:100%; height:280px; object-fit:contain;" />
                                 }
                                 else
                                 {

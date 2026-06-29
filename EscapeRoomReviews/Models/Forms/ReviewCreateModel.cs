@@ -16,7 +16,6 @@ public class ReviewCreateModel
     [Range(1, int.MaxValue, ErrorMessage = "Broj igraca mora biti veci od 0.")]
     public int PlayersCount { get; set; }
 
-    [Required(ErrorMessage = "Datum posjeta je obavezan.")]
     public DateTime? VisitedAt { get; set; }
 
     [Required(ErrorMessage = "Escape room je obavezan.")]

@@ -8,7 +8,13 @@
 }
 
 <div class="mb-3">
-    <label for="@fieldId-display" class="form-label">Datum posjeta</label>
+    <label for="@fieldId-display" class="form-label">
+        Datum posjeta
+        @if (Model.IsOptional)
+        {
+            <span class="text-muted fw-normal" style="font-size: 0.85em;">(opcionalno)</span>
+        }
+    </label>
     <div class="input-group">
         <input id="@fieldId-display"
                type="text"
