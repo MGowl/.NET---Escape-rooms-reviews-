@@ -18,6 +18,9 @@ public class ReviewApiController : ControllerBase
         _context = context;
     }
 
+    /// <summary>
+    /// Mapira Review entitet u ReviewDTO
+    /// </summary>
     private static ReviewDTO ToDTO(Review review)
     {
         return new ReviewDTO
@@ -34,6 +37,9 @@ public class ReviewApiController : ControllerBase
         };
     }
 
+    /// <summary>
+    /// GET /api/review - Vraća sve aktivne recenzije (gdje je DeletedAt == null)
+    /// </summary>
     [HttpGet]
     public async Task<ActionResult<IEnumerable<ReviewDTO>>> GetAll()
     {
@@ -46,6 +52,9 @@ public class ReviewApiController : ControllerBase
         return Ok(reviews.Select(ToDTO).ToList());
     }
 
+    /// <summary>
+    /// GET /api/review/{id} - Vraća recenziju po Id-u
+    /// </summary>
     [HttpGet("{id}")]
     public async Task<ActionResult<ReviewDTO>> GetById(int id)
     {
@@ -63,6 +72,9 @@ public class ReviewApiController : ControllerBase
         return Ok(ToDTO(review));
     }
 
+    /// <summary>
+    /// GET /api/review/search/{q} - Pretraga po sadržaju komentara
+    /// </summary>
     [HttpGet("search/{q}")]
     public async Task<ActionResult<IEnumerable<ReviewDTO>>> Search(string q)
     {
@@ -80,6 +92,9 @@ public class ReviewApiController : ControllerBase
         return Ok(reviews.Select(ToDTO).ToList());
     }
 
+    /// <summary>
+    /// POST /api/review - Kreira novu recenziju
+    /// </summary>
     [Authorize]
     [HttpPost]
     public async Task<ActionResult<ReviewDTO>> Create([FromBody] ReviewUpsertDTO dto)
@@ -135,6 +150,9 @@ public class ReviewApiController : ControllerBase
         return CreatedAtAction(nameof(GetById), new { id = review.Id }, ToDTO(createdReview));
     }
 
+    /// <summary>
+    /// PUT /api/review/{id} - Ažurira recenziju
+    /// </summary>
     [Authorize]
     [HttpPut("{id}")]
     public async Task<ActionResult<ReviewDTO>> Update(int id, [FromBody] ReviewUpsertDTO dto)
@@ -174,6 +192,9 @@ public class ReviewApiController : ControllerBase
         return Ok(ToDTO(updatedReview));
     }
 
+    /// <summary>
+    /// DELETE /api/review/{id} - Soft delete recenzije
+    /// </summary>
     [Authorize]
     [HttpDelete("{id}")]
     public async Task<IActionResult> Delete(int id)
