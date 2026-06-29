@@ -11,7 +11,7 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm custom-navbar box-shadow mb-4">
+        <nav class="navbar navbar-expand-lg navbar-toggleable-sm custom-navbar box-shadow mb-4">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="EscapeRoom" asp-action="Index">ESCAPE ROOMS REVIEWS</a>
                 <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -21,7 +21,7 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link fw-semibold active" asp-area="" asp-controller="EscapeRoom" asp-action="Index">Sobe</a>
+                            <a class="nav-link fw-semibold" asp-area="" asp-controller="EscapeRoom" asp-action="Index">Sobe</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link fw-semibold" asp-area="" asp-controller="Company" asp-action="Index">Tvrtke</a>
@@ -38,23 +38,18 @@
                         <li class="nav-item">
                             <a class="nav-link fw-semibold" asp-area="" asp-controller="User" asp-action="Index">Korisnici</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link fw-semibold" asp-area="" asp-controller="ManageEscapeRoom" asp-action="Index">Manage Escape Rooms</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link fw-semibold" asp-area="" asp-controller="ManageLocation" asp-action="Index">Manage Locations</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link fw-semibold" asp-area="" asp-controller="ManageCompany" asp-action="Index">Manage Companies</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link fw-semibold" asp-area="" asp-controller="ManageTheme" asp-action="Index">Manage Themes</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link fw-semibold" asp-area="" asp-controller="ManageUser" asp-action="Index">Manage Users</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link fw-semibold" asp-area="" asp-controller="ManageReview" asp-action="Index">Manage Reviews</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link fw-semibold dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Upravljanje
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" asp-area="" asp-controller="ManageEscapeRoom" asp-action="Index">Escape Rooms</a></li>
+                                <li><a class="dropdown-item" asp-area="" asp-controller="ManageLocation" asp-action="Index">Lokacije</a></li>
+                                <li><a class="dropdown-item" asp-area="" asp-controller="ManageCompany" asp-action="Index">Tvrtke</a></li>
+                                <li><a class="dropdown-item" asp-area="" asp-controller="ManageTheme" asp-action="Index">Teme</a></li>
+                                <li><a class="dropdown-item" asp-area="" asp-controller="ManageUser" asp-action="Index">Korisnici</a></li>
+                                <li><a class="dropdown-item" asp-area="" asp-controller="ManageReview" asp-action="Index">Recenzije</a></li>
+                            </ul>
                         </li>
                     </ul>
                     <partial name="_LoginPartial" />
