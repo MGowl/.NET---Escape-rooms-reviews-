@@ -8,10 +8,12 @@ namespace EscapeRoomReviews.Controllers
     public class ThemeController : Controller
     {
         private readonly EfRepository _repo;
+        private readonly ILogger<ThemeController> _logger;
 
-        public ThemeController(EfRepository repo)
+        public ThemeController(EfRepository repo, ILogger<ThemeController> logger)
         {
             _repo = repo;
+            _logger = logger;
         }
 
         public IActionResult Index()
@@ -32,7 +34,11 @@ namespace EscapeRoomReviews.Controllers
         public IActionResult Details(int id)
         {
             var theme = _repo.GetAllThemes().FirstOrDefault(t => t.Id == id);
-            if (theme == null) return NotFound();
+            if (theme == null)
+            {
+                _logger.LogWarning("Theme {Id} not found", id);
+                return NotFound();
+            }
             return View(theme);
         }
     }

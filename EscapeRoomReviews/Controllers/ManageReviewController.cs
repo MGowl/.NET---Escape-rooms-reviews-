@@ -14,10 +14,12 @@ namespace EscapeRoomReviews.Controllers
     public class ManageReviewController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly ILogger<ManageReviewController> _logger;
 
-        public ManageReviewController(ApplicationDbContext context)
+        public ManageReviewController(ApplicationDbContext context, ILogger<ManageReviewController> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
         public IActionResult Index()
@@ -100,6 +102,7 @@ namespace EscapeRoomReviews.Controllers
 
             _context.Reviews.Add(review);
             _context.SaveChanges();
+            _logger.LogInformation("Created Review {Id} for EscapeRoom {EscapeRoomId}", review.Id, review.EscapeRoomId);
 
             return RedirectToAction("Index");
         }
@@ -112,7 +115,11 @@ namespace EscapeRoomReviews.Controllers
                 .AsNoTracking()
                 .FirstOrDefault(r => r.Id == id && r.DeletedAt == null);
 
-            if (review == null) return NotFound();
+            if (review == null)
+            {
+                _logger.LogWarning("Review {Id} not found", id);
+                return NotFound();
+            }
 
             var model = new ReviewEditModel
             {
@@ -144,7 +151,11 @@ namespace EscapeRoomReviews.Controllers
             }
 
             var review = _context.Reviews.FirstOrDefault(r => r.Id == model.Id && r.DeletedAt == null);
-            if (review == null) return NotFound();
+            if (review == null)
+            {
+                _logger.LogWarning("Review {Id} not found", model.Id);
+                return NotFound();
+            }
 
             review.Rating = model.Rating;
             review.Comment = model.Comment;
@@ -154,6 +165,7 @@ namespace EscapeRoomReviews.Controllers
             review.IsVerified = model.IsVerified;
 
             _context.SaveChanges();
+            _logger.LogInformation("Updated Review {Id}", review.Id);
 
             return RedirectToAction("Index");
         }
@@ -162,10 +174,15 @@ namespace EscapeRoomReviews.Controllers
         public IActionResult Delete(int id)
         {
             var review = _context.Reviews.FirstOrDefault(r => r.Id == id && r.DeletedAt == null);
-            if (review == null) return NotFound();
+            if (review == null)
+            {
+                _logger.LogWarning("Review {Id} not found", id);
+                return NotFound();
+            }
 
             review.DeletedAt = DateTime.UtcNow;
             _context.SaveChanges();
+            _logger.LogInformation("Deleted Review {Id}", id);
 
             return RedirectToAction("Index");
         }

@@ -13,10 +13,12 @@ namespace EscapeRoomReviews.Controllers
     public class ManageThemeController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly ILogger<ManageThemeController> _logger;
 
-        public ManageThemeController(ApplicationDbContext context)
+        public ManageThemeController(ApplicationDbContext context, ILogger<ManageThemeController> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
         public IActionResult Index()
@@ -50,6 +52,7 @@ namespace EscapeRoomReviews.Controllers
 
             _context.Themes.Add(theme);
             _context.SaveChanges();
+            _logger.LogInformation("Created Theme {Name}", theme.Name);
 
             return RedirectToAction("Index");
         }
@@ -62,7 +65,11 @@ namespace EscapeRoomReviews.Controllers
                 .AsNoTracking()
                 .FirstOrDefault(t => t.Id == id && t.DeletedAt == null);
 
-            if (theme == null) return NotFound();
+            if (theme == null)
+            {
+                _logger.LogWarning("Theme {Id} not found", id);
+                return NotFound();
+            }
 
             var model = new ThemeEditModel
             {
@@ -81,12 +88,17 @@ namespace EscapeRoomReviews.Controllers
             if (!ModelState.IsValid) return View(model);
 
             var theme = _context.Themes.FirstOrDefault(t => t.Id == model.Id && t.DeletedAt == null);
-            if (theme == null) return NotFound();
+            if (theme == null)
+            {
+                _logger.LogWarning("Theme {Id} not found", model.Id);
+                return NotFound();
+            }
 
             theme.Name = model.Name;
             theme.IconUrl = model.IconUrl;
 
             _context.SaveChanges();
+            _logger.LogInformation("Updated Theme {Id}", theme.Id);
 
             return RedirectToAction("Index");
         }
@@ -95,10 +107,15 @@ namespace EscapeRoomReviews.Controllers
         public IActionResult Delete(int id)
         {
             var theme = _context.Themes.FirstOrDefault(t => t.Id == id && t.DeletedAt == null);
-            if (theme == null) return NotFound();
+            if (theme == null)
+            {
+                _logger.LogWarning("Theme {Id} not found", id);
+                return NotFound();
+            }
 
             theme.DeletedAt = DateTime.UtcNow;
             _context.SaveChanges();
+            _logger.LogInformation("Deleted Theme {Id}", id);
 
             return RedirectToAction("Index");
         }

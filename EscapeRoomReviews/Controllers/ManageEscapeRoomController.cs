@@ -18,11 +18,13 @@ namespace EscapeRoomReviews.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly IWebHostEnvironment _environment;
+        private readonly ILogger<ManageEscapeRoomController> _logger;
 
-        public ManageEscapeRoomController(ApplicationDbContext context, IWebHostEnvironment environment)
+        public ManageEscapeRoomController(ApplicationDbContext context, IWebHostEnvironment environment, ILogger<ManageEscapeRoomController> logger)
         {
             _context = context;
             _environment = environment;
+            _logger = logger;
         }
 
         private string? GetLocationName(int? id)
@@ -142,6 +144,7 @@ namespace EscapeRoomReviews.Controllers
 
             _context.EscapeRooms.Add(room);
             _context.SaveChanges();
+            _logger.LogInformation("Created EscapeRoom {Name}", room.Name);
 
             return RedirectToAction("Index");
         }
@@ -155,7 +158,11 @@ namespace EscapeRoomReviews.Controllers
                 .Include(r => r.Themes)
                 .FirstOrDefault(r => r.Id == id && r.DeletedAt == null);
 
-            if (room == null) return NotFound();
+            if (room == null)
+            {
+                _logger.LogWarning("EscapeRoom {Id} not found", id);
+                return NotFound();
+            }
 
             var model = new EscapeRoomEditModel
             {
@@ -200,7 +207,11 @@ namespace EscapeRoomReviews.Controllers
             var room = _context.EscapeRooms
                 .Include(r => r.Themes)
                 .FirstOrDefault(r => r.Id == model.Id && r.DeletedAt == null);
-            if (room == null) return NotFound();
+            if (room == null)
+            {
+                _logger.LogWarning("EscapeRoom {Id} not found", model.Id);
+                return NotFound();
+            }
 
             room.Name = model.Name;
             room.Description = model.Description;
@@ -224,6 +235,7 @@ namespace EscapeRoomReviews.Controllers
             }
 
             _context.SaveChanges();
+            _logger.LogInformation("Updated EscapeRoom {Id}", room.Id);
 
             return RedirectToAction("Index");
         }
@@ -232,10 +244,15 @@ namespace EscapeRoomReviews.Controllers
         public IActionResult Delete(int id)
         {
             var room = _context.EscapeRooms.FirstOrDefault(r => r.Id == id && r.DeletedAt == null);
-            if (room == null) return NotFound();
+            if (room == null)
+            {
+                _logger.LogWarning("EscapeRoom {Id} not found", id);
+                return NotFound();
+            }
 
             room.DeletedAt = DateTime.UtcNow;
             _context.SaveChanges();
+            _logger.LogInformation("Deleted EscapeRoom {Id}", id);
 
             return RedirectToAction("Index");
         }
@@ -248,6 +265,7 @@ namespace EscapeRoomReviews.Controllers
 
             if (escapeRoom == null)
             {
+                _logger.LogWarning("EscapeRoom {Id} not found for photo upload", escapeRoomId);
                 return NotFound();
             }
 
@@ -279,6 +297,7 @@ namespace EscapeRoomReviews.Controllers
 
             _context.Photos.Add(photo);
             _context.SaveChanges();
+            _logger.LogInformation("Uploaded photo for EscapeRoom {Id}", escapeRoomId);
 
             return Json(new { success = true });
         }
@@ -301,6 +320,7 @@ namespace EscapeRoomReviews.Controllers
             var photo = _context.Photos.FirstOrDefault(item => item.Id == id);
             if (photo == null)
             {
+                _logger.LogWarning("Photo {Id} not found", id);
                 return NotFound();
             }
 
@@ -314,6 +334,7 @@ namespace EscapeRoomReviews.Controllers
 
             _context.Photos.Remove(photo);
             _context.SaveChanges();
+            _logger.LogInformation("Deleted photo {Id}", id);
 
             return Json(new { success = true });
         }

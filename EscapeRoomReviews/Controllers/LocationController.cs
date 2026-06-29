@@ -8,10 +8,12 @@ namespace EscapeRoomReviews.Controllers
     public class LocationController : Controller
     {
         private readonly EfRepository _repo;
+        private readonly ILogger<LocationController> _logger;
 
-        public LocationController(EfRepository repo)
+        public LocationController(EfRepository repo, ILogger<LocationController> logger)
         {
             _repo = repo;
+            _logger = logger;
         }
 
         public IActionResult Index()
@@ -34,7 +36,11 @@ namespace EscapeRoomReviews.Controllers
         public IActionResult Details(int id)
         {
             var location = _repo.GetAllLocations().FirstOrDefault(l => l.Id == id);
-            if (location == null) return NotFound();
+            if (location == null)
+            {
+                _logger.LogWarning("Location {Id} not found", id);
+                return NotFound();
+            }
             return View(location);
         }
     }

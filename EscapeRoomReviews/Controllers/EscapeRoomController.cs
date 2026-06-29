@@ -8,10 +8,12 @@ namespace EscapeRoomReviews.Controllers
     public class EscapeRoomController : Controller
     {
         private readonly EfRepository _repo;
+        private readonly ILogger<EscapeRoomController> _logger;
 
-        public EscapeRoomController(EfRepository repo)
+        public EscapeRoomController(EfRepository repo, ILogger<EscapeRoomController> logger)
         {
             _repo = repo;
+            _logger = logger;
         }
 
         public IActionResult Index(string[]? city, string[]? difficulty, string[]? theme, string? sort)
@@ -72,7 +74,11 @@ namespace EscapeRoomReviews.Controllers
         public IActionResult Details(int id)
         {
             var room = _repo.GetRoomById(id);
-            if (room == null) return NotFound();
+            if (room == null)
+            {
+                _logger.LogWarning("EscapeRoom {Id} not found", id);
+                return NotFound();
+            }
             return View(room);
         }
     }

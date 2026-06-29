@@ -10,10 +10,12 @@ namespace EscapeRoomReviews.Controllers
     public class ReviewController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly ILogger<ReviewController> _logger;
 
-        public ReviewController(ApplicationDbContext context)
+        public ReviewController(ApplicationDbContext context, ILogger<ReviewController> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
         public IActionResult Index()
@@ -46,7 +48,11 @@ namespace EscapeRoomReviews.Controllers
                 .Include(r => r.EscapeRoom)
                 .Include(r => r.User)
                 .FirstOrDefault(r => r.Id == id && r.DeletedAt == null);
-            if (review == null) return NotFound();
+            if (review == null)
+            {
+                _logger.LogWarning("Review {Id} not found", id);
+                return NotFound();
+            }
             return View(review);
         }
 

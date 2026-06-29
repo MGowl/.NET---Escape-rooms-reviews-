@@ -8,10 +8,12 @@ namespace EscapeRoomReviews.Controllers
     public class UserController : Controller
     {
         private readonly EfRepository _repo;
+        private readonly ILogger<UserController> _logger;
 
-        public UserController(EfRepository repo)
+        public UserController(EfRepository repo, ILogger<UserController> logger)
         {
             _repo = repo;
+            _logger = logger;
         }
 
         public IActionResult Index()
@@ -35,7 +37,11 @@ namespace EscapeRoomReviews.Controllers
         public IActionResult Details(int id)
         {
             var user = _repo.GetAllUsers().FirstOrDefault(u => u.Id == id);
-            if (user == null) return NotFound();
+            if (user == null)
+            {
+                _logger.LogWarning("User {Id} not found", id);
+                return NotFound();
+            }
             return View(user);
         }
     }

@@ -13,10 +13,12 @@ namespace EscapeRoomReviews.Controllers
     public class ManageLocationController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly ILogger<ManageLocationController> _logger;
 
-        public ManageLocationController(ApplicationDbContext context)
+        public ManageLocationController(ApplicationDbContext context, ILogger<ManageLocationController> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
         public IActionResult Index()
@@ -53,6 +55,7 @@ namespace EscapeRoomReviews.Controllers
 
             _context.Locations.Add(location);
             _context.SaveChanges();
+            _logger.LogInformation("Created Location {City}", location.City);
 
             return RedirectToAction("Index");
         }
@@ -65,7 +68,11 @@ namespace EscapeRoomReviews.Controllers
                 .AsNoTracking()
                 .FirstOrDefault(l => l.Id == id && l.DeletedAt == null);
 
-            if (location == null) return NotFound();
+            if (location == null)
+            {
+                _logger.LogWarning("Location {Id} not found", id);
+                return NotFound();
+            }
 
             var model = new LocationEditModel
             {
@@ -87,7 +94,11 @@ namespace EscapeRoomReviews.Controllers
             if (!ModelState.IsValid) return View(model);
 
             var location = _context.Locations.FirstOrDefault(l => l.Id == model.Id && l.DeletedAt == null);
-            if (location == null) return NotFound();
+            if (location == null)
+            {
+                _logger.LogWarning("Location {Id} not found", model.Id);
+                return NotFound();
+            }
 
             location.City = model.City;
             location.Address = model.Address;
@@ -96,6 +107,7 @@ namespace EscapeRoomReviews.Controllers
             location.Longitude = model.Longitude;
 
             _context.SaveChanges();
+            _logger.LogInformation("Updated Location {Id}", location.Id);
 
             return RedirectToAction("Index");
         }
@@ -104,10 +116,15 @@ namespace EscapeRoomReviews.Controllers
         public IActionResult Delete(int id)
         {
             var location = _context.Locations.FirstOrDefault(l => l.Id == id && l.DeletedAt == null);
-            if (location == null) return NotFound();
+            if (location == null)
+            {
+                _logger.LogWarning("Location {Id} not found", id);
+                return NotFound();
+            }
 
             location.DeletedAt = DateTime.UtcNow;
             _context.SaveChanges();
+            _logger.LogInformation("Deleted Location {Id}", id);
 
             return RedirectToAction("Index");
         }

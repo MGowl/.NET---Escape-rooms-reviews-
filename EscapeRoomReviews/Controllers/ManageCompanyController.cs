@@ -13,10 +13,12 @@ namespace EscapeRoomReviews.Controllers
     public class ManageCompanyController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly ILogger<ManageCompanyController> _logger;
 
-        public ManageCompanyController(ApplicationDbContext context)
+        public ManageCompanyController(ApplicationDbContext context, ILogger<ManageCompanyController> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
         public IActionResult Index()
@@ -50,6 +52,7 @@ namespace EscapeRoomReviews.Controllers
 
             _context.Companies.Add(company);
             _context.SaveChanges();
+            _logger.LogInformation("Created Company {Name}", company.Name);
 
             return RedirectToAction("Index");
         }
@@ -62,7 +65,11 @@ namespace EscapeRoomReviews.Controllers
                 .AsNoTracking()
                 .FirstOrDefault(c => c.Id == id && c.DeletedAt == null);
 
-            if (company == null) return NotFound();
+            if (company == null)
+            {
+                _logger.LogWarning("Company {Id} not found", id);
+                return NotFound();
+            }
 
             var model = new CompanyEditModel
             {
@@ -81,12 +88,17 @@ namespace EscapeRoomReviews.Controllers
             if (!ModelState.IsValid) return View(model);
 
             var company = _context.Companies.FirstOrDefault(c => c.Id == model.Id && c.DeletedAt == null);
-            if (company == null) return NotFound();
+            if (company == null)
+            {
+                _logger.LogWarning("Company {Id} not found", model.Id);
+                return NotFound();
+            }
 
             company.Name = model.Name;
             company.Website = model.Website;
 
             _context.SaveChanges();
+            _logger.LogInformation("Updated Company {Id}", company.Id);
 
             return RedirectToAction("Index");
         }
@@ -95,10 +107,15 @@ namespace EscapeRoomReviews.Controllers
         public IActionResult Delete(int id)
         {
             var company = _context.Companies.FirstOrDefault(c => c.Id == id && c.DeletedAt == null);
-            if (company == null) return NotFound();
+            if (company == null)
+            {
+                _logger.LogWarning("Company {Id} not found", id);
+                return NotFound();
+            }
 
             company.DeletedAt = DateTime.UtcNow;
             _context.SaveChanges();
+            _logger.LogInformation("Deleted Company {Id}", id);
 
             return RedirectToAction("Index");
         }

@@ -8,10 +8,12 @@ namespace EscapeRoomReviews.Controllers
     public class CompanyController : Controller
     {
         private readonly EfRepository _repo;
+        private readonly ILogger<CompanyController> _logger;
 
-        public CompanyController(EfRepository repo)
+        public CompanyController(EfRepository repo, ILogger<CompanyController> logger)
         {
             _repo = repo;
+            _logger = logger;
         }
 
         public IActionResult Index()
@@ -33,7 +35,11 @@ namespace EscapeRoomReviews.Controllers
         public IActionResult Details(int id)
         {
             var company = _repo.GetAllCompanies().FirstOrDefault(c => c.Id == id);
-            if (company == null) return NotFound();
+            if (company == null)
+            {
+                _logger.LogWarning("Company {Id} not found", id);
+                return NotFound();
+            }
             return View(company);
         }
     }

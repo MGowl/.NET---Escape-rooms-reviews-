@@ -14,10 +14,12 @@ namespace EscapeRoomReviews.Controllers
     public class ManageUserController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly ILogger<ManageUserController> _logger;
 
-        public ManageUserController(ApplicationDbContext context)
+        public ManageUserController(ApplicationDbContext context, ILogger<ManageUserController> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
         private void LoadRoleOptions(UserRole? selectedRole = null)
@@ -63,6 +65,7 @@ namespace EscapeRoomReviews.Controllers
 
             _context.AppUsers.Add(user);
             _context.SaveChanges();
+            _logger.LogInformation("Created User {Username}", user.Username);
 
             return RedirectToAction("Index");
         }
@@ -75,7 +78,11 @@ namespace EscapeRoomReviews.Controllers
                 .AsNoTracking()
                 .FirstOrDefault(u => u.Id == id && u.DeletedAt == null);
 
-            if (user == null) return NotFound();
+            if (user == null)
+            {
+                _logger.LogWarning("User {Id} not found", id);
+                return NotFound();
+            }
 
             var model = new UserEditModel
             {
@@ -101,7 +108,11 @@ namespace EscapeRoomReviews.Controllers
             }
 
             var user = _context.AppUsers.FirstOrDefault(u => u.Id == model.Id && u.DeletedAt == null);
-            if (user == null) return NotFound();
+            if (user == null)
+            {
+                _logger.LogWarning("User {Id} not found", model.Id);
+                return NotFound();
+            }
 
             user.Username = model.Username;
             user.Email = model.Email;
@@ -109,6 +120,7 @@ namespace EscapeRoomReviews.Controllers
             user.Role = model.Role;
 
             _context.SaveChanges();
+            _logger.LogInformation("Updated User {Id}", user.Id);
 
             return RedirectToAction("Index");
         }
@@ -117,10 +129,15 @@ namespace EscapeRoomReviews.Controllers
         public IActionResult Delete(int id)
         {
             var user = _context.AppUsers.FirstOrDefault(u => u.Id == id && u.DeletedAt == null);
-            if (user == null) return NotFound();
+            if (user == null)
+            {
+                _logger.LogWarning("User {Id} not found", id);
+                return NotFound();
+            }
 
             user.DeletedAt = DateTime.UtcNow;
             _context.SaveChanges();
+            _logger.LogInformation("Deleted User {Id}", id);
 
             return RedirectToAction("Index");
         }
