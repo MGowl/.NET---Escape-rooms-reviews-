@@ -45,9 +45,9 @@ public class ApplicationDbContext : IdentityDbContext<AppUser>
             .HasForeignKey(r => r.EscapeRoomId);
 
         modelBuilder.Entity<Review>()
-            .HasOne(r => r.User)
+            .HasOne(r => r.AppUser)
             .WithMany(u => u.Reviews)
-            .HasForeignKey(r => r.UserId);
+            .HasForeignKey(r => r.AppUserId);
 
         modelBuilder.Entity<EscapeRoom>()
             .HasMany(er => er.Themes)

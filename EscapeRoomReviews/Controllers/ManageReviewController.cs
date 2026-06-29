@@ -28,12 +28,12 @@ namespace EscapeRoomReviews.Controllers
                 .AsNoTracking()
                 .Where(review => review.DeletedAt == null)
                 .Include(review => review.EscapeRoom)
-                .Include(review => review.User)
+                .Include(review => review.AppUser)
                 .Select(review => new ReviewIndexViewModel
                 {
                     Id = review.Id,
                     RoomName = review.EscapeRoom.Name,
-                    Username = review.User.Username,
+                    Username = review.AppUser != null ? review.AppUser.UserName ?? string.Empty : string.Empty,
                     Rating = review.Rating,
                     Comment = review.Comment,
                     CreatedAt = review.CreatedAt,
@@ -76,18 +76,6 @@ namespace EscapeRoomReviews.Controllers
                 return View(model);
             }
 
-            var userId = _context.AppUsers
-                .AsNoTracking()
-                .Select(user => user.Id)
-                .FirstOrDefault();
-
-            if (userId == 0)
-            {
-                ModelState.AddModelError(string.Empty, "No users available to assign the review.");
-                ViewData["EscapeRoomName"] = GetEscapeRoomName(model.EscapeRoomId);
-                return View(model);
-            }
-
             var review = new Review
             {
                 Rating = model.Rating,
@@ -95,7 +83,7 @@ namespace EscapeRoomReviews.Controllers
                 PlayersCount = model.PlayersCount,
                 VisitedAt = model.VisitedAt,
                 EscapeRoomId = model.EscapeRoomId,
-                UserId = userId,
+                AppUserId = null,
                 CreatedAt = DateTime.UtcNow,
                 IsVerified = false
             };

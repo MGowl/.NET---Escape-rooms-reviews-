@@ -21,7 +21,7 @@ public class EfRepository
         .Include(room => room.Themes)
         .Include(room => room.Photos)
         .Include(room => room.Reviews.Where(review => review.DeletedAt == null))
-            .ThenInclude(review => review.User)
+            .ThenInclude(review => review.AppUser)
         .ToList();
 
     public EscapeRoom? GetRoomById(int id) => _context.EscapeRooms
@@ -32,7 +32,7 @@ public class EfRepository
         .Include(room => room.Themes)
         .Include(room => room.Photos)
         .Include(room => room.Reviews.Where(review => review.DeletedAt == null))
-            .ThenInclude(review => review.User)
+            .ThenInclude(review => review.AppUser)
         .FirstOrDefault(room => room.Id == id);
 
     public List<Review> GetAllReviews() => _context.Reviews
@@ -44,18 +44,12 @@ public class EfRepository
             .ThenInclude(room => room.Company)
         .Include(review => review.EscapeRoom)
             .ThenInclude(room => room.Themes)
-        .Include(review => review.User)
+        .Include(review => review.AppUser)
         .ToList();
 
     public List<User> GetAllUsers() => _context.AppUsers
         .AsNoTracking()
         .Where(user => user.DeletedAt == null)
-        .Include(user => user.Reviews.Where(review => review.DeletedAt == null))
-            .ThenInclude(review => review.EscapeRoom)
-                .ThenInclude(room => room.Location)
-        .Include(user => user.Reviews.Where(review => review.DeletedAt == null))
-            .ThenInclude(review => review.EscapeRoom)
-                .ThenInclude(room => room.Company)
         .ToList();
 
     public List<Location> GetAllLocations() => _context.Locations

@@ -10,4 +10,12 @@ public class AppUser : IdentityUser
 
     [Required]
     public string LastName { get; set; } = string.Empty;
+
+    public string? DisplayName { get; set; }
+
+    public DateTime RegisteredAt { get; set; }
+
+    public DateTime? DeletedAt { get; set; }
+
+    public virtual ICollection<Review> Reviews { get; set; } = new List<Review>();
 }

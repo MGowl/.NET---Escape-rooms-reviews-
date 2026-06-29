@@ -68,7 +68,8 @@ public class RegisterModel : PageModel
             UserName = Input.Email,
             Email = Input.Email,
             FirstName = Input.FirstName,
-            LastName = Input.LastName
+            LastName = Input.LastName,
+            RegisteredAt = DateTime.Now
         };
 
         var result = await _userManager.CreateAsync(user, Input.Password);

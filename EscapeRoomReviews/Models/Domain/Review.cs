@@ -30,7 +30,7 @@ public class Review
     public virtual EscapeRoom EscapeRoom { get; set; } = null!;
 
     // FK + navigation to the author of the review.
-    [ForeignKey(nameof(User))]
-    public int UserId { get; set; }
-    public virtual User User { get; set; } = null!;
+    [ForeignKey(nameof(AppUser))]
+    public string? AppUserId { get; set; }
+    public virtual AppUser? AppUser { get; set; }
 }

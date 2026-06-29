@@ -63,8 +63,8 @@ public static class DbSeeder
                 },
                 Reviews =
                 {
-                    new() { Id = 1, Rating = 5, Comment = "Super atmosfera i odlicne zagonetke.", CreatedAt = DateTime.UtcNow.AddDays(-20), IsVerified = true, PlayersCount = 4, UserId = users[0].Id, User = users[0], EscapeRoomId = 1 },
-                    new() { Id = 2, Rating = 4, Comment = "Logican slijed tragova, preporuka.", CreatedAt = DateTime.UtcNow.AddDays(-12), IsVerified = true, PlayersCount = 5, UserId = users[1].Id, User = users[1], EscapeRoomId = 1 }
+                    new() { Id = 1, Rating = 5, Comment = "Super atmosfera i odlicne zagonetke.", CreatedAt = DateTime.UtcNow.AddDays(-20), IsVerified = true, PlayersCount = 4, AppUserId = null, AppUser = null, EscapeRoomId = 1 },
+                    new() { Id = 2, Rating = 4, Comment = "Logican slijed tragova, preporuka.", CreatedAt = DateTime.UtcNow.AddDays(-12), IsVerified = true, PlayersCount = 5, AppUserId = null, AppUser = null, EscapeRoomId = 1 }
                 },
                 Themes = { themes[0], themes[2] }
             },
@@ -88,8 +88,8 @@ public static class DbSeeder
                 },
                 Reviews =
                 {
-                    new() { Id = 3, Rating = 5, Comment = "Napeto od prve minute.", CreatedAt = DateTime.UtcNow.AddDays(-15), IsVerified = true, PlayersCount = 5, UserId = users[2].Id, User = users[2], EscapeRoomId = 2 },
-                    new() { Id = 4, Rating = 4, Comment = "Tezak, ali pravedan room.", CreatedAt = DateTime.UtcNow.AddDays(-7), IsVerified = true, PlayersCount = 4, UserId = users[0].Id, User = users[0], EscapeRoomId = 2 }
+                    new() { Id = 3, Rating = 5, Comment = "Napeto od prve minute.", CreatedAt = DateTime.UtcNow.AddDays(-15), IsVerified = true, PlayersCount = 5, AppUserId = null, AppUser = null, EscapeRoomId = 2 },
+                    new() { Id = 4, Rating = 4, Comment = "Tezak, ali pravedan room.", CreatedAt = DateTime.UtcNow.AddDays(-7), IsVerified = true, PlayersCount = 4, AppUserId = null, AppUser = null, EscapeRoomId = 2 }
                 },
                 Themes = { themes[1], themes[3] }
             },
@@ -113,8 +113,8 @@ public static class DbSeeder
                 },
                 Reviews =
                 {
-                    new() { Id = 5, Rating = 5, Comment = "Najbolja sci-fi soba do sada.", CreatedAt = DateTime.UtcNow.AddDays(-10), IsVerified = true, PlayersCount = 6, UserId = users[1].Id, User = users[1], EscapeRoomId = 3 },
-                    new() { Id = 6, Rating = 5, Comment = "Odlicna produkcija i tempo.", CreatedAt = DateTime.UtcNow.AddDays(-3), IsVerified = true, PlayersCount = 7, UserId = users[2].Id, User = users[2], EscapeRoomId = 3 }
+                    new() { Id = 5, Rating = 5, Comment = "Najbolja sci-fi soba do sada.", CreatedAt = DateTime.UtcNow.AddDays(-10), IsVerified = true, PlayersCount = 6, AppUserId = null, AppUser = null, EscapeRoomId = 3 },
+                    new() { Id = 6, Rating = 5, Comment = "Odlicna produkcija i tempo.", CreatedAt = DateTime.UtcNow.AddDays(-3), IsVerified = true, PlayersCount = 7, AppUserId = null, AppUser = null, EscapeRoomId = 3 }
                 },
                 Themes = { themes[2], themes[3] }
             }
@@ -128,7 +128,6 @@ public static class DbSeeder
             foreach (var review in room.Reviews)
             {
                 review.EscapeRoom = room;
-                review.User.Reviews.Add(review);
             }
 
             foreach (var photo in room.Photos)

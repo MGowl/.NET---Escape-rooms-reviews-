@@ -79,7 +79,8 @@ public class ExternalLoginModel : PageModel
             UserName = email,
             Email = email,
             FirstName = info.Principal.FindFirstValue(ClaimTypes.GivenName) ?? "External",
-            LastName = info.Principal.FindFirstValue(ClaimTypes.Surname) ?? "User"
+            LastName = info.Principal.FindFirstValue(ClaimTypes.Surname) ?? "User",
+            RegisteredAt = DateTime.Now
         };
 
         var createResult = await _userManager.CreateAsync(user);

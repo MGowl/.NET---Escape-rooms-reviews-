@@ -4,8 +4,8 @@ namespace EscapeRoomReviews.ViewModels
 {
     public class UserIndexViewModel
     {
-        public int Id { get; set; }
-        public string Username { get; set; } = string.Empty;
+        public string Id { get; set; } = string.Empty;
+        public string DisplayName { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;
         public string Role { get; set; } = string.Empty;
         public int TotalRoomsPlayed { get; set; }

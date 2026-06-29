@@ -25,7 +25,4 @@ public class User
     public UserRole Role { get; set; }
 
     public DateTime? DeletedAt { get; set; }
-
-    // Reviews created by this user.
-    public virtual ICollection<Review> Reviews { get; set; } = new List<Review>();
 }

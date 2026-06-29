@@ -86,7 +86,7 @@
                             <div class="card-body p-4 bg-white" style="border-radius: 12px;">
                                 <div class="d-flex justify-content-between align-items-center mb-3">
                                     <div class="d-flex align-items-center gap-2">
-                                        <strong style="color: var(--primary-deep-green); font-size: 1.15rem; letter-spacing: 0.5px;">@review.User?.Username</strong>
+                                        <strong style="color: var(--primary-deep-green); font-size: 1.15rem; letter-spacing: 0.5px;">@(review.AppUser?.DisplayName ?? $"{review.AppUser?.FirstName} {review.AppUser?.LastName}")</strong>
                                         @if (review.IsVerified)
                                         {
                                             <span class="badge fw-bold" style="background-color: var(--color-accent-rose); color: var(--primary-deep-green); font-size: 0.75rem; letter-spacing: 0.5px; padding: 0.4em 0.8em; border-radius: 4px;">

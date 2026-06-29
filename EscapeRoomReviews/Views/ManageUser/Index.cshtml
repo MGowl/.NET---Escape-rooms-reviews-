@@ -1,4 +1,4 @@
-@model List<EscapeRoomReviews.Models.Domain.User>
+@model List<EscapeRoomReviews.ViewModels.ManageUsersViewModel>
 
 @{
     ViewData["Title"] = "Korisnici";
@@ -9,21 +9,17 @@
         <h1 class="display-6 fw-bold text-primary-custom mb-1">Korisnici</h1>
         <p class="text-muted mb-0">Administracija korisnika.</p>
     </div>
-    <a asp-action="Create" class="btn btn-primary fw-semibold mt-3 mt-sm-0">
-        + Novi korisnik
-    </a>
 </div>
 
 <div class="table-responsive">
     <table class="table table-striped align-middle">
         <thead class="table-light">
             <tr>
-                <th>Id</th>
-                <th>Korisnicko ime</th>
+                <th>Ime</th>
+                <th>Prezime</th>
                 <th>Email</th>
                 <th>Uloga</th>
-                <th>Odigrane sobe</th>
-                <th>Registriran</th>
+                <th>Recenzije</th>
                 <th class="text-end">Akcije</th>
             </tr>
         </thead>
@@ -31,12 +27,11 @@
             @foreach (var user in Model)
             {
                 <tr>
-                    <td>@user.Id</td>
-                    <td>@user.Username</td>
+                    <td>@user.FirstName</td>
+                    <td>@user.LastName</td>
                     <td>@user.Email</td>
                     <td>@user.Role</td>
-                    <td>@user.TotalRoomsPlayed</td>
-                    <td>@user.RegisteredAt.ToString("dd.MM.yyyy.")</td>
+                    <td>@user.ReviewCount</td>
                     <td class="text-end">
                         <a asp-action="Edit" asp-route-id="@user.Id" class="btn btn-sm btn-outline-primary me-2">Edit</a>
                         <form asp-action="Delete" method="post" class="d-inline">

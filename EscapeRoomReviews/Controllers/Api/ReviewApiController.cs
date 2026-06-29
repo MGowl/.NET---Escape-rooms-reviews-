@@ -18,9 +18,6 @@ public class ReviewApiController : ControllerBase
         _context = context;
     }
 
-    /// <summary>
-    /// Mapira Review entitet u ReviewDTO.
-    /// </summary>
     private static ReviewDTO ToDTO(Review review)
     {
         return new ReviewDTO
@@ -33,35 +30,29 @@ public class ReviewApiController : ControllerBase
             IsVerified = review.IsVerified,
             CreatedAt = review.CreatedAt,
             EscapeRoomName = review.EscapeRoom.Name,
-            Username = review.User.Username
+            Username = review.AppUser?.UserName ?? string.Empty
         };
     }
 
-    /// <summary>
-    /// GET /api/review - Vraća sve aktivne recenzije (gdje je DeletedAt == null).
-    /// </summary>
     [HttpGet]
     public async Task<ActionResult<IEnumerable<ReviewDTO>>> GetAll()
     {
         var reviews = await _context.Reviews
             .Where(r => r.DeletedAt == null)
             .Include(r => r.EscapeRoom)
-            .Include(r => r.User)
+            .Include(r => r.AppUser)
             .ToListAsync();
 
         return Ok(reviews.Select(ToDTO).ToList());
     }
 
-    /// <summary>
-    /// GET /api/review/{id} - Vraća recenziju po ID-u.
-    /// </summary>
     [HttpGet("{id}")]
     public async Task<ActionResult<ReviewDTO>> GetById(int id)
     {
         var review = await _context.Reviews
             .Where(r => r.Id == id && r.DeletedAt == null)
             .Include(r => r.EscapeRoom)
-            .Include(r => r.User)
+            .Include(r => r.AppUser)
             .FirstOrDefaultAsync();
 
         if (review == null)
@@ -72,9 +63,6 @@ public class ReviewApiController : ControllerBase
         return Ok(ToDTO(review));
     }
 
-    /// <summary>
-    /// GET /api/review/search/{q} - Pretraga recenzija po komentaru.
-    /// </summary>
     [HttpGet("search/{q}")]
     public async Task<ActionResult<IEnumerable<ReviewDTO>>> Search(string q)
     {
@@ -86,15 +74,12 @@ public class ReviewApiController : ControllerBase
         var reviews = await _context.Reviews
             .Where(r => r.DeletedAt == null && r.Comment.Contains(q))
             .Include(r => r.EscapeRoom)
-            .Include(r => r.User)
+            .Include(r => r.AppUser)
             .ToListAsync();
 
         return Ok(reviews.Select(ToDTO).ToList());
     }
 
-    /// <summary>
-    /// POST /api/review - Kreira novu recenziju.
-    /// </summary>
     [Authorize]
     [HttpPost]
     public async Task<ActionResult<ReviewDTO>> Create([FromBody] ReviewUpsertDTO dto)
@@ -116,11 +101,13 @@ public class ReviewApiController : ControllerBase
             return BadRequest(new { message = "Escape room nije pronađen." });
         }
 
-        var userExists = await _context.AppUsers
-            .AnyAsync(u => u.Id == dto.UserId && u.DeletedAt == null);
-        if (!userExists)
+        if (!string.IsNullOrWhiteSpace(dto.AppUserId))
         {
-            return BadRequest(new { message = "Korisnik nije pronađen." });
+            var userExists = await _context.Users.AnyAsync(u => u.Id == dto.AppUserId);
+            if (!userExists)
+            {
+                return BadRequest(new { message = "Korisnik nije pronađen." });
+            }
         }
 
         var review = new Review
@@ -130,7 +117,7 @@ public class ReviewApiController : ControllerBase
             PlayersCount = dto.PlayersCount,
             VisitedAt = dto.VisitedAt,
             EscapeRoomId = dto.EscapeRoomId,
-            UserId = dto.UserId,
+            AppUserId = dto.AppUserId,
             IsVerified = dto.IsVerified,
             CreatedAt = DateTime.UtcNow,
             DeletedAt = null
@@ -142,15 +129,12 @@ public class ReviewApiController : ControllerBase
         var createdReview = await _context.Reviews
             .Where(r => r.Id == review.Id)
             .Include(r => r.EscapeRoom)
-            .Include(r => r.User)
+            .Include(r => r.AppUser)
             .FirstAsync();
 
         return CreatedAtAction(nameof(GetById), new { id = review.Id }, ToDTO(createdReview));
     }
 
-    /// <summary>
-    /// PUT /api/review/{id} - Ažurira recenziju po ID-u.
-    /// </summary>
     [Authorize]
     [HttpPut("{id}")]
     public async Task<ActionResult<ReviewDTO>> Update(int id, [FromBody] ReviewUpsertDTO dto)
@@ -163,7 +147,7 @@ public class ReviewApiController : ControllerBase
         var review = await _context.Reviews
             .Where(r => r.Id == id && r.DeletedAt == null)
             .Include(r => r.EscapeRoom)
-            .Include(r => r.User)
+            .Include(r => r.AppUser)
             .FirstOrDefaultAsync();
 
         if (review == null)
@@ -184,15 +168,12 @@ public class ReviewApiController : ControllerBase
         var updatedReview = await _context.Reviews
             .Where(r => r.Id == id)
             .Include(r => r.EscapeRoom)
-            .Include(r => r.User)
+            .Include(r => r.AppUser)
             .FirstAsync();
 
         return Ok(ToDTO(updatedReview));
     }
 
-    /// <summary>
-    /// DELETE /api/review/{id} - Soft delete recenzije.
-    /// </summary>
     [Authorize]
     [HttpDelete("{id}")]
     public async Task<IActionResult> Delete(int id)

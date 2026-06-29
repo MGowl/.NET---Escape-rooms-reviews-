@@ -24,12 +24,12 @@ namespace EscapeRoomReviews.Controllers
                 .AsNoTracking()
                 .Where(review => review.DeletedAt == null)
                 .Include(review => review.EscapeRoom)
-                .Include(review => review.User)
+                .Include(review => review.AppUser)
                 .Select(review => new ReviewIndexViewModel
                 {
                     Id = review.Id,
                     RoomName = review.EscapeRoom.Name,
-                    Username = review.User.Username,
+                    Username = review.AppUser != null ? review.AppUser.UserName ?? string.Empty : string.Empty,
                     Rating = review.Rating,
                     Comment = review.Comment,
                     CreatedAt = review.CreatedAt,
@@ -46,7 +46,7 @@ namespace EscapeRoomReviews.Controllers
             var review = _context.Reviews
                 .AsNoTracking()
                 .Include(r => r.EscapeRoom)
-                .Include(r => r.User)
+                .Include(r => r.AppUser)
                 .FirstOrDefault(r => r.Id == id && r.DeletedAt == null);
             if (review == null)
             {

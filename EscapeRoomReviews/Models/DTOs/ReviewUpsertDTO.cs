@@ -19,8 +19,7 @@ public class ReviewUpsertDTO
     [Range(1, int.MaxValue, ErrorMessage = "Escape room je obavezan.")]
     public int EscapeRoomId { get; set; }
 
-    [Range(1, int.MaxValue, ErrorMessage = "Korisnik je obavezan.")]
-    public int UserId { get; set; }
+    public string? AppUserId { get; set; }
 
     public bool IsVerified { get; set; }
 }

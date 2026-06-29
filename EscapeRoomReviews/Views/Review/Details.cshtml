@@ -90,16 +90,12 @@
                 <h4 class="text-primary-custom fw-bold border-bottom pb-3 mb-3">Autor</h4>
                 <div class="d-flex flex-column gap-3 fs-6">
                     <div class="d-flex justify-content-between align-items-center">
-                        <strong style="color: #666;">Korisničko ime</strong> 
-                        <span style="font-weight: 500;">@(Model.User?.Username)</span>
+                        <strong style="color: #666;">Korisničko ime</strong>
+                        <span style="font-weight: 500;">@(Model.AppUser?.UserName)</span>
                     </div>
                     <div class="d-flex justify-content-between align-items-center">
-                        <strong style="color: #666;">Email</strong> 
-                        <a href="mailto:@(Model.User?.Email)" class="link-accent" style="font-weight: 500;">@(Model.User?.Email)</a>
-                    </div>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <strong style="color: #666;">Uloga</strong> 
-                        <span class="badge bg-secondary">@(Model.User?.Role.ToString())</span>
+                        <strong style="color: #666;">Email</strong>
+                        <a href="mailto:@(Model.AppUser?.Email)" class="link-accent" style="font-weight: 500;">@(Model.AppUser?.Email)</a>
                     </div>
                 </div>
             </div>
