@@ -38,6 +38,40 @@
         </div>
     </div>
 
+    <!-- 4. Photos -->
+    @if (Model.Photos != null && Model.Photos.Any())
+    {
+        <div class="mb-5 mx-n4 mx-md-n5">
+            <div id="photoCarousel" class="carousel slide shadow-sm" data-bs-ride="carousel" style="border-radius: 12px; overflow: hidden;">
+                <div class="carousel-indicators">
+                    @for (int i = 0; i < Model.Photos.Count; i++)
+                    {
+                        <button type="button" data-bs-target="#photoCarousel" data-bs-slide-to="@i"
+                            class="@(i == 0 ? "active" : "")" aria-current="@(i == 0 ? "true" : "false")"></button>
+                    }
+                </div>
+                <div class="carousel-inner">
+                    @for (int i = 0; i < Model.Photos.Count; i++)
+                    {
+                        <div class="carousel-item @(i == 0 ? "active" : "")">
+                            <img src="@Model.Photos.ElementAt(i).Url" class="d-block w-100" alt="Foto @(i+1)"
+                                style="height: 400px; object-fit: cover;" />
+                        </div>
+                    }
+                </div>
+                @if (Model.Photos.Count > 1)
+                {
+                    <button class="carousel-control-prev" type="button" data-bs-target="#photoCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#photoCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                    </button>
+                }
+            </div>
+        </div>
+    }
+
     <!-- 3. Description & Themes -->
     <div class="row mb-5">
         <div class="col-lg-8 mb-4 mb-lg-0">

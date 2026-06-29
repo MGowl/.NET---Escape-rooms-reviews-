@@ -8,15 +8,9 @@
     ViewData["BreadcrumbParentController"] = "Location";
 }
 
-<div class="row mb-4 align-items-center border-bottom pb-3">
-    <div class="col-8">
-        <h1 class="price-text mb-0 text-primary-custom">@Model.City</h1>
-    </div>
-    <div class="col-4 text-end">
-        <a asp-action="Index" class="btn btn-outline-primary">
-            &larr; Back to Locations
-        </a>
-    </div>
+<div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-5 gap-3">
+    <h1 class="fw-bold mb-0" style="color: var(--primary-deep-green); font-size: 2.5rem; letter-spacing: -0.02em;">@Model.City</h1>
+    <a asp-action="Index" class="btn fw-bold px-4 py-2" style="background-color: var(--primary-deep-green); color: white; border-radius: 8px;">← Natrag na popis</a>
 </div>
 
 <div class="card shadow-sm border-0 mb-5 bg-white">

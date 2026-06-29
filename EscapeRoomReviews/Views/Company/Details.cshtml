@@ -11,21 +11,19 @@
 
 <div class="container mt-5 mb-5">
     <!-- Header Section -->
-    <div class="d-flex justify-content-between align-items-center mb-4 pb-3 border-bottom">
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-5 gap-3">
         <div>
-            <h1 class="display-5 mb-2 text-primary-custom">@Model.Name</h1>
+            <h1 class="fw-bold mb-2" style="color: var(--primary-deep-green); font-size: 2.5rem; letter-spacing: -0.02em;">@Model.Name</h1>
             @if (!string.IsNullOrEmpty(Model.Website))
             {
-                <a href="@Model.Website" class="link-accent fw-medium" target="_blank" rel="noopener noreferrer">
-                    <i class="bi bi-box-arrow-up-right me-1"></i> @Model.Website
+                <a href="@Model.Website" target="_blank" rel="noopener noreferrer"
+                   class="fw-semibold text-decoration-none d-inline-flex align-items-center gap-1"
+                   style="color: var(--primary-deep-green); background-color: var(--color-accent-peach); padding: 0.35em 0.9em; border-radius: 6px; font-size: 0.95rem;">
+                    <i class="bi bi-globe2"></i> @Model.Website
                 </a>
             }
         </div>
-        <div>
-            <a asp-action="Index" class="btn btn-outline-primary px-4 py-2 rounded-pill fw-medium">
-                <i class="bi bi-arrow-left me-1"></i> Back
-            </a>
-        </div>
+        <a asp-action="Index" class="btn fw-bold px-4 py-2" style="background-color: var(--primary-deep-green); color: white; border-radius: 8px;">← Natrag na popis</a>
     </div>
 
     <!-- Escape Rooms Section -->
@@ -84,7 +82,7 @@
                                 </div>
                                 <a asp-controller="EscapeRoom" asp-action="Details" asp-route-id="@room.Id" 
                                    class="btn btn-primary rounded-pill px-4 fw-bold shadow-sm">
-                                    View Details
+                                    Detalji
                                 </a>
                             </div>
                         </div>
